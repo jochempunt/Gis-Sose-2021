@@ -6,13 +6,24 @@ body{
     overflow:scroll;
     top: 0;
     margin: 0;
-    
+    position:relative;
 }
 main{
     width: 800px;
     margin: auto;
-    line-height: 1.5rem;
+    
 }
+
+main h3{
+    margin-top: 0.7em;
+    display: inline;
+    padding-right: 0.5em;
+    padding-left: 0.3em;
+    font-size: 2em;
+    color: white;
+    background: black;
+}
+
 h1{
 display: block;
 
@@ -78,8 +89,10 @@ display: block;
 }
 
 section{
-    background-color: grey;
+    background-color: rgb(189, 189, 189);
     margin-bottom: 2em;
+    padding: 1em 1em;
+    box-shadow:3px 3px 5px black;
 }
 
 h2{
@@ -90,4 +103,20 @@ h2{
 #weiß_auf_schwarz_überschrift{
     color: white;
     text-shadow: 12px 12px rgb(26, 26, 26);
+}
+
+.profilbild{
+    margin-top: 0.5em;
+}
+
+.bewertung {
+    display: block;
+    padding: 2em;
+    background-color: rgb(39, 39, 39);
+    color:white;
+}
+
+.kundenstimme_weniger_margin_cyan{
+    margin-top: 0;
+    color: cyan;
 }
