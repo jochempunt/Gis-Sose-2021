@@ -1,12 +1,17 @@
 
 body{
     font-family: Arial, Helvetica, sans-serif;
-  
     background-image: url(media/bg.png);
+    background-attachment: fixed;
+    overflow:scroll;
+    top: 0;
+    margin: 0;
+    
 }
 main{
     width: 800px;
     margin: auto;
+    line-height: 1.5rem;
 }
 h1{
 display: block;
@@ -25,22 +30,25 @@ box-shadow:15px 15px  cyan;
 }
 
 .nav {
-        display:box;
-        top: 0cm;
-        position: -webkit-sticky; 
-        position: sticky; 
-        right: 10px;
-        cursor:pointer;
-        float: right;
+  display: flex;
+
+  float: right;
+  top: 0;
+  position: sticky;
+  position: -webkit-sticky;
+  z-index: 1;
+ 
+        
        
 }
 
+
 .nav ul{
-    flex-wrap: wrap; 
-    
+    flex-wrap: wrap;
     padding: 0; 
-    margin: 1.3em 1.3em 1.3em 0; 
+    margin: 0;
     background-color: black;
+    
     
 }
 
@@ -49,7 +57,7 @@ box-shadow:15px 15px  cyan;
     
 }
 .nav a{
-    font-size: 3em;
+    font-size: 2em;
     display:block;
     padding: 8px ;
     color: white;
@@ -67,4 +75,19 @@ display: block;
 }
 .hidden{
     visibility: hidden;
+}
+
+section{
+    background-color: grey;
+    margin-bottom: 2em;
+}
+
+h2{
+    font-size: 3em;
+    margin-top: 1em;
+}
+
+#weiß_auf_schwarz_überschrift{
+    color: white;
+    text-shadow: 12px 12px rgb(26, 26, 26);
 }
