@@ -1,0 +1,70 @@
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+  
+    background-image: url(media/bg.png);
+}
+main{
+    width: 800px;
+    margin: auto;
+}
+h1{
+display: block;
+
+color: white;
+font-size: 5.5em;
+background-color: black;
+width: auto;
+display: block;
+margin:0.5em auto ;
+padding:1rem;
+min-width: 3.8em;
+max-width: 5em;
+
+box-shadow:15px 15px  cyan;
+}
+
+.nav {
+        display:box;
+        top: 0cm;
+        position: -webkit-sticky; 
+        position: sticky; 
+        right: 10px;
+        cursor:pointer;
+        float: right;
+       
+}
+
+.nav ul{
+    flex-wrap: wrap; 
+    
+    padding: 0; 
+    margin: 1.3em 1.3em 1.3em 0; 
+    background-color: black;
+    
+}
+
+.nav li{
+        display:inline-block;
+    
+}
+.nav a{
+    font-size: 3em;
+    display:block;
+    padding: 8px ;
+    color: white;
+    text-decoration: none;
+}
+
+.nav a:hover {
+color: cyan;
+display: block;
+}
+
+#sie_sind_hier {
+    text-decoration-line: underline;
+    color: white;
+}
+.hidden{
+    visibility: hidden;
+}
