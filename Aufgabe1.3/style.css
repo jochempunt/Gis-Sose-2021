@@ -8,6 +8,21 @@ body{
     margin: 0;
     position:relative;
 }
+
+
+header {
+	position: relative;
+	top: 0;
+	display: inline-block;
+	width: auto;
+	margin: 0 50%;
+	translate: -50%;
+    padding: 1em;
+  
+    
+  
+}
+
 main{
     width: 800px;
     margin: auto;
@@ -28,14 +43,13 @@ h1{
 display: block;
 
 color: white;
-font-size: 5.5em;
+font-size: 500%;
 background-color: black;
 width: auto;
 display: block;
 margin:0.5em auto ;
-padding:1rem;
-min-width: 3.8em;
-max-width: 5em;
+padding: 4vh;
+
 
 box-shadow:15px 15px  cyan;
 }
@@ -55,6 +69,7 @@ box-shadow:15px 15px  cyan;
 
 
 .nav ul{
+    display: flex;
     flex-wrap: wrap;
     padding: 0; 
     margin: 0;
