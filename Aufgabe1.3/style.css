@@ -3,11 +3,27 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background-image: url(media/bg.png);
     background-attachment: fixed;
+    
+    
+	
     overflow:scroll;
     top: 0;
     margin: 0;
     position:relative;
 }
+
+a{
+    color:rgb(0, 0, 0);
+    cursor: pointer;
+}
+a:hover,a:focus{
+   color: cyan;
+}
+a:active{
+    color: rgb(0, 217, 255);
+}
+
+
 
 
 header {
@@ -48,9 +64,8 @@ background-color: black;
 width: auto;
 display: block;
 margin:0.5em auto ;
-padding: 4vh;
-
-
+padding: 50px 100px;
+padding-left: 50px;
 box-shadow:15px 15px  cyan;
 }
 
@@ -111,17 +126,49 @@ section{
 }
 
 h2{
-    font-size: 3em;
-    margin-top: 1em;
+    font-size: 4em;
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
 }
 
 #weiß_auf_schwarz_überschrift{
     color: white;
     text-shadow: 12px 12px rgb(26, 26, 26);
+    margin-right: 0;
+    width: auto;
+    display: block;
 }
 
 .profilbild{
     margin-top: 0.5em;
+    display: block;
+    position: relative;
+    top:1em;
+    margin-bottom: 1em;
+    
+}
+
+
+.container{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.container p{
+    padding-left: 1em;
+}
+
+
+.steckbrief{
+    margin: 0px;
+    padding: 0;
+}
+
+.steckbrief li{
+    list-style-type: none;
+    padding:0;
+   
 }
 
 .bewertung {
@@ -137,11 +184,48 @@ h2{
 }
 
 address{
-    display: inline-block;
+    display: block;
     width: 180px;
     background-color: gray;
     color: white;
     padding: 1em;
     margin-bottom: 1em;
-    box-shadow: 3px 3px 5px black;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.61);
+    float: right;
+    padding: 0.5rem;
 }
+
+footer{
+    
+    background-color: black;
+    
+}
+
+footer a, footer p{
+    color: white;
+    text-decoration: none;
+   
+    margin-bottom: 0;
+    margin-top: 0.5em;
+    
+}
+
+footer a{
+    font-size: 2em;
+}
+
+footer p{
+    font-size:1em;
+}
+
+footer a:hover{
+color:cyan;
+text-shadow: none;
+}
+
+.wrapper{
+         width:800px;
+        padding:0 1em ;
+        margin: 0 auto; 
+      }
+        
