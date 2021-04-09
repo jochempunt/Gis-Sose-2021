@@ -10,10 +10,10 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background-image: url(media/bg.png);
     background-attachment: fixed;
+    max-width: 100%;
+    overflow-x: hidden;
     
     
-    
-    overflow:scroll;
     top: 0;
     margin: 0;
     position:relative;
@@ -58,7 +58,9 @@ main h3{
     color: white;
     background: black;
 }
-
+h3{
+    margin-bottom: 0.5em;
+}
 h1{
     display: block;
     
@@ -169,7 +171,10 @@ h5{
     margin: 1em auto 1em auto;
     
 }
-
+.meme{
+width: 350px;
+margin: 5em;
+}
 #weiß_auf_schwarz_überschrift{
     color: rgb(0, 0, 0);
     text-shadow: 6px 6px var(--meinBlau);
@@ -237,6 +242,7 @@ address{
 footer{
     
     background-color: black;
+    width:100%;
     
 }
 
@@ -268,3 +274,59 @@ footer a:hover{
     margin: 0 auto; 
 }
 
+
+
+input[type=text],textarea,select,option{
+    font-size: 1em;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+    margin:0.5em 0;
+    outline:none;
+    border-width: 1.5px;
+    border-color: rgba(255, 255, 255, 0);
+    display:block;
+    background:black;
+    color:rgb(255, 255, 255);
+    
+}
+Input[type=text]{
+    width:200px;
+}
+input[type=text]:hover,textarea:hover,select:hover{
+   border-color: var(--meinBlau);
+   outline:none  !important;
+   border-width: 1.5px;
+}
+select{
+    width:205px;
+}
+select:hover{
+    cursor: pointer;
+}
+
+textarea{
+    width:300px;
+    resize: vertical;
+}
+
+
+
+input[type=submit]{
+    width: 100px;
+    height: auto;
+    font-size: 1.1em;
+    font-style: inherit;
+    background-color: black;
+    box-shadow: 3px 3px var(--meinBlau);
+    color: white;
+    border:none;
+}
+input[type=submit]:hover{
+    box-shadow: 4px 4px rgb(113, 211, 250) ;
+    cursor: pointer;
+}
+
+input[type=submit]:active{
+   
+    color: var(--meinBlau);
+}
