@@ -97,6 +97,7 @@ iframe,
     height: 433px;
     width: 768px;
     margin-bottom: 1rem;
+    border:none;
 }
 
 #musikbehälter{
