@@ -10,12 +10,12 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     background-image: url(media/bg.png);
     background-attachment: fixed;
-    max-width: 100%;
+    max-width: 100% ;
     overflow-x: hidden;
     
     
     top: 0;
-    margin: 0;
+    margin: 0 auto;
     position:relative;
 }
 
@@ -39,7 +39,8 @@ header {
     display: inline-block;
     width: auto;
     margin: 0 50%;
-    translate: -50%;
+    transform:-50%;
+    -webkit-transform: translateX(-50%);
     padding: 1em;
 }
 
