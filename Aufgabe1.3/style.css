@@ -41,9 +41,6 @@ header {
     margin: 0 50%;
     translate: -50%;
     padding: 1em;
-    
-    
-    
 }
 
 main{
@@ -81,12 +78,39 @@ h1{
     
     float: right;
     top: 0;
-    position: sticky;
-    position: -webkit-sticky;
+    position: fixed;
+    right: 1px;
+    /* position: sticky;
+    position: -webkit-sticky;*/
     z-index: 1;
     
     
     
+}
+
+
+
+iframe,
+.video_main_big{
+    height: 433px;
+    width: 768px;
+    margin-bottom: 1rem;
+}
+
+#musikbehälter{
+    display: flex;
+   width: 768px;
+   flex-wrap: wrap;
+}
+
+.audiofeld{
+    display: inline-block;
+    width:300px;
+    margin:auto;
+}
+
+#websiten_designbild_höher_stellen{
+    margin-bottom: 1.2em;
 }
 
 
@@ -129,6 +153,7 @@ section{
     background-color: rgb(255, 255, 255);
     margin-bottom: 2em;
     padding: 1em 1em;
+    padding-bottom: 2em;
     box-shadow:3px 3px 5px rgba(0, 0, 0, 0.836);
 }
 
@@ -136,6 +161,13 @@ h2{
     font-size: 4em;
     margin-top: 0.5em;
     margin-bottom: 0.3em;
+}
+
+
+h5{
+    
+    margin: 1em auto 1em auto;
+    
 }
 
 #weiß_auf_schwarz_überschrift{
