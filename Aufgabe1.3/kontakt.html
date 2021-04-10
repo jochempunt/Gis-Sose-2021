@@ -18,10 +18,20 @@
         </ul>
     </nav>
     <header>
-        <h1>Jochem Punt</h1>
-        
+        <h1>Jochem Punt
+            <div>
+                <ul class="icons">
+                    <li><a href="https://www.youtube.com/channel/UCMwIAJAQBHxNyGUMyki_JHg" target="_blank" title="ravendave youtube channel" >
+                        <img src="media/sm-icons-youtube.png" alt="ravendave youtube channel"></a>
+                    </li>
+                    <li><a href="https://www.instagram.com/jp_2024/" target="_blank" title="personal instagram">
+                        <img src="media/sm-icons-instagram-glyph-logo.png" alt="personal instagram"></a>
+                    </li>
+                </ul>        
+            </div>
+        </h1>
     </header>
-
+    
     <main>
         <address>
             Jochem Punt
@@ -30,10 +40,10 @@
             Germany
             <a href="mailto:jochem.punt@gmail.com"><i>jochem.punt@gmail.com</i></a>
         </address>
-<h2 id="weiß_auf_schwarz_überschrift">Kontakt</h2>
-
-
-
+        <h2 id="weiß_auf_schwarz_überschrift">Kontakt</h2>
+        
+        
+        
         <section class="kontakt_links">
             <h3>Meine links:</h3>
             <ul>
@@ -42,44 +52,51 @@
                 <li><a href="https://soundcloud.com/jom-p-639258726">Ravendave Demos</a><img src="media/soundcloud.jpg" alt="soundcloud_logo"></li>
                 <li> <a href="https://www.instagram.com/kochemmitjochem/">Kochem mit Jochem</a><img src="media/instagram_logo.png" alt="instagram_logo"></li>
             </ul>
-
-
-
-
+            
+            
+            
+            
         </section>
         <section class="kontakt_formular">
             <h3>Feedback</h3>
             <form id="nachrichtenformular" name="nachrichtenformular">
-             
-                    <input type="text" id="name" name="name" placeholder="ihr Name (vor & Zuname)" />
+                <div>
+                <input    class="eingabefeld " type="text" id="name" name="name" placeholder="ihr Name"  required/> 
+                <label class="label verstecktesLabel" for="name">ihr Name</label>
+            </div>
+                <div>
+                <input    class="eingabefeld"type="text" id="absender" name="absender" placeholder="ihre mail adresse"  required />
+                <label class="label verstecktesLabel" for="absender">ihre Mail Adresse</label>
+            </div>
+            <div>
+                <select   class="eingabefeld" title="art des anliegens" id="anliegensart" name="anliegensart"  required>
+                    <option value="" selected disabled hidden>Art des Anliegens</option>
+                    <option>Beschwerde</option>
+                    <option>Buchen</option>
+                    <option>Freie Arbeitsstelle</option>
+                    <option>Rechtliches</option>
+                    <option>Feedback</option>
+                    <option>Sonstiges</option>
+                </select>
+                <label class="label verstecktesLabel" for="anliegensart">ihr Anliegen</label>
+            </div><div>
+                <textarea class="eingabefeld" id="nachrichtentext" name="nachrichtentext" placeholder="ihre nachricht" pattern="./s" required></textarea>
+                <label class="label verstecktesLabel" for="anliegensart">ihre Nachricht</label>
+            </div>
                 
-               
-                    <input type="text" id="absender" name="absender" placeholder="ihre mail adresse" />
-                
-                    <select title="art des anliegens" id="anliegensart" name="anliegensart" >
-                        <option value="" selected disabled hidden>Art des Anliegens</option>
-                        <option>Beschwerde</option>
-                        <option>Buchen</option>
-                        <option>Freie Arbeitsstelle</option>
-                        <option>Rechtliches</option>
-                        <option>Feedback</option>
-                        <option>Sonstiges</option>
-                    </select>
-                    <textarea id="nachrichtentext" name="nachrichtentext" placeholder="ihre nachricht"></textarea>
-                
-               
-                    <p id="datenschutz">mit dem abschicken meiner nachricht bestätige ich den <a href="datenschutz.html" target="_blank">datenschutz</a></p>
-                    <input type="submit" value="abschicken" />
-                
+                <p id="datenschutz">mit dem abschicken meiner nachricht bestätige ich den <a href="datenschutz.html" target="_blank">datenschutz</a></p>
+            <div>
+                <input class="eingabefeld" type="submit" value="abschicken"  />
+            </div>
             </form>
         </section>
         <!-- ich hoffe das is kein css oder javascript bis jetzt-->
     </main>
-
+    
     <footer>
-       <div class="wrapper">
-        <a href="#top">nach oben</a>
-    </div>
+        <div class="wrapper">
+            <a href="#top">nach oben</a>
+        </div>
     </footer>
 </body>
 
