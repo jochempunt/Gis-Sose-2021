@@ -3,7 +3,7 @@
 
 
 :root{
-    --meinBlau:rgb(12, 186, 255);
+    --meinBlau:rgb(12, 186, 255); /* farb variable welche der einzige farbton auf der ganzen website ist*/
 }
 
 body{
@@ -13,55 +13,14 @@ body{
     max-width: 100% ;
     overflow-x: hidden;
     
-    
     top: 0;
     margin: 0 auto;
     position:relative;
 }
 
-a{
-    color:rgb(0, 0, 0);
-    cursor: pointer;
-}
-a:hover,a:focus{
-    color: var(--meinBlau);
-}
-a:active{
-    color: rgb(115, 215, 255);
-}
 
+/* ---------- überschriften ---------- */
 
-
-
-header {
-    position: relative;
-    top: 0;
-    display: inline-block;
-    width: auto;
-    margin: 0 50%;
-    transform:-50%;
-    -webkit-transform: translateX(-50%);
-    padding: 1em;
-}
-
-main{
-    width: 800px;
-    margin: auto;
-    
-}
-
-main h3{
-    margin-top: 0.7em;
-    display: inline;
-    padding-right: 0.5em;
-    padding-left: 0.3em;
-    font-size: 1.5em;
-    color: white;
-    background: black;
-}
-h3{
-    margin-bottom: 0.5em;
-}
 h1{
     display: block;
     
@@ -76,18 +35,121 @@ h1{
     box-shadow:15px 15px  var(--meinBlau);
     padding-bottom: 0.3em;
 }
+h2{
+    font-size: 4em;
+    margin-top: 0.5em;
+    margin-bottom: 0.3em;
+}
+
+h3{
+    margin-bottom: 0.5em;
+}
+
+h5{
+    
+    margin: 1em auto 1em auto;
+    
+}
+
+#weiß_auf_schwarz_überschrift{
+    color: rgb(0, 0, 0);
+    text-shadow: 6px 6px var(--meinBlau);
+    margin-right: 0;
+    width: auto;
+    display: block;
+}
+/* ---------- Links ---------- */
+a{
+    color:rgb(0, 0, 0);
+    cursor: pointer;
+}
+a:hover,a:focus{
+    color: var(--meinBlau);
+}
+a:active{
+    color: rgb(115, 215, 255);
+}
+/* ------------ Basic elemente einer HTML seite ------------ */
+header {
+    position: relative;
+    top: 0;
+    display: inline-block;
+    width: auto;
+    margin: 0 50%;
+    transform:-50%;
+    -webkit-transform: translateX(-50%);
+    padding: 1em;
+}
+
+main{
+    width: 800px;
+    margin: auto;
+}
+
+main h3{
+    margin-top: 0.7em;
+    display: inline;
+    padding-right: 0.5em;
+    padding-left: 0.3em;
+    font-size: 1.5em;
+    color: white;
+    background: black;
+}
 
 
+section{
+    background-color: rgb(255, 255, 255);
+    margin-bottom: 2em;
+    padding: 1em 1em;
+    padding-bottom: 2em;
+    box-shadow:3px 3px 5px rgba(0, 0, 0, 0.836);
+}
+
+
+/* ---------- footer  ---------- */
+
+footer{ 
+    background-color: black;
+    width:100%;  
+}
+
+footer a, footer p{
+    color: white;
+    text-decoration: none;
+    
+    margin-bottom: 0;
+    margin-top: 0.5em;  
+}
+
+footer a{
+    font-size: 2em;
+}
+
+footer p{
+    font-size:1em;
+}
+
+footer a:hover{
+    color:var(--meinBlau);
+    text-shadow: none;
+}
+
+.wrapper{
+    width:800px;
+    padding:0 1em ;
+    margin: 0 auto; 
+}
+
+
+/*---------- Icon Navigation ---------- */
 
 .icons{
-   
     text-decoration: none;
     list-style: none;
     margin: 0;
     padding: 0;
     font-size: 30px;
-    line-height: 1;
-    
+    line-height: 1;  
 }
 
 .icons li{
@@ -98,15 +160,16 @@ h1{
     margin-left:10px;
     margin-top: 10px;
     filter: invert(100%);
-    
-     /* Safari 6.0 - 9.0 */
     width: 30px;
 }
 
 .icons img:hover{
     filter: invert(100%) opacity(80%);
-   
+    
 }
+
+
+/* ---------- Navigation ---------- */
 
 .nav {
     display: flex;
@@ -118,37 +181,7 @@ h1{
     /* position: sticky;
     position: -webkit-sticky;*/
     z-index: 1;
-    
-    
-    
 }
-
-
-
-iframe,
-.video_main_big{
-    height: 433px;
-    width: 768px;
-    margin-bottom: 1rem;
-    border:none;
-}
-
-#musikbehälter{
-    display: flex;
-   width: 768px;
-   flex-wrap: wrap;
-}
-
-.audiofeld{
-    display: inline-block;
-    width:300px;
-    margin:auto;
-}
-
-#websiten_designbild_höher_stellen{
-    margin-bottom: 1.2em;
-}
-
 
 .nav ul{
     display: flex;
@@ -164,6 +197,7 @@ iframe,
     display:inline-block;
     
 }
+
 .nav a{
     font-size: 2em;
     display:block;
@@ -181,55 +215,52 @@ iframe,
     text-decoration-line: underline;
     color: white;
 }
-.hidden{
-    visibility: hidden;
-}
-
-section{
-    background-color: rgb(255, 255, 255);
-    margin-bottom: 2em;
-    padding: 1em 1em;
-    padding-bottom: 2em;
-    box-shadow:3px 3px 5px rgba(0, 0, 0, 0.836);
-}
-
-h2{
-    font-size: 4em;
-    margin-top: 0.5em;
-    margin-bottom: 0.3em;
-}
 
 
-h5{
-    
-    margin: 1em auto 1em auto;
-    
+/* ---------- Media Inhalte ---------- */
+
+iframe,
+.video_main_big{
+    height: 433px;
+    width: 768px;
+    margin-bottom: 1rem;
+    border:none;
 }
+
+#musikbehälter{
+    display: flex;
+    width: 768px;
+    flex-wrap: wrap;
+}
+
+.audiofeld{
+    display: inline-block;
+    width:300px;
+    margin:auto;
+}
+
+#websiten_designbild_höher_stellen{
+    margin-bottom: 1.2em;
+}
+
 .meme{
-width: 350px;
-margin: 0 auto;
-display: block;
-margin-top: 1em;
-}
-#weiß_auf_schwarz_überschrift{
-    color: rgb(0, 0, 0);
-    text-shadow: 6px 6px var(--meinBlau);
-    margin-right: 0;
-    width: auto;
+    width: 350px;
+    margin: 0 auto;
     display: block;
+    margin-top: 1em;
 }
 
+
+/*---------- Über mich Inhalte ----------*/
 .profilbild{
     margin-top: 0.5em;
     display: block;
     position: relative;
     top:1em;
     margin-bottom: 1em;
-    margin-right: 1em;
-    
+    margin-right: 1em;   
 }
 
-/* -------- To do : Icons einbauen!!!!!!    ---------*/
 .container{
     display: flex;
     align-items: center;
@@ -240,7 +271,6 @@ margin-top: 1em;
     padding-left: 1em;
 }
 
-
 .steckbrief{
     margin: 0px;
     padding: 0;
@@ -248,8 +278,7 @@ margin-top: 1em;
 
 .steckbrief li{
     list-style-type: none;
-    padding:0;
-    
+    padding:0;   
 }
 
 .bewertung {
@@ -276,44 +305,10 @@ address{
     padding: 0.5rem;
 }
 
-footer{
-    
-    background-color: black;
-    width:100%;
-    
-}
-
-footer a, footer p{
-    color: white;
-    text-decoration: none;
-    
-    margin-bottom: 0;
-    margin-top: 0.5em;
-    
-}
-
-footer a{
-    font-size: 2em;
-}
-
-footer p{
-    font-size:1em;
-}
-
-footer a:hover{
-    color:var(--meinBlau);
-    text-shadow: none;
-}
-
-.wrapper{
-    width:800px;
-    padding:0 1em ;
-    margin: 0 auto; 
-}
 
 
 
-
+/* ---------- Kontaktformular ---------- */
 
 .eingabefeld{
     font-size: 20px;
@@ -325,37 +320,28 @@ footer a:hover{
     border-color: rgba(255, 255, 255, 0);
     display:inline;
     background:black;
-    color:rgb(255, 255, 255);
-
-    
+    color:rgb(255, 255, 255);  
 }
-
 
 .eingabefeld:valid{
     color:white;
 }
 
 
-
-
-
-
-
 input[type=text],input[type=email]{
     width:200px;
 }
 
-
-
 input[type=text]:hover,textarea:hover,select:hover{
-   border-color: var(--meinBlau);
-   outline:none  !important;
-   border-width: 1.5px;
-   
+    border-color: var(--meinBlau);
+    outline:none  !important;
+    border-width: 1.5px; 
 }
+
 select{
     width:205px;
 }
+
 select:hover{
     cursor: pointer;
 }
@@ -365,24 +351,22 @@ textarea{
     resize: vertical;
 }
 
-
 .label{
     display: inline;
     font-size: 20px;
     font-weight: bold;
     font-family: inherit;
     margin:0.3em;
+    cursor:pointer;
 }
 
 .verstecktesLabel{
     display: none;
+    
 }
 .eingabefeld:valid + .verstecktesLabel{
-   display: inline;
-    
-    
+    display: inline;  
 }
-
 
 input[type=submit]{
     width: 120px;
@@ -403,6 +387,5 @@ input[type=submit]:hover{
 }
 
 input[type=submit]:active{
-   
     color: var(--meinBlau);
 }
