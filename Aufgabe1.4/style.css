@@ -11,6 +11,8 @@ body {
     background-attachment: fixed;
     max-width: 100%;
     overflow-x: hidden;
+    column-gap: 1em;
+    row-gap: 1em;
 }
 
 header {
