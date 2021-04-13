@@ -51,7 +51,8 @@ h1 {
         grid-template-areas: ". header nav" ". body ." "footer footer footer";
     }
     h1 {
-        font-size: 5rem;
+        font-size: 6rem;
+        margin: 0;
     }
 }
 
