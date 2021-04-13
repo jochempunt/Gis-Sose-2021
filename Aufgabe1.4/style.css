@@ -2,6 +2,22 @@
     --meinBlau: rgb(12, 186, 255);
 }
 
+header {
+    grid-area: header;
+}
+
+main {
+    grid-area: body;
+}
+
+nav {
+    grid-area: nav;
+}
+
+footer {
+    grid-area: footer;
+}
+
 body {
     display: grid;
     grid-template-rows: auto 1fr 20%;
@@ -13,6 +29,7 @@ body {
     overflow-x: hidden;
     column-gap: 1em;
     row-gap: 1em;
+    grid-template-areas: "header" "body" "footer";
 }
 
 header {
@@ -30,23 +47,11 @@ header {
 
 h1 {
     display: block;
-    font-size: 4rem;
+    font-size: 4.5rem;
     margin: 1rem;
 }
 
 @media screen and (min-width:500px) {
-    header {
-        grid-area: header;
-    }
-    main {
-        grid-area: body;
-    }
-    nav {
-        grid-area: nav;
-    }
-    footer {
-        grid-area: footer;
-    }
     body {
         grid-template-columns: 25% 1fr 25%;
         grid-template-rows: 18rem 1fr auto;
