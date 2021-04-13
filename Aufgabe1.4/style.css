@@ -71,6 +71,7 @@ header {
     background-color: rgb(43, 43, 43);
     padding: 1em;
     height: auto;
+    box-shadow: 2px 2px 3px black;
 }
 
 h1 {
