@@ -1,180 +1,254 @@
-:root {
-    --meinBlau: rgb(12, 186, 255);
-    --gradient: linear-gradient(45deg, #2af585, #22e483, #1bd7bb, #14c9cb, #0fbad8, #077ae5);
-}
-
-header {
-    grid-area: header;
-    margin-top: 60px;
-}
-
-main {
-    grid-area: body;
-}
-
-nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    background-color: rgb(43, 43, 43);
-    color: white;
-    z-index: 2;
-}
-
-#navbar {
-    padding: 1rem;
-    display: block;
-    width: 100%;
-}
-
-#navbar a {
-    float: right;
-    padding: 1rem;
-    padding-top: 0;
-    margin-right: 1rem;
-    font-size: 1.2em;
-    transition: all 1s ease-in-out;
-}
-
-#burgermenue {
-    display: none;
-}
-
-footer {
-    display: block;
-}
-
-body {
-    top: 0;
-    min-height: 100vh;
-    font-family: Arial, Helvetica, sans-serif;
-    background-image: url(medien/bg.png);
-    background-attachment: fixed;
-    max-width: 100%;
-    overflow-x: hidden;
-    position: absolute;
-    ;
-}
-
-.content-grid {
-    grid-template-rows: auto auto 1fr;
-    grid-template-columns: auto auto;
-    display: grid;
-    column-gap: 1em;
-    row-gap: 1em;
-    top: 4em;
-    width: auto;
-    min-width: 1vh;
-    margin: 0 auto;
-    grid-template-areas: "header" "body";
-    position: relative;
-    transition: grid-template-areas .5s ease-in-out;
-}
-
-header {
-    width: auto;
-    position: relative;
-    top: 0;
-    margin: 1rem auto;
-    background-color: rgb(43, 43, 43);
-    padding: 1em;
-    height: auto;
-    box-shadow: 2px 2px 3px black;
-}
-
-h1 {
-    display: block;
-    font-size: 4rem;
-    margin: 1rem;
-    background-image: var(--gradient);
-    background-clip: text;
-    color: transparent;
-    background-size: 500%;
-    max-width: 396px;
-    animation: gradient-animation 3s ease-in-out infinite alternate;
-    transition: font-size .5s ease-in;
-}
-
-@keyframes gradient-animation {
-    0% {
-        background-position: left;
-    }
-    100% {
-        background-position: right
-    }
-}
-
-@media screen and (min-width:560px) {
-    .content-grid {
-        grid-template-columns: 25% auto 25%;
-        grid-template-rows: auto 1fr auto;
-        grid-template-areas: ". header ." ". body .";
-        top: 4em;
-    }
-    h1 {
-        font-size: 6rem;
-        margin: 0;
-        max-width: auto;
-    }
-    nav {
-        font-size: 16px;
-        padding-top: 0;
-        padding-bottom: 0;
-    }
-    #navbar {
-        font-size: 1.5em;
-    }
-    header {
-        min-width: 1vh;
-    }
-}
-
-@media screen and (max-width:860px) and (min-width:560px) {
-    h1 {
-        font-size: 4.5rem;
-    }
-    #navbar {
-        font-size: 1.3em;
-    }
-}
-
-@media screen and (max-width:385px) {
-    #navbar {
-        padding: 0;
-        display: none;
-    }
-    #burgermenue {
-        display: block;
-        width: 1em;
-        margin: 0.5rem auto;
-        fill: white;
-    }
-}
-
-.icons {
-    text-decoration: none;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    font-size: 30px;
-    line-height: 1;
-    display: block;
-    margin-bottom: 0.5em;
-}
-
-.icons li {
-    display: inline;
-}
-
-.icons img {
-    margin-left: 10px;
-    margin-top: 10px;
-    filter: invert(100%);
-    width: 30px;
-    margin: 0;
-}
-
-.icons img:hover {
-    filter: invert(100%) opacity(80%);
-}
+                                               :root {
+                                                  --meinBlau: rgb(12, 186, 255);
+                                                  --gradient: linear-gradient(45deg, #2af585, #22e483, #1bd7bb, #14c9cb, #0fbad8, #077ae5);
+                                                  --hellergradient: linear-gradient(45deg, #2af585c0, #22e483b6, #1bd7bbb2, #14c8cbcb, #0fbad8c0, #077ae5af);
+                                              }
+                                              
+                                              header {
+                                                  grid-area: header;
+                                                  margin-top: 60px;
+                                              }
+                                              
+                                              main {
+                                                  grid-area: body;
+                                              }
+                                              
+                                              nav {
+                                                  position: fixed;
+                                                  width: 100%;
+                                                  top: 0;
+                                                  left: 0;
+                                                  background-color: rgb(43, 43, 43);
+                                                  color: white;
+                                                  z-index: 2;
+                                              }
+                                              
+                                              #navbar {
+                                                  padding: 0;
+                                                  margin: 0;
+                                                  display: block;
+                                                  width: 100%;
+                                              }
+                                              
+                                              #navbar a {
+                                                  float: right;
+                                                  padding-left: 1rem;
+                                                  padding-bottom: 1rem;
+                                                  padding-top: 1rem;
+                                                  margin-right: 0;
+                                                  padding-right: 1rem;
+                                                  font-size: 1.2em;
+                                                  color: rgba(255, 255, 255, 0.856);
+                                                  text-decoration: none;
+                                                  background-image: var(--gradient);
+                                                  background-clip: text;
+                                                  background-size: 200%;
+                                                  transition: color .2s linear, font-size .5s ease-in;
+                                              }
+                                              
+                                              #navbar .sie-sind-hier {
+                                                  color: rgb(255, 255, 255);
+                                                  background-clip: border-box;
+                                              }
+                                              
+                                              @keyframes gradient-transperancy {
+                                                  0% {
+                                                      color: rgba(255, 255, 255, 0.993);
+                                                  }
+                                                  100% {
+                                                      color: rgba(255, 255, 255, 0);
+                                                  }
+                                              }
+                                              
+                                              input#hamburg {
+                                                  display: none;
+                                              }
+                                              
+                                              #navbar a:hover {
+                                                  text-decoration: initial;
+                                                  position: left;
+                                                  color: rgba(255, 255, 255, 0);
+                                                  /*transition: color .5s ease-in-out;*/
+                                                  /* animation: gradient-transperancy .5s ease-in 1 forwards;*/
+                                              }
+                                              
+                                              #navbar .sie-sind-hier:hover {
+                                                  color: rgb(43, 43, 43);
+                                              }
+                                              
+                                              #burgermenue {
+                                                  display: none;
+                                                  cursor: pointer;
+                                              }
+                                              
+                                              .ausklappnav {
+                                                  position: relative;
+                                                  max-width: 100%;
+                                                  background: rgb(43, 43, 43);
+                                                  /*height: 0;*/
+                                                  max-height: 0;
+                                                  color: rgba(255, 255, 255, 0);
+                                                  transition: max-height .25s ease-in, color .2s ease-in;
+                                                  z-index: -1;
+                                              }
+                                              
+                                              .ausklappnav a {
+                                                  color: inherit;
+                                                  text-decoration: none;
+                                                  font-size: 2.5em;
+                                                  transition: max-height .3s ease-in-out;
+                                              }
+                                              
+                                              #hamburg:checked+.ausklappnav a:active {
+                                                  color: rgba(255, 255, 255, 0.61);
+                                              }
+                                              
+                                              footer {
+                                                  display: block;
+                                              }
+                                              
+                                              body {
+                                                  top: 0;
+                                                  min-height: 100vh;
+                                                  font-family: Arial, Helvetica, sans-serif;
+                                                  background-image: url(medien/bg.png);
+                                                  background-attachment: fixed;
+                                                  max-width: 100%;
+                                                  overflow-x: hidden;
+                                                  position: absolute;
+                                                  ;
+                                              }
+                                              
+                                              .content-grid {
+                                                  grid-template-rows: auto auto 1fr;
+                                                  grid-template-columns: auto auto;
+                                                  display: grid;
+                                                  column-gap: 1em;
+                                                  row-gap: 1em;
+                                                  top: 4em;
+                                                  width: auto;
+                                                  min-width: 1vh;
+                                                  margin: 0 auto;
+                                                  grid-template-areas: "header" "body";
+                                                  position: relative;
+                                                  transition: grid-template-areas .5s ease-in-out alternate;
+                                              }
+                                              
+                                              header {
+                                                  width: auto;
+                                                  position: relative;
+                                                  top: 0;
+                                                  margin: 1rem auto;
+                                                  background-color: rgb(43, 43, 43);
+                                                  padding: 1em;
+                                                  height: auto;
+                                                  box-shadow: 2px 2px 3px black;
+                                              }
+                                              
+                                              h1 {
+                                                  display: block;
+                                                  font-size: 4rem;
+                                                  margin: 1rem;
+                                                  background-image: var(--gradient);
+                                                  background-clip: text;
+                                                  color: transparent;
+                                                  background-size: 500%;
+                                                  max-width: 396px;
+                                                  animation: gradient-animation 3s ease-in-out infinite alternate;
+                                                  transition: font-size .5s ease-in;
+                                              }
+                                              
+                                              @keyframes gradient-animation {
+                                                  0% {
+                                                      background-position: left;
+                                                  }
+                                                  100% {
+                                                      background-position: right
+                                                  }
+                                              }
+                                              
+                                              @media screen and (min-width:560px) {
+                                                  .content-grid {
+                                                      grid-template-columns: 25% auto 25%;
+                                                      grid-template-rows: auto 1fr auto;
+                                                      grid-template-areas: ". header ." ". body .";
+                                                      top: 4em;
+                                                  }
+                                                  h1 {
+                                                      font-size: 6rem;
+                                                      margin: 0;
+                                                      max-width: auto;
+                                                  }
+                                                  nav {
+                                                      font-size: 16px;
+                                                      padding-top: 0;
+                                                      padding-bottom: 0;
+                                                  }
+                                                  #navbar {
+                                                      font-size: 1.5em;
+                                                  }
+                                                  header {
+                                                      min-width: 1vh;
+                                                  }
+                                              }
+                                              
+                                              @media screen and (max-width:860px) and (min-width:560px) {
+                                                  h1 {
+                                                      font-size: 4.5rem;
+                                                  }
+                                                  #navbar {
+                                                      font-size: 1.3em;
+                                                  }
+                                              }
+                                              
+                                              @media screen and (max-width:385px) {
+                                                  #navbar {
+                                                      padding: 0;
+                                                      display: none;
+                                                  }
+                                                  #burgermenue {
+                                                      display: block;
+                                                      width: 1em;
+                                                      margin: 0.5rem auto;
+                                                      fill: white;
+                                                  }
+                                                  #hamburg:checked+.ausklappnav {
+                                                      display: block;
+                                                      max-height: 400px;
+                                                      color: rgba(255, 255, 255, 1);
+                                                      height: auto;
+                                                  }
+                                                  #hamburg:checked+.ausklappnav .sie-sind-hier {
+                                                      background-image: var(--gradient);
+                                                      background-clip: text;
+                                                      background-size: 200%;
+                                                      color: rgba(255, 255, 255, 0);
+                                                  }
+                                              }
+                                              
+                                              .icons {
+                                                  text-decoration: none;
+                                                  list-style: none;
+                                                  margin: 0;
+                                                  padding: 0;
+                                                  font-size: 30px;
+                                                  line-height: 1;
+                                                  display: block;
+                                                  margin-bottom: 0.5em;
+                                              }
+                                              
+                                              .icons li {
+                                                  display: inline;
+                                              }
+                                              
+                                              .icons img {
+                                                  margin-left: 10px;
+                                                  margin-top: 10px;
+                                                  filter: invert(100%);
+                                                  width: 30px;
+                                                  margin: 0;
+                                              }
+                                              
+                                              .icons img:hover {
+                                                  filter: invert(100%) opacity(80%);
+                                              }
