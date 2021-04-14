@@ -122,14 +122,12 @@ body {
     max-width: 100%;
     overflow-x: hidden;
     position: absolute;
-    ;
 }
 
 .content-grid {
     grid-template-rows: auto auto 1fr;
     grid-template-columns: auto auto;
     display: grid;
-    column-gap: 1em;
     row-gap: 1em;
     top: 4em;
     width: auto;
@@ -161,7 +159,7 @@ h1 {
     -webkit-background-clip: text;
     color: transparent;
     background-size: 500%;
-    max-width: 396px;
+    max-width: 395px;
     animation: gradient-animation 3s ease-in-out infinite alternate;
     transition: font-size .5s ease-in;
 }
@@ -180,6 +178,7 @@ h1 {
         grid-template-columns: 25% auto 25%;
         grid-template-rows: auto auto 1fr auto auto;
         grid-template-areas: "nav nav nav" ". header ." ". body ." "footer footer footer";
+        column-gap: 1em;
         top: 4em;
     }
     footer {
