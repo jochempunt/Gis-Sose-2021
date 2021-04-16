@@ -62,8 +62,67 @@
 
     <main>
 
-        <section>
-            <h2>kontakt</h2>
+
+        <address>
+                Jochem Punt
+                Straße 123
+                12345 Musterstadt
+                Germany
+                <a href="mailto:jochem.punt@gmail.com"><i>jochem.punt@gmail.com</i></a>
+            </address>
+
+
+
+        <section class="kontakt_links">
+            <h3>Meine links:</h3>
+            <ul>
+                <li> <a href="https://www.youtube.com/channel/UCMwIAJAQBHxNyGUMyki_JHg">Ravendave</a><img src="media/youtube_logo.jpg" alt="youtube_logo"></li>
+                <li><a href="https://www.youtube.com/channel/UCCVNosMW5Kpd3u-VOV0HzHg">Househälter</a><img src="media/youtube_logo.jpg" alt="youtube_logo"></li>
+                <li><a href="https://soundcloud.com/jom-p-639258726">Ravendave Demos</a><img src="media/soundcloud.jpg" alt="soundcloud_logo"></li>
+                <li> <a href="https://www.instagram.com/kochemmitjochem/">Kochem mit Jochem</a><img src="media/instagram_logo.png" alt="instagram_logo"></li>
+            </ul>
+
+
+
+
+        </section>
+        <section class="kontakt_formular">
+            <h3>Feedback</h3>
+            <form id="nachrichtenformular" name="nachrichtenformular">
+                <div>
+                    <input class="eingabefeld " type="text" id="name" name="name" placeholder="ihr Name" required/>
+                    <label class="label verstecktesLabel" for="name">Name</label>
+                </div>
+                <div>
+                    <input class="eingabefeld" type="text" id="absender" name="absender" placeholder="ihre mail adresse" required />
+                    <label class="label verstecktesLabel" for="absender">Mail Adresse</label>
+                </div>
+                <div>
+                    <select class="eingabefeld" title="art des anliegens" id="anliegensart" name="anliegensart" required>
+                            <option value="" selected disabled hidden>Art des Anliegens</option>
+                            <option>Beschwerde</option>
+                            <option>Buchen</option>
+                            <option>Freie Arbeitsstelle</option>
+                            <option>Rechtliches</option>
+                            <option>Feedback</option>
+                            <option>Sonstiges</option>
+                        </select>
+                    <label class="label verstecktesLabel" for="anliegensart">Anliegen</label>
+                </div>
+                <div>
+                    <div class="eingabefeld wachsend" id="nachrichtentext" contenteditable="true" role="textarea">Nachricht</div>
+                    <label class="label verstecktesLabel" for="nachrichtentext">ihr Nachricht</label>
+                    <!--   Achtung: Label funtktioniert momentan nicht, muss ich später mit javascript lösen-->
+                </div>
+
+
+
+
+                <p id="datenschutz">mit dem abschicken meiner nachricht bestätige ich den <a href="datenschutz.html" target="_blank">datenschutz</a></p>
+                <div>
+                    <input class="eingabefeld" type="submit" value="abschicken" />
+                </div>
+            </form>
         </section>
     </main>
 

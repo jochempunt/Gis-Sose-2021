@@ -1,7 +1,7 @@
 :root {
     --meinBlau: rgb(12, 186, 255);
     --gradient: linear-gradient(45deg, #2af585, #22e483, #1bd7bb, #14c9cb, #0fbad8, #077ae5);
-    --hellergradient: linear-gradient(45deg, #2af585c0, #22e483b6, #1bd7bbb2, #14c8cbcb, #0fbad8c0, #077ae5af);
+    --hellergradient: linear-gradient(45deg, #22cf70, #27bb71, #1bb19a, #159ea0, #1698af, #1d68af);
 }
 
 header {
@@ -13,12 +13,23 @@ main {
     grid-area: body;
 }
 
+h3 {
+    margin-top: 0.7em;
+    display: inline;
+    padding-right: 0.5em;
+    padding-left: 0.3em;
+    margin-bottom: 1em;
+    font-size: 1.8em;
+    color: white;
+    background: rgb(43, 43, 43);
+}
+
 nav {
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
-    background-color: rgb(43, 43, 43);
+    background-color: rgb(54, 54, 54);
     color: white;
     z-index: 2;
     grid-area: nav;
@@ -49,6 +60,22 @@ nav {
     transition: color .2s linear, font-size .5s ease-in;
 }
 
+main a {
+    color: rgb(43, 43, 43, 1);
+    text-decoration: none;
+    font-style: italic;
+    background-image: var(--hellergradient);
+    background-clip: text;
+    -moz-background-clip: text;
+    -webkit-background-clip: text;
+    background-size: 200%;
+    transition: color .2s linear;
+}
+
+main a:hover {
+    color: rgba(43, 43, 43, 0);
+}
+
 #navbar .sie-sind-hier {
     color: rgb(255, 255, 255);
     background-clip: border-box;
@@ -63,6 +90,18 @@ nav {
     100% {
         color: rgba(255, 255, 255, 0);
     }
+}
+
+address {
+    display: block;
+    min-width: 100px;
+    background-color: gray;
+    color: white;
+    padding: 1em;
+    margin-bottom: 1em;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.61);
+    float: right;
+    padding: 0.5rem;
 }
 
 input#hamburg {
@@ -89,7 +128,7 @@ input#hamburg {
 .ausklappnav {
     position: relative;
     max-width: 100%;
-    background: rgb(43, 43, 43);
+    background: rgba(43, 43, 43, 0);
     /*height: 0;*/
     max-height: 0;
     color: rgba(255, 255, 255, 0);
@@ -172,6 +211,48 @@ section {
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.747);
 }
 
+.profilbild {
+    margin-top: 0.5em;
+    display: block;
+    position: relative;
+    top: 1em;
+    margin-bottom: 1em;
+    margin-right: 1em;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+    margin-top: 0.2em;
+}
+
+.container p {
+    padding-left: 1em;
+}
+
+.steckbrief {
+    margin: 0px;
+    padding: 0;
+}
+
+.steckbrief li {
+    list-style-type: none;
+    padding: 0;
+}
+
+.bewertung {
+    display: block;
+    padding: 2em;
+    background-color: rgb(39, 39, 39);
+    color: white;
+}
+
+.kundenstimme_weniger_margin_cyan {
+    margin-top: 0;
+    color: var(--meinBlau);
+}
+
 iframe,
 .video_main_big {
     position: absolute;
@@ -215,6 +296,50 @@ iframe,
     }
 }
 
+input[type=text],
+select {
+    width: 61%;
+    height: 25px;
+    transition: all .5s ease-in;
+}
+
+select:hover {
+    cursor: pointer;
+}
+
+textarea {
+    width: 70%;
+    resize: none;
+    transition: all .5s ease-in;
+    margin-right: 2em;
+    overflow: hidden;
+    line-height: 20px;
+}
+
+.eingabefeld {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0.5em 0;
+    outline: none;
+    border-width: 1.5px;
+    border-color: rgba(255, 255, 255, 0);
+    display: inline;
+    background: black;
+    color: rgb(255, 255, 255);
+}
+
+.wachsend {
+    display: inline-block;
+    width: 62%;
+    min-height: 20px;
+    max-height: 500px;
+    background-color: black;
+    color: white;
+    overflow: scroll;
+    transition: all .5s ease-in;
+}
+
 @media screen and (min-width:560px) {
     .content-grid {
         grid-template-columns: 15% auto 15%;
@@ -241,6 +366,12 @@ iframe,
     }
     header {
         min-width: 1vh;
+    }
+    .eingabefeld+.verstecktesLabel {
+        display: inline;
+    }
+    textarea {
+        resize: vertical;
     }
 }
 
@@ -278,6 +409,22 @@ iframe,
         background-size: 200%;
         color: rgba(255, 255, 255, 0);
     }
+    input[type=text] {
+        width: 100%;
+    }
+    select {
+        width: 101%;
+        height: 30px;
+    }
+    select:hover {
+        cursor: pointer;
+    }
+    .wachsend {
+        width: 101%;
+        max-height: 300px;
+        max-width: 93vw;
+        overflow: scroll;
+    }
 }
 
 .icons {
@@ -305,4 +452,52 @@ iframe,
 
 .icons img:hover {
     filter: invert(100%) opacity(80%);
+}
+
+.eingabefeld:valid {
+    color: white;
+}
+
+input[type=text]:hover,
+textarea:hover,
+select:hover {
+    border-color: var(--meinBlau);
+    outline: none;
+    border-width: 1.5px;
+}
+
+.label {
+    display: inline;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: inherit;
+    margin: 0.3em;
+    cursor: pointer;
+}
+
+.verstecktesLabel {
+    display: none;
+}
+
+input[type=submit] {
+    width: 120px;
+    height: auto;
+    font-style: inherit;
+    background-color: black;
+    box-shadow: 3px 3px var(--meinBlau);
+    color: white;
+    border: none;
+}
+
+input[type=submit]:hover {
+    box-shadow: 4px 4px rgb(113, 211, 250);
+    cursor: pointer;
+}
+
+#nachrichtentext {
+    margin-bottom: 0;
+}
+
+input[type=submit]:active {
+    color: var(--meinBlau);
 }
