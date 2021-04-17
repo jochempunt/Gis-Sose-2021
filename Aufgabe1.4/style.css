@@ -224,7 +224,7 @@ body {
     margin: 0 auto;
     grid-template-areas: "nav" "header" "body""footer";
     position: relative;
-    transition: grid-template-areas .5s ease-in-out alternate;
+    transition: grid-template-areas .5s ease-in-out ;
 }
 
 header {
@@ -405,7 +405,7 @@ textarea {
         top: 4em;
     }
     footer {
-        grid-row: 3span;
+        grid-row: 3 span;
     }
     h1 {
         font-size: 6rem;
