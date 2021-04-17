@@ -1,3 +1,29 @@
+
+/*Hineweise:
+   Verschiedene komplexe selectoren verdendet auf dieser Webiste (zum beispiel) :
+
+   -> #navbar a
+   -> #hamburg:checked + .ausklappnav a:active
+   -> .kontakt_links *
+   -> article p::first-letter
+   -> main a:hover
+   -> input[type=text]
+   -> input[type=text] , select 
+   -> blockquote > a
+
+   hoffe das erleichtert einiges bei >500 zeilen CSS :)
+
+*/
+
+
+
+
+
+
+
+
+
+
 :root {
     --meinBlau: rgb(12, 186, 255);
     --gradient: linear-gradient(45deg, #2af585, #22e483, #1bd7bb, #14c9cb, #0fbad8, #077ae5);
@@ -277,6 +303,12 @@ section {
     color: var(--meinBlau);
 }
 
+
+blockquote > a{
+    color: rgb(219, 0, 0);
+}
+
+
 iframe,
 .video_main_big {
     position: absolute;
@@ -405,6 +437,11 @@ textarea {
     }
     #navbar {
         font-size: 1.3em;
+    }
+
+    .content-grid{
+        grid-template-columns: 5% auto 5%;
+        
     }
 }
 
