@@ -147,7 +147,7 @@ input#hamburg {
 
 #navbar a:hover {
     text-decoration: initial;
-    position: left;
+   /* position: left;*/
     color: rgba(255, 255, 255, 0);
     /*transition: color .5s ease-in-out;*/
     /* animation: gradient-transperancy .5s ease-in 1 forwards;*/
@@ -412,7 +412,6 @@ textarea {
     h1 {
         font-size: 6rem;
         margin: 0;
-        max-width: auto;
     }
     nav {
         font-size: 16px;
