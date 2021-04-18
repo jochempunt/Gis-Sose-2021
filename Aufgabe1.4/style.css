@@ -229,6 +229,36 @@ body {
     transition: grid-template-areas .5s ease-in-out ;
 }
 
+
+
+.beantainer{
+    display: flex;
+    flex-shrink: 0;
+    flex-grow: 0;
+    flex-flow: wrap;
+    flex-wrap: wrap;
+    width: 100vw;
+    align-content: center;
+    height: 100vh;
+    justify-content: center;
+    
+    flex-direction: column;
+    
+ 
+}
+
+
+
+
+.beantainer input[type=submit]{
+    justify-self: center;
+    width: 200px;
+    font-size: 3em;
+    flex-grow: 0;
+    flex-shrink: 0;
+}
+
+
 header {
     width: auto;
     position: relative;
@@ -398,7 +428,16 @@ textarea {
     transition: all .5s ease-in;
 }
 
-@media screen and (min-width:560px) {
+aside {
+    display: none;
+    grid-area:aside;
+}
+
+
+
+
+
+@media screen and (min-width:600px) {
     .content-grid {
         grid-template-columns: 15% auto 15%;
         grid-template-rows: auto auto 1fr auto auto;
@@ -432,7 +471,34 @@ textarea {
     }
 }
 
-@media screen and (max-width:860px) and (min-width:560px) {
+
+
+@media screen and (min-width:1024px){
+
+
+    aside{
+    display:block;
+    
+    }
+    aside img{
+        width: 100%;
+        height: auto;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.61);
+
+    }
+
+
+    .content-grid{
+        grid-template-columns: 20% auto 20%;
+        grid-template-areas: "nav nav nav" ". header ." ". body aside" "footer footer footer";
+    }
+    
+        
+    }
+
+
+
+@media screen and (max-width:860px) and (min-width:600px) {
     h1 {
         font-size: 4.5rem;
     }

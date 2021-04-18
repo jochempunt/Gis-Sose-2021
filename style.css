@@ -14,7 +14,7 @@ iframe{
     border-style: solid;
     border-color: rgb(51, 121, 252);
     transition: all .5s ease-in;
-   
+   margin-bottom: 2em;
 }
 
 iframe:hover{
@@ -24,6 +24,12 @@ iframe:hover{
     overflow-y: scroll;
     border-color:rgb(71, 204, 82);
 }
+
+
+li a{
+    font-size: 2em;
+}
+
 
 
 @media screen and (max-width:1024px) {
