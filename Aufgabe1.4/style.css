@@ -189,6 +189,18 @@ footer {
     background-color: black;
 }
 
+footer a{
+    font-size: 2em;
+    color: white;
+    text-decoration: none;
+    margin-left: 2%;
+}
+
+
+footer a:hover{
+    color: gray;
+}
+
 
 .link_icon{
     margin-left: 0.4rem;
