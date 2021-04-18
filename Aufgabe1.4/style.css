@@ -1,6 +1,11 @@
 
 /*Hineweise:
-   Verschiedene komplexe selectoren verdendet auf dieser Webiste (zum beispiel) :
+   
+Wichtig: Adblocker ausschalten!! sonst ist in der desktop ansicht mein aside "werbeblock" nicht sichtbar da dieser die klasse "werbung" hat, welcher
+von den meisten adblockern erkannt wird :D
+
+
+Verschiedene komplexe selectoren verdendet auf dieser Webiste (zum beispiel) :
 
    -> #navbar a
    -> #hamburg:checked + .ausklappnav a:active
@@ -11,7 +16,11 @@
    -> input[type=text] , select 
    -> blockquote > a
 
-   hoffe das erleichtert einiges bei >500 zeilen CSS :)
+   hoffe das erleichtert einiges bei >600 zeilen CSS :)
+
+
+
+
 
 */
 
