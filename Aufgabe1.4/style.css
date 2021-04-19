@@ -457,7 +457,7 @@ aside {
 
 
 
-
+/*---- Tablet & Desktop haben eine eingerückte main mithilfe von grid---*/
 @media screen and (min-width:600px) {
     .content-grid {
         grid-template-columns: 15% auto 15%;
@@ -494,6 +494,7 @@ aside {
 
 
 
+/*--- nur in der desktopanischt erscheinbt die "werbung"----*/
 @media screen and (min-width:1024px){
 
 
