@@ -158,12 +158,27 @@ function rando(): void {
  }
 }
 
+function factorial(_n: number): number{
+    
+    if ( _n == 0 ) { return 0; }
+    let x: number = 1;
+    for ( let i: number = 2; i <= _n; i++) {
+        x *= i;
+    }
+    
+    
+    return x;
+}
+
 
 
 console.log(multiply(5, 2));
 console.log(max(5, 2));
 count100();
 rando();
+console.log(factorial(2));
+console.log(factorial(0));
+console.log(factorial(3));
 
 
 

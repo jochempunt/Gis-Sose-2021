@@ -128,8 +128,21 @@ function rando() {
         console.log(Math.floor(Math.random() * 100));
     }
 }
+function factorial(_n) {
+    if (_n == 0) {
+        return 0;
+    }
+    let x = 1;
+    for (let i = 2; i <= _n; i++) {
+        x *= i;
+    }
+    return x;
+}
 console.log(multiply(5, 2));
 console.log(max(5, 2));
 count100();
 rando();
+console.log(factorial(2));
+console.log(factorial(0));
+console.log(factorial(3));
 //# sourceMappingURL=script.js.map
