@@ -62,13 +62,13 @@ wird i um 1 decrementiert*/
 
 /*-------- Aufgabe 3 ---------*/
 /* 
-function a2() { // expected call signature : a2 to have a typedef (kein typ definiert zb Void)
- let i: string = 9; // type number is not assignable to string
+function a2() { // --expected call signature : a2 to have a typedef (kein typ definiert zb Void)
+ let i: string = 9; //-- type number is not assignable to string
  
  do {
   console.log(i);
   i = i - 1;
- } while ( i = 0); //assignments in conditional expressions are forbidden -- keine zuweisungen in conditions == statt =
+ } while ( i = 0); //--assignments in conditional expressions are forbidden -- keine zuweisungen in conditions == statt =
 }
 
 a2();
@@ -139,7 +139,7 @@ function multiply (_a: number, _b: number): number {
 }
 
 function max(_a: number, _b: number): number {
- return Number(_a > _b) * _a + Number(_a <= _b) * _b; // niemand braucht if abfragen... und branchless programming ist eine gute übung
+ return Number(_a > _b) * _a + Number(_a <= _b) * _b; // bissl branch-less programming. Obwohl das hier nichtmal wirklich von vorteil ist.(zeitlich)
 }
 
 function count100(): void {
@@ -166,7 +166,7 @@ function factorial(_n: number): number {
     }
     return x;
 }
- // ------- 2 Varianten Von Leapyear;
+ // ------- 2 Varianten Von Leapyear; ------ (version 2 ist meist schneller) //
 function leapYear(): void {
  
     let date: Date = new Date();
@@ -180,7 +180,7 @@ function leapYear(): void {
     }
 }
 
-function leapYear3(): void {
+function leapYear2(): void {
  
     let date: Date = new Date();
     let thisYear: number = date.getFullYear();
@@ -291,10 +291,7 @@ function checker2(_length: number, _height: number): void {
 //fizzB();
 //fizzBuzz();
 //checker1();
-
-
-
-checker2(8, 8);
+//checker2(8, 8);
 
     
 

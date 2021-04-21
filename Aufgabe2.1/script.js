@@ -50,13 +50,13 @@ a2(); */
 wird i um 1 decrementiert*/
 /*-------- Aufgabe 3 ---------*/
 /*
-function a2() { // expected call signature : a2 to have a typedef (kein typ definiert zb Void)
- let i: string = 9; // type number is not assignable to string
+function a2() { // --expected call signature : a2 to have a typedef (kein typ definiert zb Void)
+ let i: string = 9; //-- type number is not assignable to string
  
  do {
   console.log(i);
   i = i - 1;
- } while ( i = 0); //assignments in conditional expressions are forbidden -- keine zuweisungen in conditions == statt =
+ } while ( i = 0); //--assignments in conditional expressions are forbidden -- keine zuweisungen in conditions == statt =
 }
 
 a2();
@@ -112,7 +112,7 @@ function multiply(_a, _b) {
     return _a * _b;
 }
 function max(_a, _b) {
-    return Number(_a > _b) * _a + Number(_a <= _b) * _b; // niemand braucht if abfragen... und branchless programming ist eine gute übung
+    return Number(_a > _b) * _a + Number(_a <= _b) * _b; // bissl branch-less programming. Obwohl das hier nichtmal wirklich von vorteil ist.(zeitlich)
 }
 function count100() {
     let i = 1;
@@ -135,7 +135,7 @@ function factorial(_n) {
     }
     return x;
 }
-// ------- 2 Varianten Von Leapyear;
+// ------- 2 Varianten Von Leapyear; ------ (version 2 ist meist schneller) //
 function leapYear() {
     let date = new Date();
     let thisYear = date.getFullYear();
@@ -146,7 +146,7 @@ function leapYear() {
         }
     }
 }
-function leapYear3() {
+function leapYear2() {
     let date = new Date();
     let thisYear = date.getFullYear();
     for (let y = 1900; y <= thisYear; y++) {
@@ -242,5 +242,5 @@ function checker2(_length, _height) {
 //fizzB();
 //fizzBuzz();
 //checker1();
-checker2(8, 8);
+//checker2(8, 8);
 //# sourceMappingURL=script.js.map
