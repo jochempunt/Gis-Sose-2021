@@ -14,30 +14,30 @@ wieder in a1()zurück und führt console.log("Logo!") aus
 //C)
 
 /* function a1(): void {
-    let name: string = "Alles";
-    console.log(name);
-    func1();
-    console.log(name);
-    func2();
-    console.log(name);
-    func3();
+ let name: string = "Alles";
+ console.log(name);
+ func1();
+ console.log(name);
+ func2();
+ console.log(name);
+ func3();
  
 }
 
 a1();
 
 function func1(): void {
-    console.log("Klar?");
+ console.log("Klar?");
 }
 
 function func2(): void {
-    console.log("Gute!");
+ console.log("Gute!");
 }
 
 function func3(): void {
-    console.log("Logo!");
+ console.log("Logo!");
 }
- */
+*/
 
 
 
@@ -45,12 +45,12 @@ function func3(): void {
 
 /* 
 function a2(): void {
-    let i: number = 9;
-
-    do {
-        console.log(i);
-        i = i - 1;
-    } while( i > 0);
+ let i: number = 9;
+ 
+ do {
+  console.log(i);
+  i = i - 1;
+ } while( i > 0);
 }
 
 a2(); */
@@ -63,23 +63,24 @@ wird i um 1 decrementiert*/
 /*-------- Aufgabe 3 ---------*/
 /* 
 function a2() { // expected call signature : a2 to have a typedef (kein typ definiert zb Void)
-    let i: string = 9; // type number is not assignable to string
-
-    do {
-        console.log(i);
-        i = i - 1;
-    } while ( i = 0); //assignments in conditional expressions are forbidden -- keine zuweisungen in conditions == statt =
+ let i: string = 9; // type number is not assignable to string
+ 
+ do {
+  console.log(i);
+  i = i - 1;
+ } while ( i = 0); //assignments in conditional expressions are forbidden -- keine zuweisungen in conditions == statt =
 }
 
 a2();
- */
+*/
 
 
 
 /*---- Aufgabe 4 ---- */
 
 
-let x: string = "Hallo";
+/* let x: string = "Hallo";
+
 console.log(x);
 func1(x);
 console.log(x);
@@ -88,18 +89,18 @@ func3();
 console.log(x);
 
 function func1(y: string): void {
-    y = "Bla";
-    console.log(y);
+ y = "Bla";
+ console.log(y);
 }
 
 function func2(): void {
-    let x: string = "Blubb";
-    console.log(x);
+ let x: string = "Blubb";
+ console.log(x);
 }
 
 function func3(): void {
-    x = "Test";
-}
+ x = "Test";
+} */
 
 /* a)
 vermutete ausgabe :
@@ -110,6 +111,59 @@ vermutete ausgabe :
 "test" { func3 hat keine parameter, es nutzt hier also einfach das globale x}
 
 */
+
+
+/*b)
+globale variable --> überall im programm nutzbar;
+lokale variable --> hat nur in einem bereich wirkung, hat keine wirkung auf globales
+übergabeparameter --> eine lokale variable innerhalb einer funktion die von auserhalb einen wert nbekommt
+AUßER : bei objekten, arrays etc wo in den variablen  eine referenz weitergegeben wird.
+
+
+unterschied variablen & funktionen :  funktionen können auch unterhalb ihrer ausführung deklariert werden,
+bei direkten aufrufen von variablen ist dies nicht möglich.
+
+globalität und lokalität gelten aber ebenfalls für funktionen
+
+
+*/
+
+
+
+/*-------- Aufgabe 5 ----------*/
+
+
+
+function multiply (_a: number, _b: number): number {
+ return _a * _b;
+}
+
+function max(_a: number, _b: number): number {
+ return Number(_a > _b) *_a + Number(_a <= _b) * _b;
+}
+
+function count100(): void {
+ let i: number = 1;
+ let result: number = 0;
+ while(i <= 100) {
+  result += i;
+  i++;
+ }
+ console.log(result);
+}
+
+function rando(): void {
+ for (let i: number = 0; i < 10; i++) {
+  console.log(Math.floor(Math.random() * 100));
+ }
+}
+
+
+
+console.log(multiply(5, 2));
+console.log(max(5, 2));
+count100();
+rando();
 
 
 
