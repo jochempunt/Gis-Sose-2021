@@ -112,7 +112,7 @@ function multiply(_a, _b) {
     return _a * _b;
 }
 function max(_a, _b) {
-    return Number(_a > _b) * _a + Number(_a <= _b) * _b;
+    return Number(_a > _b) * _a + Number(_a <= _b) * _b; // niemand braucht if abfragen... und branchless programming ist eine gute übung
 }
 function count100() {
     let i = 1;
@@ -129,20 +129,39 @@ function rando() {
     }
 }
 function factorial(_n) {
-    if (_n == 0) {
-        return 0;
-    }
     let x = 1;
     for (let i = 2; i <= _n; i++) {
         x *= i;
     }
     return x;
 }
-console.log(multiply(5, 2));
+// ------- 2 Varianten Von Leapyear;
+function leapYear() {
+    let date = new Date();
+    let thisYear = date.getFullYear();
+    for (let y = 1900; y <= thisYear; y++) {
+        let sj = Number(y % 4 == 0) * Number(y % 100 != 0) * y + y * Number(y % 400 == 0);
+        if (sj) {
+            console.log(sj);
+        }
+    }
+}
+function leapYear3() {
+    let date = new Date();
+    let thisYear = date.getFullYear();
+    for (let y = 1900; y <= thisYear; y++) {
+        if (((y % 4 == 0) && (y % 100 != 0)) || (y % 400 == 0)) {
+            console.log(y);
+        }
+    }
+}
+/* console.log(multiply(5, 2));
 console.log(max(5, 2));
 count100();
 rando();
 console.log(factorial(2));
 console.log(factorial(0));
 console.log(factorial(3));
+console.log(factorial(-3)); */
+leapYear();
 //# sourceMappingURL=script.js.map

@@ -139,13 +139,13 @@ function multiply (_a: number, _b: number): number {
 }
 
 function max(_a: number, _b: number): number {
- return Number(_a > _b) *_a + Number(_a <= _b) * _b;
+ return Number(_a > _b) * _a + Number(_a <= _b) * _b; // niemand braucht if abfragen... und branchless programming ist eine gute übung
 }
 
 function count100(): void {
  let i: number = 1;
  let result: number = 0;
- while(i <= 100) {
+ while (i <= 100) {
   result += i;
   i++;
  }
@@ -158,27 +158,68 @@ function rando(): void {
  }
 }
 
-function factorial(_n: number): number{
+function factorial(_n: number): number {
     
-    if ( _n == 0 ) { return 0; }
     let x: number = 1;
     for ( let i: number = 2; i <= _n; i++) {
         x *= i;
     }
-    
-    
     return x;
+}
+ // ------- 2 Varianten Von Leapyear;
+function leapYear(): void {
+ 
+    let date: Date = new Date();
+    let thisYear: number = date.getFullYear();
+    for ( let y: number = 1900; y <= thisYear; y++) {
+        let sj: number = Number(y % 4 == 0) * Number(y % 100 != 0 ) * y + y * Number(y % 400 == 0);  
+        if ( sj) {
+            console.log(sj);
+        }
+        
+    }
+}
+
+function leapYear3(): void {
+ 
+    let date: Date = new Date();
+    let thisYear: number = date.getFullYear();
+    for ( let y: number = 1900; y <= thisYear; y++) {
+        if (((y % 4 == 0) && ( y % 100 != 0)) || ( y % 400 == 0)) { 
+            console.log(y);
+        }
+        
+    }
 }
 
 
 
-console.log(multiply(5, 2));
+
+
+
+
+
+/* console.log(multiply(5, 2));
 console.log(max(5, 2));
 count100();
 rando();
 console.log(factorial(2));
 console.log(factorial(0));
 console.log(factorial(3));
+console.log(factorial(-3)); */
+
+
+
+
+leapYear();
+
+
+
+
+    
+
+
+
 
 
 
