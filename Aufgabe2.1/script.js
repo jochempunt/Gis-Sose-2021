@@ -163,5 +163,84 @@ console.log(factorial(2));
 console.log(factorial(0));
 console.log(factorial(3));
 console.log(factorial(-3)); */
-leapYear();
+//leapYear();
+// ----- Aufgabe 6 ----//
+function hashDreieck() {
+    let out = "";
+    for (let i = 1; i <= 7; i++) {
+        out = out + "#";
+        console.log(out);
+    }
+}
+function fizzB() {
+    for (let i = 1; i <= 100; i++) {
+        if (i % 3 == 0) {
+            console.log("fizz");
+        }
+        else if (i % 5 == 0) {
+            console.log("buzz");
+        }
+        else {
+            console.log(i);
+        }
+    }
+}
+function fizzBuzz() {
+    for (let i = 1; i <= 100; i++) {
+        let p = "";
+        if (i % 3 == 0) {
+            p += "fizz";
+        }
+        if (i % 5 == 0) {
+            p += ("buzz");
+        }
+        if (p) {
+            console.log(p);
+        }
+        else {
+            console.log(i);
+        }
+    }
+}
+function checker1() {
+    let cBoard = "";
+    for (let i = 0; i < 64; i++) { // 1ne forschleife reicht :P
+        if (i % 8 == 0) {
+            cBoard += "\n";
+            if (i % 16 != 0) {
+                cBoard += " ";
+            }
+        }
+        if ((i + 1) % 2 == 0) {
+            cBoard += " ";
+        }
+        else {
+            cBoard += "#";
+        }
+    }
+    console.log(cBoard);
+}
+function checker2(_length, _height) {
+    let cBoard = "";
+    for (let i = 0; i < (_length * _height); i++) {
+        if (i % _length == 0) {
+            cBoard += "\n";
+            if (i % (_length * 2) != 0) {
+                cBoard += " ";
+            }
+        }
+        if ((i + 1) % 2 == 0) {
+            cBoard += " ";
+        }
+        else {
+            cBoard += "#";
+        }
+    }
+    console.log(cBoard);
+}
+//hashDreieck();
+//fizzB();
+//fizzBuzz();
+//checker1();
+checker2(8, 8);
 //# sourceMappingURL=script.js.map

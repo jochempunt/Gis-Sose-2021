@@ -191,14 +191,6 @@ function leapYear3(): void {
         
     }
 }
-
-
-
-
-
-
-
-
 /* console.log(multiply(5, 2));
 console.log(max(5, 2));
 count100();
@@ -207,14 +199,102 @@ console.log(factorial(2));
 console.log(factorial(0));
 console.log(factorial(3));
 console.log(factorial(-3)); */
+//leapYear();
+
+
+// ----- Aufgabe 6 ----//
+
+
+function hashDreieck(): void {
+ 
+    let out: string = "";
+    for (let i: number = 1; i <= 7; i++) {
+        out = out + "#";
+        console.log(out);
+    }
+    
+}
+
+function fizzB(): void {
+    for (let i: number = 1; i <= 100; i++) {
+        if (i % 3 == 0) {
+            console.log("fizz");
+        } else if (i % 5 == 0) {
+            console.log("buzz");
+            
+        } else {
+            console.log(i);
+        }
+    }
+}
+
+
+function fizzBuzz(): void {
+    for (let i: number = 1; i <= 100; i++) {
+        let p: string = "";
+        if (i % 3 == 0) {
+            p += "fizz";
+        }  
+        if (i % 5 == 0) {
+            p += ("buzz");   
+        }
+        if (p) {
+            console.log(p);
+        } else {
+            console.log(i);
+        }   
+    }
+}
+
+
+function checker1(): void {
+    let cBoard: string = "";
+    for (let i: number = 0; i < 64; i++) { // 1ne forschleife reicht :P
+        if (i % 8 == 0) {
+           cBoard += "\n";
+           if (i % 16 != 0) {
+            cBoard += " ";    
+           }
+        }
+        if ((i + 1) % 2 == 0) {
+         cBoard += " ";
+       } else {
+        cBoard += "#";
+       }
+    }
+    console.log(cBoard);
+}
 
 
 
+function checker2(_length: number, _height: number): void {
+    let cBoard: string = "";
+    for (let i: number = 0; i < (_length * _height); i++) {
+        if (i % _length == 0) {
+           cBoard += "\n";
+           if (i % (_length * 2) != 0) {
+            cBoard += " ";
+           }
+       }
+        if ((i + 1) % 2 == 0) {
+         cBoard += " ";
+       } else {
+        cBoard += "#";
+       }
+    }
+    console.log(cBoard);
+}
 
-leapYear();
+
+
+//hashDreieck();
+//fizzB();
+//fizzBuzz();
+//checker1();
 
 
 
+checker2(8, 8);
 
     
 
