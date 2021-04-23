@@ -139,7 +139,7 @@ function multiply (_a: number, _b: number): number {
 }
 
 function max(_a: number, _b: number): number {
- return Number(_a > _b) * _a + Number(_a <= _b) * _b; // niemand braucht if abfragen... und branchless programming ist eine gute übung
+ return Number(_a > _b) * _a + Number(_a <= _b) * _b; // "niemand braucht if abfragen"...#branchless programming 
 }
 
 function count100(): void {
@@ -247,7 +247,7 @@ function fizzBuzz(): void {
 }
 
 
-function checker1(): void {
+function checker1(): string {
     let cBoard: string = "";
     for (let i: number = 0; i < 64; i++) { // 1ne forschleife reicht :P
         if (i % 8 == 0) {
@@ -262,27 +262,48 @@ function checker1(): void {
         cBoard += "#";
        }
     }
-    console.log(cBoard);
+    return cBoard;
 }
 
 
 
-function checker2(_length: number, _height: number): void {
+function checker2(_length: number, _height: number): string {
     let cBoard: string = "";
-    for (let i: number = 0; i < (_length * _height); i++) {
-        if (i % _length == 0) {
-           cBoard += "\n";
-           if (i % (_length * 2) != 0) {
-            cBoard += " ";
+    
+    if (_length % 2 == 0) {
+        for (let i: number = 0; i < (_length * _height); i++) {
+            if (i % _length == 0) {
+               cBoard += "\n";
+               if (i % (_length * 2) != 0) {
+                cBoard += " ";
+               }
            }
-       }
-        if ((i + 1) % 2 == 0) {
-         cBoard += " ";
-       } else {
-        cBoard += "#";
-       }
+            if ((i + 1) % 2 == 0) {
+             cBoard += " ";
+           } else {
+            cBoard += "#";
+           }
+        }
     }
-    console.log(cBoard);
+    else{
+        for (let i: number = 0; i < (_length * _height); i++) {
+            if (i % _length == 0) {
+               cBoard += "\n";
+               if (i % (_length ) != 0) {
+                cBoard += " #";
+               }
+           }
+            if ((i ) % 2 == 0) {
+             cBoard += " ";
+           } else {
+            cBoard += "#";
+           }
+        }
+    }
+    
+    
+    
+    return cBoard;
 }
 
 
@@ -292,9 +313,9 @@ function checker2(_length: number, _height: number): void {
 //fizzBuzz();
 //checker1();
 
-
-
-checker2(8, 8);
+console.log(checker1());
+console.log(checker2(13, 13));
+console.log(checker2(12, 12));
 
     
 

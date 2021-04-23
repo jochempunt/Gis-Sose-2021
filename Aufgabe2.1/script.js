@@ -112,7 +112,7 @@ function multiply(_a, _b) {
     return _a * _b;
 }
 function max(_a, _b) {
-    return Number(_a > _b) * _a + Number(_a <= _b) * _b; // niemand braucht if abfragen... und branchless programming ist eine gute übung
+    return Number(_a > _b) * _a + Number(_a <= _b) * _b; // "niemand braucht if abfragen"...#branchless programming 
 }
 function count100() {
     let i = 1;
@@ -218,29 +218,49 @@ function checker1() {
             cBoard += "#";
         }
     }
-    console.log(cBoard);
+    return cBoard;
 }
 function checker2(_length, _height) {
     let cBoard = "";
-    for (let i = 0; i < (_length * _height); i++) {
-        if (i % _length == 0) {
-            cBoard += "\n";
-            if (i % (_length * 2) != 0) {
+    if (_length % 2 == 0) {
+        for (let i = 0; i < (_length * _height); i++) {
+            if (i % _length == 0) {
+                cBoard += "\n";
+                if (i % (_length * 2) != 0) {
+                    cBoard += " ";
+                }
+            }
+            if ((i + 1) % 2 == 0) {
                 cBoard += " ";
             }
-        }
-        if ((i + 1) % 2 == 0) {
-            cBoard += " ";
-        }
-        else {
-            cBoard += "#";
+            else {
+                cBoard += "#";
+            }
         }
     }
-    console.log(cBoard);
+    else {
+        for (let i = 0; i < (_length * _height); i++) {
+            if (i % _length == 0) {
+                cBoard += "\n";
+                if (i % (_length) != 0) {
+                    cBoard += " #";
+                }
+            }
+            if ((i) % 2 == 0) {
+                cBoard += " ";
+            }
+            else {
+                cBoard += "#";
+            }
+        }
+    }
+    return cBoard;
 }
 //hashDreieck();
 //fizzB();
 //fizzBuzz();
 //checker1();
-checker2(8, 8);
+console.log(checker1());
+console.log(checker2(13, 13));
+console.log(checker2(12, 12));
 //# sourceMappingURL=script.js.map
