@@ -41,26 +41,24 @@ function a2(): void {
  
  do {
   console.log(i);
-  i = i - 1;
+  i = i - 1;  //  <---
  } while( i > 0);
 }
 
 a2(); */
 /* a) auf der konsole werden die zahlen von 9-1 ausgegeben, bei jedem durchlauf der dowhile schleife
-wird i um 1 decrementiert*/
+wird i um 1 decrementiert   (wegen dowhile mindestens 1 mal) */
 /*-------- Aufgabe 3 ---------*/
-/*
-function a2() { // expected call signature : a2 to have a typedef (kein typ definiert zb Void)
- let i: string = 9; // type number is not assignable to string
+/* function a2() { // expected call signature : a2 to have a typedef (kein typ definiert zb Void)
+ let i: string = 9; // type number is not assignable to string : ein int kann keinem string zugewiesen werden
  
  do {
   console.log(i);
   i = i - 1;
  } while ( i = 0); //assignments in conditional expressions are forbidden -- keine zuweisungen in conditions == statt =
 }
-
-a2();
-*/
+a2; // expected an assignment or function call -- für funktionsaufruf fehlt ()
+ */
 /*---- Aufgabe 4 ---- */
 /* let x: string = "Hallo";
 
@@ -135,7 +133,7 @@ function factorial(_n) {
     }
     return x;
 }
-// ------- 2 Varianten Von Leapyear;
+// ------- 2 Varianten Von Leapyear ----------
 function leapYear() {
     let date = new Date();
     let thisYear = date.getFullYear();
@@ -155,16 +153,16 @@ function leapYear3() {
         }
     }
 }
-/* console.log(multiply(5, 2));
-console.log(max(5, 2));
-count100();
-rando();
-console.log(factorial(2));
-console.log(factorial(0));
-console.log(factorial(3));
-console.log(factorial(-3)); */
+//console.log(multiply(5, 2));
+//console.log(max(5, 2));
+//count100();
+//rando();
+//console.log(factorial(2));
+//console.log(factorial(0));
+//console.log(factorial(3));
+//console.log(factorial(-3)); 
 //leapYear();
-// ----- Aufgabe 6 ----//
+// -------- Aufgabe 6 --------//
 function hashDreieck() {
     let out = "";
     for (let i = 1; i <= 7; i++) {
@@ -261,6 +259,6 @@ function checker2(_length, _height) {
 //fizzBuzz();
 //checker1();
 //console.log(checker1());
-console.log(checker2(7, 7));
-console.log(checker2(8, 8));
+//console.log(checker2(7, 7));
+//console.log(checker2(8, 8));
 //# sourceMappingURL=script.js.map
