@@ -222,7 +222,7 @@ function checker1() {
 }
 function checker2(_length, _height) {
     let cBoard = "";
-    if (_length % 2 == 0) {
+    if (_length % 2 == 0) { //bei einer geraden  längenanzahl
         for (let i = 0; i < (_length * _height); i++) {
             if (i % _length == 0) {
                 cBoard += "\n";
@@ -238,7 +238,7 @@ function checker2(_length, _height) {
             }
         }
     }
-    else {
+    else { //bei einer ungeraden längenanzahl
         for (let i = 0; i < (_length * _height); i++) {
             if (i % _length == 0) {
                 cBoard += "\n";
@@ -260,7 +260,7 @@ function checker2(_length, _height) {
 //fizzB();
 //fizzBuzz();
 //checker1();
-console.log(checker1());
-console.log(checker2(13, 13));
-console.log(checker2(12, 12));
+//console.log(checker1());
+console.log(checker2(7, 7));
+console.log(checker2(8, 8));
 //# sourceMappingURL=script.js.map
