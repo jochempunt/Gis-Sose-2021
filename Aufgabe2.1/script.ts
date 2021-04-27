@@ -61,15 +61,9 @@ wird i um 1 decrementiert   (wegen dowhile mindestens 1 mal) */
 
 
 /*-------- Aufgabe 3 ---------*/
-<<<<<<< HEAD
-/* 
-function a2() { // --expected call signature : a2 to have a typedef (kein typ definiert zb Void)
- let i: string = 9; //-- type number is not assignable to string
-=======
 
 /* function a2() { // expected call signature : a2 to have a typedef (kein typ definiert zb Void)
  let i: string = 9; // type number is not assignable to string : ein int kann keinem string zugewiesen werden
->>>>>>> main
  
  do {
   console.log(i);
@@ -144,11 +138,7 @@ function multiply (_a: number, _b: number): number {
 }
 
 function max(_a: number, _b: number): number {
-<<<<<<< HEAD
- return Number(_a > _b) * _a + Number(_a <= _b) * _b; // bissl branch-less programming. Obwohl das hier nichtmal wirklich von vorteil ist.(zeitlich)
-=======
  return Number(_a > _b) * _a + Number(_a <= _b) * _b; // "niemand braucht if abfragen"...#branchless programming 
->>>>>>> main
 }
 
 function count100(): void {
@@ -175,11 +165,9 @@ function factorial(_n: number): number {
     }
     return x;
 }
-<<<<<<< HEAD
- // ------- 2 Varianten Von Leapyear; ------ (version 2 ist meist schneller) //
-=======
+
  // ------- 2 Varianten Von Leapyear ----------
->>>>>>> main
+
 function leapYear(): void {
  
     let date: Date = new Date();
@@ -322,14 +310,10 @@ function checker2(_length: number, _height: number): string {
 //fizzB();
 //fizzBuzz();
 //checker1();
-<<<<<<< HEAD
-//checker2(8, 8);
-=======
 
 //console.log(checker1());
 //console.log(checker2(7, 7));
 //console.log(checker2(8, 8));
->>>>>>> main
 
     
 

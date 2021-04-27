@@ -49,9 +49,8 @@ a2(); */
 /* a) auf der konsole werden die zahlen von 9-1 ausgegeben, bei jedem durchlauf der dowhile schleife
 wird i um 1 decrementiert   (wegen dowhile mindestens 1 mal) */
 /*-------- Aufgabe 3 ---------*/
-/*
-function a2() { // expected call signature : a2 to have a typedef (kein typ definiert zb Void)
- let i: string = 9; // type number is not assignable to string
+/* function a2() { // expected call signature : a2 to have a typedef (kein typ definiert zb Void)
+ let i: string = 9; // type number is not assignable to string : ein int kann keinem string zugewiesen werden
  
  do {
   console.log(i);
@@ -111,7 +110,7 @@ function multiply(_a, _b) {
     return _a * _b;
 }
 function max(_a, _b) {
-    return Number(_a > _b) * _a + Number(_a <= _b) * _b; // niemand braucht if abfragen... und branchless programming ist eine gute übung
+    return Number(_a > _b) * _a + Number(_a <= _b) * _b; // "niemand braucht if abfragen"...#branchless programming 
 }
 function count100() {
     let i = 1;
@@ -134,7 +133,7 @@ function factorial(_n) {
     }
     return x;
 }
-// ------- 2 Varianten Von Leapyear;
+// ------- 2 Varianten Von Leapyear ----------
 function leapYear() {
     let date = new Date();
     let thisYear = date.getFullYear();
@@ -259,5 +258,7 @@ function checker2(_length, _height) {
 //fizzB();
 //fizzBuzz();
 //checker1();
-checker2(8, 8);
+//console.log(checker1());
+//console.log(checker2(7, 7));
+//console.log(checker2(8, 8));
 //# sourceMappingURL=script.js.map
