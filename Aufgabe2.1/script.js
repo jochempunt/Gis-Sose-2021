@@ -41,26 +41,25 @@ function a2(): void {
  
  do {
   console.log(i);
-  i = i - 1;
+  i = i - 1;  //  <---
  } while( i > 0);
 }
 
 a2(); */
 /* a) auf der konsole werden die zahlen von 9-1 ausgegeben, bei jedem durchlauf der dowhile schleife
-wird i um 1 decrementiert*/
+wird i um 1 decrementiert   (wegen dowhile mindestens 1 mal) */
 /*-------- Aufgabe 3 ---------*/
 /*
-function a2() { // --expected call signature : a2 to have a typedef (kein typ definiert zb Void)
- let i: string = 9; //-- type number is not assignable to string
+function a2() { // expected call signature : a2 to have a typedef (kein typ definiert zb Void)
+ let i: string = 9; // type number is not assignable to string
  
  do {
   console.log(i);
   i = i - 1;
  } while ( i = 0); //--assignments in conditional expressions are forbidden -- keine zuweisungen in conditions == statt =
 }
-
-a2();
-*/
+a2; // expected an assignment or function call -- für funktionsaufruf fehlt ()
+ */
 /*---- Aufgabe 4 ---- */
 /* let x: string = "Hallo";
 
@@ -112,7 +111,7 @@ function multiply(_a, _b) {
     return _a * _b;
 }
 function max(_a, _b) {
-    return Number(_a > _b) * _a + Number(_a <= _b) * _b; // bissl branch-less programming. Obwohl das hier nichtmal wirklich von vorteil ist.(zeitlich)
+    return Number(_a > _b) * _a + Number(_a <= _b) * _b; // niemand braucht if abfragen... und branchless programming ist eine gute übung
 }
 function count100() {
     let i = 1;
@@ -135,7 +134,7 @@ function factorial(_n) {
     }
     return x;
 }
-// ------- 2 Varianten Von Leapyear; ------ (version 2 ist meist schneller) //
+// ------- 2 Varianten Von Leapyear;
 function leapYear() {
     let date = new Date();
     let thisYear = date.getFullYear();
@@ -155,16 +154,16 @@ function leapYear2() {
         }
     }
 }
-/* console.log(multiply(5, 2));
-console.log(max(5, 2));
-count100();
-rando();
-console.log(factorial(2));
-console.log(factorial(0));
-console.log(factorial(3));
-console.log(factorial(-3)); */
+//console.log(multiply(5, 2));
+//console.log(max(5, 2));
+//count100();
+//rando();
+//console.log(factorial(2));
+//console.log(factorial(0));
+//console.log(factorial(3));
+//console.log(factorial(-3)); 
 //leapYear();
-// ----- Aufgabe 6 ----//
+// -------- Aufgabe 6 --------//
 function hashDreieck() {
     let out = "";
     for (let i = 1; i <= 7; i++) {
@@ -218,29 +217,47 @@ function checker1() {
             cBoard += "#";
         }
     }
-    console.log(cBoard);
+    return cBoard;
 }
 function checker2(_length, _height) {
     let cBoard = "";
-    for (let i = 0; i < (_length * _height); i++) {
-        if (i % _length == 0) {
-            cBoard += "\n";
-            if (i % (_length * 2) != 0) {
+    if (_length % 2 == 0) { //bei einer geraden  längenanzahl
+        for (let i = 0; i < (_length * _height); i++) {
+            if (i % _length == 0) {
+                cBoard += "\n";
+                if (i % (_length * 2) != 0) {
+                    cBoard += " ";
+                }
+            }
+            if ((i + 1) % 2 == 0) {
                 cBoard += " ";
             }
-        }
-        if ((i + 1) % 2 == 0) {
-            cBoard += " ";
-        }
-        else {
-            cBoard += "#";
+            else {
+                cBoard += "#";
+            }
         }
     }
-    console.log(cBoard);
+    else { //bei einer ungeraden längenanzahl
+        for (let i = 0; i < (_length * _height); i++) {
+            if (i % _length == 0) {
+                cBoard += "\n";
+                if (i % (_length) != 0) {
+                    cBoard += " #";
+                }
+            }
+            if ((i) % 2 == 0) {
+                cBoard += " ";
+            }
+            else {
+                cBoard += "#";
+            }
+        }
+    }
+    return cBoard;
 }
 //hashDreieck();
 //fizzB();
 //fizzBuzz();
 //checker1();
-//checker2(8, 8);
+checker2(8, 8);
 //# sourceMappingURL=script.js.map

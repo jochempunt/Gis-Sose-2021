@@ -49,30 +49,35 @@ function a2(): void {
  
  do {
   console.log(i);
-  i = i - 1;
+  i = i - 1;  //  <---
  } while( i > 0);
 }
 
 a2(); */
 
 /* a) auf der konsole werden die zahlen von 9-1 ausgegeben, bei jedem durchlauf der dowhile schleife
-wird i um 1 decrementiert*/
+wird i um 1 decrementiert   (wegen dowhile mindestens 1 mal) */
 
 
 
 /*-------- Aufgabe 3 ---------*/
+<<<<<<< HEAD
 /* 
 function a2() { // --expected call signature : a2 to have a typedef (kein typ definiert zb Void)
  let i: string = 9; //-- type number is not assignable to string
+=======
+
+/* function a2() { // expected call signature : a2 to have a typedef (kein typ definiert zb Void)
+ let i: string = 9; // type number is not assignable to string : ein int kann keinem string zugewiesen werden
+>>>>>>> main
  
  do {
   console.log(i);
   i = i - 1;
  } while ( i = 0); //--assignments in conditional expressions are forbidden -- keine zuweisungen in conditions == statt =
 }
-
-a2();
-*/
+a2; // expected an assignment or function call -- für funktionsaufruf fehlt ()
+ */
 
 
 
@@ -139,7 +144,11 @@ function multiply (_a: number, _b: number): number {
 }
 
 function max(_a: number, _b: number): number {
+<<<<<<< HEAD
  return Number(_a > _b) * _a + Number(_a <= _b) * _b; // bissl branch-less programming. Obwohl das hier nichtmal wirklich von vorteil ist.(zeitlich)
+=======
+ return Number(_a > _b) * _a + Number(_a <= _b) * _b; // "niemand braucht if abfragen"...#branchless programming 
+>>>>>>> main
 }
 
 function count100(): void {
@@ -166,7 +175,11 @@ function factorial(_n: number): number {
     }
     return x;
 }
+<<<<<<< HEAD
  // ------- 2 Varianten Von Leapyear; ------ (version 2 ist meist schneller) //
+=======
+ // ------- 2 Varianten Von Leapyear ----------
+>>>>>>> main
 function leapYear(): void {
  
     let date: Date = new Date();
@@ -191,18 +204,18 @@ function leapYear2(): void {
         
     }
 }
-/* console.log(multiply(5, 2));
-console.log(max(5, 2));
-count100();
-rando();
-console.log(factorial(2));
-console.log(factorial(0));
-console.log(factorial(3));
-console.log(factorial(-3)); */
+//console.log(multiply(5, 2));
+//console.log(max(5, 2));
+//count100();
+//rando();
+//console.log(factorial(2));
+//console.log(factorial(0));
+//console.log(factorial(3));
+//console.log(factorial(-3)); 
 //leapYear();
 
 
-// ----- Aufgabe 6 ----//
+// -------- Aufgabe 6 --------//
 
 
 function hashDreieck(): void {
@@ -247,7 +260,7 @@ function fizzBuzz(): void {
 }
 
 
-function checker1(): void {
+function checker1(): string {
     let cBoard: string = "";
     for (let i: number = 0; i < 64; i++) { // 1ne forschleife reicht :P
         if (i % 8 == 0) {
@@ -262,27 +275,45 @@ function checker1(): void {
         cBoard += "#";
        }
     }
-    console.log(cBoard);
+    return cBoard;
 }
 
 
 
-function checker2(_length: number, _height: number): void {
+function checker2(_length: number, _height: number): string {
     let cBoard: string = "";
-    for (let i: number = 0; i < (_length * _height); i++) {
-        if (i % _length == 0) {
-           cBoard += "\n";
-           if (i % (_length * 2) != 0) {
-            cBoard += " ";
+    
+    if (_length % 2 == 0) { //bei einer geraden  längenanzahl
+        for (let i: number = 0; i < (_length * _height); i++) {
+            if (i % _length == 0) {
+               cBoard += "\n";
+               if (i % (_length * 2) != 0) {
+                cBoard += " ";
+               }
            }
-       }
-        if ((i + 1) % 2 == 0) {
-         cBoard += " ";
-       } else {
-        cBoard += "#";
-       }
+            if ((i + 1) % 2 == 0) {
+             cBoard += " ";
+           } else {
+            cBoard += "#";
+           }
+        }
     }
-    console.log(cBoard);
+    else {  //bei einer ungeraden längenanzahl
+        for (let i: number = 0; i < (_length * _height); i++) {
+            if (i % _length == 0) {
+               cBoard += "\n";
+               if (i % (_length ) != 0) {
+                cBoard += " #";
+               }
+           }
+            if ((i) % 2 == 0) {
+             cBoard += " ";
+           } else {
+            cBoard += "#";
+           }
+        }
+    }
+    return cBoard;
 }
 
 
@@ -291,7 +322,14 @@ function checker2(_length: number, _height: number): void {
 //fizzB();
 //fizzBuzz();
 //checker1();
+<<<<<<< HEAD
 //checker2(8, 8);
+=======
+
+//console.log(checker1());
+//console.log(checker2(7, 7));
+//console.log(checker2(8, 8));
+>>>>>>> main
 
     
 
