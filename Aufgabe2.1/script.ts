@@ -1,4 +1,8 @@
 
+
+
+namespace aufgabe2_1 {
+
 /* ---------- Aufgabe 1 ---------*/
 
 /* a) variablennamen die mit einer zahl beginnen, die ein - oder + oder anderen operator in sich hat,
@@ -68,7 +72,7 @@ wird i um 1 decrementiert   (wegen dowhile mindestens 1 mal) */
  do {
   console.log(i);
   i = i - 1;
- } while ( i = 0); //--assignments in conditional expressions are forbidden -- keine zuweisungen in conditions == statt =
+ } while ( i = 0); //assignments in conditional expressions are forbidden -- keine zuweisungen in conditions == statt =
 }
 a2; // expected an assignment or function call -- für funktionsaufruf fehlt ()
  */
@@ -165,9 +169,7 @@ function factorial(_n: number): number {
     }
     return x;
 }
-
  // ------- 2 Varianten Von Leapyear ----------
-
 function leapYear(): void {
  
     let date: Date = new Date();
@@ -181,26 +183,15 @@ function leapYear(): void {
     }
 }
 
-function leapYear2(): void {
- 
-    let date: Date = new Date();
-    let thisYear: number = date.getFullYear();
-    for ( let y: number = 1900; y <= thisYear; y++) {
-        if (((y % 4 == 0) && ( y % 100 != 0)) || ( y % 400 == 0)) { 
-            console.log(y);
-        }
-        
-    }
-}
-//console.log(multiply(5, 2));
-//console.log(max(5, 2));
-//count100();
-//rando();
-//console.log(factorial(2));
-//console.log(factorial(0));
-//console.log(factorial(3));
-//console.log(factorial(-3)); 
-//leapYear();
+console.log(multiply(5, 2));
+console.log(max(5, 2));
+count100();
+rando();
+console.log(factorial(2));
+console.log(factorial(0));
+console.log(factorial(3));
+console.log(factorial(-3)); 
+leapYear();
 
 
 // -------- Aufgabe 6 --------//
@@ -271,7 +262,7 @@ function checker1(): string {
 function checker2(_length: number, _height: number): string {
     let cBoard: string = "";
     
-    if (_length % 2 == 0) { //bei einer geraden  längenanzahl
+    if (_length % 2 == 0) { //bei einer geraden  längenanzahl (längenanzahl= anzahl der felder nicht nur der #s)
         for (let i: number = 0; i < (_length * _height); i++) {
             if (i % _length == 0) {
                cBoard += "\n";
@@ -306,17 +297,17 @@ function checker2(_length: number, _height: number): string {
 
 
 
-//hashDreieck();
-//fizzB();
-//fizzBuzz();
-//checker1();
+hashDreieck();
+fizzB();
+fizzBuzz();
+checker1();
 
-//console.log(checker1());
-//console.log(checker2(7, 7));
-//console.log(checker2(8, 8));
+console.log(checker1());
+console.log(checker2(7, 7));
+console.log(checker2(8, 8));
 
     
-
+}
 
 
 
