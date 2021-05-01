@@ -1,33 +1,33 @@
 
 namespace Aufgabe2_2 {
     
-    
+    //#region Aufgabe 1 
     
     //--- a ---//
-    function min (...inputs: number[]): number {
+    function min (..._inputs: number[]): number {
         
-        let min: number = inputs[0];
+        let min: number = _inputs[0];
         
-        for (let  i: number = 1; i < inputs.length; i++) {
-            min = Number(min < inputs[i]) * min + Number(min > inputs[i]) * inputs[i]; 
+        for (let  i: number = 1; i < _inputs.length; i++) {
+            min = Number(min < _inputs[i]) * min + Number(min > _inputs[i]) * _inputs[i]; 
         }
         return min;
     }
     
     //--- b ---//
-    function isEven (n: number): boolean {
-        n = Math.abs(n);
-        if ( n == 0) {
+    function isEven (_n: number): boolean {
+        _n = Math.abs(_n);
+        if ( _n == 0) {
             return true;
-        } else if ( n == 1) {
+        } else if ( _n == 1) {
             return false;
         } else {
-            return isEven(n - 2);
+            return isEven(_n - 2);
         }
         
     }
     //--- c--- ///
-    enum studySubject {
+    enum SUBJECT_COURSE {
         MIB= "MIB", OMB= "OMB", MKB= "MKB"
     }
     
@@ -36,17 +36,23 @@ namespace Aufgabe2_2 {
         
         i_number: number;
         
-        studienF: studySubject;
+        studieCourse: SUBJECT_COURSE;
+    }
+    
+    function showInfo(_st: StudentInterface): void {
+        console.log("name: " + _st.name + " immatrikulationsnummer: " + _st.i_number + " Studienfach: " + _st.studieCourse );
+      
     }
     
     class Student {
-        name: string;
+      
+        public immatrikulationsnr: number;
+
+        private name: string;
         
-        immatrikulationsnr: number;
+        private subj: SUBJECT_COURSE;
         
-        subj: studySubject;
-        
-        constructor(_name: string, _immanr: number, _subj: studySubject) {
+        constructor(_name: string, _immanr: number, _subj: SUBJECT_COURSE) {
             this.name = _name;
             this.immatrikulationsnr = _immanr;
             this.subj = _subj;
@@ -54,57 +60,57 @@ namespace Aufgabe2_2 {
         
         showInfo(): void {
             console.log("name: " + this.name + " immatrikulationsnummer: " + this.immatrikulationsnr + " Studienfach: " + this.subj );
-        }
-        
+        }  
     }
     
     
-    function showInfo (student: StudentInterface): void {
-        console.log("name: " + student.name + " immatrikulationsnummer: " + student.i_number + " Studienfach: " + student.studienF.toString());        
-    }
-    
-    let markus: StudentInterface = { name: "markus", i_number: 46671, studienF: studySubject.MIB};
-    
-    let angela: StudentInterface = { name: "angela", i_number: 46621, studienF: studySubject.OMB};
-    
-    let olaf: StudentInterface = { name: "Olaf", i_number: 47661, studienF: studySubject.OMB};
-    
-    let studentss: StudentInterface[] = [markus, angela, olaf, {name: "anna", i_number: 75542, studienF: studySubject.OMB}];
     
     
-    let holger: Student = new Student("holger", 46671, studySubject.MIB);
+    let markus: StudentInterface = { name: "markus", i_number: 46671, studieCourse: SUBJECT_COURSE.MIB};
+    
+    let angela: StudentInterface = { name: "angela", i_number: 46621, studieCourse: SUBJECT_COURSE.OMB};
+    
+    let olaf: StudentInterface = { name: "Olaf", i_number: 47661, studieCourse: SUBJECT_COURSE.OMB};
+    
+    let studentss: StudentInterface[] = [markus, angela, olaf, {name: "anna", i_number: 75542, studieCourse: SUBJECT_COURSE.OMB}];
+    
+
+    let holger: Student = new Student("holger", 46671, SUBJECT_COURSE.MIB);
     
     
     
     
+
     
-    
-    
-    
+
     
     
     console.log(min(1, 3, 5, -2, 6 ));
     console.log(isEven(50));
     console.log(isEven(75));
-    console.log(isEven(-1));
+    console.log(isEven(-1)); // ohne Math.abs(solute) == stack overflow
     
-    console.log(studentss[0].name + " " + studentss[0].studienF.toString());
-    showInfo(studentss[0]);
+    console.log(studentss[0].name + " " + studentss[0].studieCourse.toString());
+   
+    for (let i: number = 0 ; i < studentss.length; i++) {
+        showInfo(studentss[i]);
+    }
+    
     holger.showInfo();
     
     
+ //#endregion   
+    
+    //#region aufgabe 2
     
     
-    ///---- Aufgabe 2 ---///
     
     
-    
-    
-    function reverse(numberArray: number[]): number[] {
+    function reverse(_numberArray: number[]): number[] {
         let result: number[] = [];
-        let ii: number = 0;
-        for (let i: number = numberArray.length - 1; i >= 0; i--) {
-            result[ii] = numberArray[i];
+        let ii: number = 0; // "ii" ist manchmal passender als einfach nur "j"
+        for (let i: number = _numberArray.length - 1; i >= 0; i--) {
+            result[ii] = _numberArray[i];
             ii++;
         }
         return result;
@@ -129,7 +135,7 @@ namespace Aufgabe2_2 {
             
             let index1: number = Number(_index1 < _index2) * _index1 + Number(_index1 > _index2) * _index2;
             let index2: number = Number( _index2 > _index1) * _index2 + Number(_index2 < _index1) * _index1;
-            let i: number = 0; 
+            let i: number = 0; // [ja das ist ein special extra index]
             for (index1; index1 <= index2; index1++) {
                 resultA[i] = _array[index1];
                 i++;
@@ -138,55 +144,42 @@ namespace Aufgabe2_2 {
             return resultA;
             
         } else {
-            console.log(" error with indeces");
+            console.log(" error with indeces"); // könnte auch theoretisch n error throwen aber dann stoppt ja wahrsch. mein ganzes programm
             return undefined;
             
         }
     }
-    
-    function arrayToString(_array: number[]): string {
-        let arrayString: string = "(";
-        for (let i: number = 0; i < _array.length; i++) {
-            
-            arrayString += _array[i];
-            if ( i != _array.length - 1) {
-                arrayString += ",";
-            }
-            
-        }
-        arrayString += ")";
-        
-        return arrayString;
-    }
+
     
     
     
     
     
     
-    
-    let numberrs: number[] = [1, 2, 3, 4];
-    let numberrss: number[] = [4, 5, 6, 7];
-    let numberrsss: number[] = [7, 8, 9, 10];
-    let numberrssss: number[] = [11, 12, 13, 14];
-    
-    
-    let testReverse: number[] = reverse (numberrssss);
-    let testArrayJoined: number[] = join(numberrs, numberrss, numberrsss, numberrssss);
-    let testArraySplitted: number[] = split(testArrayJoined, 1, 5);
-    
-    console.log(arrayToString(testReverse));
-    console.log(arrayToString( testArrayJoined));
-    console.log(arrayToString(testArraySplitted));
-    
+    let arr: number[] = [5, 42, 17, 2018, -10, 60, -10010];
+    let arrBack: number[] = reverse(arr);
+    console.log(arr);
+    console.log(arrBack);
+    console.log(join(arr, [15, 9001, -440] ));
+    console.log(join([123, 666, -911], arr, [15, 9001, -440, 1024] )); // Bonus b)
+    arr = split(arr, 0, 4);
+    console.log(arr);
+    console.log(split(arr, 1, 2));
+    console.log(split(arr, 2, 0));     // Bonus c)  //habe hier einfach eingeführt das die reihenfolge in welchen die indizes angegeben worden sind egal wären
+    console.log(split(arr, -1, 2));    // Bonus c)
+    console.log(split(arr, 0, 7));     // Bonus c)
+
     
     
     
     
     
+    //#endregion
     
     
-    // --- Aufgabe 3 ---//
+
+    //#region aufgabe 3
+ 
     
     
     
@@ -217,7 +210,7 @@ namespace Aufgabe2_2 {
     context.fillRect(270, 180, 70, 70);
     context.fillStyle = "red";
     
-    context.beginPath();
+    context.beginPath(); // das hier ist das dach
     context.moveTo(270, 180);
     context.lineTo(305, 145);
     context.lineTo(340, 180);
@@ -233,7 +226,10 @@ namespace Aufgabe2_2 {
     
     
     
-    
+    // ja ich hätte es ,mit arc oder bezier curven lösen können.
+    //aber das hier funktioniert ja auch -- entschuldigt die vielen magic numbers [die Funktion ist magisch]
+    // die funktion funktioniert auserdem nur von einer _size ab 15 und wenns zu groß wird.
+    // aber sonst ist die funktion echt super.
     
     function drawCloud( _positionx: number, _positiony: number, _size: number , _color: string): void {
         context.beginPath();
@@ -262,9 +258,11 @@ namespace Aufgabe2_2 {
     
     let maxWidth: number = 500;
     let maxHeight: number = 500;
+    let minheightRect: number = 10;
+    let minWidthRect: number = 10;
     
-    function getRandomNumber(min: number, max: number): number {
-        return Math.floor(Math.random() * (max - min) ) + min;
+    function getRandomNumber(_min: number, _max: number): number {
+        return Math.floor(Math.random() * (_max - _min) ) + _min;
     }
     
     class Rectangle {
@@ -275,17 +273,15 @@ namespace Aufgabe2_2 {
         height: number;
         width: number;
         
+        
         constructor() {
-            this.posX = getRandomNumber(0, 490);
-            this.posY = getRandomNumber(0, 490);
-            this.height = getRandomNumber(10, (maxHeight - this.posY));
-            this.width  = getRandomNumber(10, (maxWidth - this.posX));
-            console.log(maxHeight);
+            this.posX = getRandomNumber(0, maxWidth - minWidthRect ); 
+            this.posY = getRandomNumber(0, maxHeight - minheightRect);
+            this.height = getRandomNumber(minheightRect, (maxHeight - this.posY));
+            this.width  = getRandomNumber(minWidthRect, (maxWidth - this.posX));
         }
         
         drawRectangle( color: string): void {
-            console.log(this.posX);
-            console.log(this.width);
             context2.fillStyle = color;
             context2.fillRect(this.posX, this.posY, this.width, this.height);
         }
@@ -294,14 +290,21 @@ namespace Aufgabe2_2 {
     
     
     let rectangles: Rectangle[] = [new Rectangle(), new Rectangle(), new Rectangle(), new Rectangle(), new Rectangle];
-    let colors: string[] = ["red", "blue", "green", "cyan", "orange", "purple"];
-    let widthXx: number = 0;
+    let colors: string[] = ["red", "blue", "green", "cyan", "orange", "purple"]; // sorry hierfür. Bissl unangenehm anzuschauen. aber ohne die animation also nur neuladen isses ganz schön eig
+    let widthXx: number = 0; // xX und yY sind die werte um den die eigentlichen werte verändert werden
     let heightYy: number = 0;
 
-    let forBack: boolean = true;
+    let forBack: boolean = true; // vorwärts/ rückwärts variable
+    
+    
+    function deLetus(): void { 
+        context2.clearRect(0, 0, maxWidth, maxHeight);
+    }
+    
     function drawRectangles_repeat(): void {
-        deLetus();
-        if ( widthXx >= (maxWidth / 20)) {
+        deLetus(); // canvas wird gecleared
+        if ( widthXx >= (maxWidth / 20)) { // durch 20 hat hier am besten visuell funktioniert. 
+                                            // ich habe das zuerst auch mit position gemacht, mir gefiel das aber besser
             forBack = false;
             widthXx = 0;
             heightYy = 0;
@@ -320,7 +323,7 @@ namespace Aufgabe2_2 {
         }
 
         for (let i: number = 0; i < rectangles.length; i++) {
-            let randomColor: number = getRandomNumber(0, colors.length - 1);
+            let randomColor: number = getRandomNumber(0, colors.length );
             rectangles[i].height = rectangles[i].height + widthXx ;
             rectangles[i].width = rectangles[i].width + heightYy ; 
             rectangles[i].drawRectangle(colors[randomColor]);
@@ -331,18 +334,13 @@ namespace Aufgabe2_2 {
     }
     
     
+    setInterval( drawRectangles_repeat, 50); // Ich hätte setTimeout() in eine for schleife machen können
+                                            //dann wäre es nur halt nicht durchgänging 
+    
+   
     
     
-    
-    
-    setInterval( drawRectangles_repeat, 50);
-    
-    function deLetus(): void {
-        context2.clearRect(0, 0, 500, 500);
-    }
-    
-    
-    
+    //#endregion
     
     
     

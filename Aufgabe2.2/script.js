@@ -1,34 +1,38 @@
 "use strict";
 var Aufgabe2_2;
 (function (Aufgabe2_2) {
+    //#region Aufgabe 1 
     //--- a ---//
-    function min(...inputs) {
-        let min = inputs[0];
-        for (let i = 1; i < inputs.length; i++) {
-            min = Number(min < inputs[i]) * min + Number(min > inputs[i]) * inputs[i];
+    function min(..._inputs) {
+        let min = _inputs[0];
+        for (let i = 1; i < _inputs.length; i++) {
+            min = Number(min < _inputs[i]) * min + Number(min > _inputs[i]) * _inputs[i];
         }
         return min;
     }
     //--- b ---//
-    function isEven(n) {
-        n = Math.abs(n);
-        if (n == 0) {
+    function isEven(_n) {
+        _n = Math.abs(_n);
+        if (_n == 0) {
             return true;
         }
-        else if (n == 1) {
+        else if (_n == 1) {
             return false;
         }
         else {
-            return isEven(n - 2);
+            return isEven(_n - 2);
         }
     }
     //--- c--- ///
-    let studySubject;
-    (function (studySubject) {
-        studySubject["MIB"] = "MIB";
-        studySubject["OMB"] = "OMB";
-        studySubject["MKB"] = "MKB";
-    })(studySubject || (studySubject = {}));
+    let SUBJECT_COURSE;
+    (function (SUBJECT_COURSE) {
+        SUBJECT_COURSE["MIB"] = "MIB";
+        SUBJECT_COURSE["OMB"] = "OMB";
+        SUBJECT_COURSE["MKB"] = "MKB";
+    })(SUBJECT_COURSE || (SUBJECT_COURSE = {}));
+    function showInfo(_st) {
+        console.log("name: " + _st.name + " immatrikulationsnummer: " + _st.i_number + " Studienfach: " + _st.studieCourse);
+    }
     class Student {
         constructor(_name, _immanr, _subj) {
             this.name = _name;
@@ -39,27 +43,27 @@ var Aufgabe2_2;
             console.log("name: " + this.name + " immatrikulationsnummer: " + this.immatrikulationsnr + " Studienfach: " + this.subj);
         }
     }
-    function showInfo(student) {
-        console.log("name: " + student.name + " immatrikulationsnummer: " + student.i_number + " Studienfach: " + student.studienF.toString());
-    }
-    let markus = { name: "markus", i_number: 46671, studienF: studySubject.MIB };
-    let angela = { name: "angela", i_number: 46621, studienF: studySubject.OMB };
-    let olaf = { name: "Olaf", i_number: 47661, studienF: studySubject.OMB };
-    let studentss = [markus, angela, olaf, { name: "anna", i_number: 75542, studienF: studySubject.OMB }];
-    let holger = new Student("holger", 46671, studySubject.MIB);
+    let markus = { name: "markus", i_number: 46671, studieCourse: SUBJECT_COURSE.MIB };
+    let angela = { name: "angela", i_number: 46621, studieCourse: SUBJECT_COURSE.OMB };
+    let olaf = { name: "Olaf", i_number: 47661, studieCourse: SUBJECT_COURSE.OMB };
+    let studentss = [markus, angela, olaf, { name: "anna", i_number: 75542, studieCourse: SUBJECT_COURSE.OMB }];
+    let holger = new Student("holger", 46671, SUBJECT_COURSE.MIB);
     console.log(min(1, 3, 5, -2, 6));
     console.log(isEven(50));
     console.log(isEven(75));
-    console.log(isEven(-1));
-    console.log(studentss[0].name + " " + studentss[0].studienF.toString());
-    showInfo(studentss[0]);
+    console.log(isEven(-1)); // ohne Math.abs(solute) == stack overflow
+    console.log(studentss[0].name + " " + studentss[0].studieCourse.toString());
+    for (let i = 0; i < studentss.length; i++) {
+        showInfo(studentss[i]);
+    }
     holger.showInfo();
-    ///---- Aufgabe 2 ---///
-    function reverse(numberArray) {
+    //#endregion   
+    //#region aufgabe 2
+    function reverse(_numberArray) {
         let result = [];
-        let ii = 0;
-        for (let i = numberArray.length - 1; i >= 0; i--) {
-            result[ii] = numberArray[i];
+        let ii = 0; // "ii" ist manchmal passender als einfach nur "j"
+        for (let i = _numberArray.length - 1; i >= 0; i--) {
+            result[ii] = _numberArray[i];
             ii++;
         }
         return result;
@@ -80,7 +84,7 @@ var Aufgabe2_2;
             let resultA = [];
             let index1 = Number(_index1 < _index2) * _index1 + Number(_index1 > _index2) * _index2;
             let index2 = Number(_index2 > _index1) * _index2 + Number(_index2 < _index1) * _index1;
-            let i = 0;
+            let i = 0; // [ja das ist ein special extra index]
             for (index1; index1 <= index2; index1++) {
                 resultA[i] = _array[index1];
                 i++;
@@ -88,32 +92,24 @@ var Aufgabe2_2;
             return resultA;
         }
         else {
-            console.log(" error with indeces");
+            console.log(" error with indeces"); // könnte auch theoretisch n error throwen aber dann stoppt ja wahrsch. mein ganzes programm
             return undefined;
         }
     }
-    function arrayToString(_array) {
-        let arrayString = "(";
-        for (let i = 0; i < _array.length; i++) {
-            arrayString += _array[i];
-            if (i != _array.length - 1) {
-                arrayString += ",";
-            }
-        }
-        arrayString += ")";
-        return arrayString;
-    }
-    let numberrs = [1, 2, 3, 4];
-    let numberrss = [4, 5, 6, 7];
-    let numberrsss = [7, 8, 9, 10];
-    let numberrssss = [11, 12, 13, 14];
-    let testReverse = reverse(numberrssss);
-    let testArrayJoined = join(numberrs, numberrss, numberrsss, numberrssss);
-    let testArraySplitted = split(testArrayJoined, 1, 5);
-    console.log(arrayToString(testReverse));
-    console.log(arrayToString(testArrayJoined));
-    console.log(arrayToString(testArraySplitted));
-    // --- Aufgabe 3 ---//
+    let arr = [5, 42, 17, 2018, -10, 60, -10010];
+    let arrBack = reverse(arr);
+    console.log(arr);
+    console.log(arrBack);
+    console.log(join(arr, [15, 9001, -440]));
+    console.log(join([123, 666, -911], arr, [15, 9001, -440, 1024])); // Bonus b)
+    arr = split(arr, 0, 4);
+    console.log(arr);
+    console.log(split(arr, 1, 2));
+    console.log(split(arr, 2, 0)); // Bonus c)  //habe hier einfach eingeführt das die reihenfolge in welchen die indizes angegeben worden sind egal wären
+    console.log(split(arr, -1, 2)); // Bonus c)
+    console.log(split(arr, 0, 7)); // Bonus c)
+    //#endregion
+    //#region aufgabe 3
     let canvas = document.getElementById("myCanvas");
     let context = canvas.getContext("2d");
     context.lineWidth = 2.0;
@@ -130,7 +126,7 @@ var Aufgabe2_2;
     context.fillStyle = "orange";
     context.fillRect(270, 180, 70, 70);
     context.fillStyle = "red";
-    context.beginPath();
+    context.beginPath(); // das hier ist das dach
     context.moveTo(270, 180);
     context.lineTo(305, 145);
     context.lineTo(340, 180);
@@ -141,6 +137,10 @@ var Aufgabe2_2;
     context.fillStyle = "brown";
     context.fillRect(30, 240, 30, 100);
     drawCloud(2, 230, 20, "darkgreen");
+    // ja ich hätte es ,mit arc oder bezier curven lösen können.
+    //aber das hier funktioniert ja auch -- entschuldigt die vielen magic numbers [die Funktion ist magisch]
+    // die funktion funktioniert auserdem nur von einer _size ab 15 und wenns zu groß wird.
+    // aber sonst ist die funktion echt super.
     function drawCloud(_positionx, _positiony, _size, _color) {
         context.beginPath();
         context.arc(_positionx, _positiony, _size, 0, 2 * Math.PI, false);
@@ -165,32 +165,35 @@ var Aufgabe2_2;
     let context2 = canvas2.getContext("2d");
     let maxWidth = 500;
     let maxHeight = 500;
-    function getRandomNumber(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
+    let minheightRect = 10;
+    let minWidthRect = 10;
+    function getRandomNumber(_min, _max) {
+        return Math.floor(Math.random() * (_max - _min)) + _min;
     }
     class Rectangle {
         constructor() {
-            this.posX = getRandomNumber(0, 490);
-            this.posY = getRandomNumber(0, 490);
-            this.height = getRandomNumber(10, (maxHeight - this.posY));
-            this.width = getRandomNumber(10, (maxWidth - this.posX));
-            console.log(maxHeight);
+            this.posX = getRandomNumber(0, maxWidth - minWidthRect);
+            this.posY = getRandomNumber(0, maxHeight - minheightRect);
+            this.height = getRandomNumber(minheightRect, (maxHeight - this.posY));
+            this.width = getRandomNumber(minWidthRect, (maxWidth - this.posX));
         }
         drawRectangle(color) {
-            console.log(this.posX);
-            console.log(this.width);
             context2.fillStyle = color;
             context2.fillRect(this.posX, this.posY, this.width, this.height);
         }
     }
     let rectangles = [new Rectangle(), new Rectangle(), new Rectangle(), new Rectangle(), new Rectangle];
-    let colors = ["red", "blue", "green", "cyan", "orange", "purple"];
-    let widthXx = 0;
+    let colors = ["red", "blue", "green", "cyan", "orange", "purple"]; // sorry hierfür. Bissl unangenehm anzuschauen. aber ohne die animation also nur neuladen isses ganz schön eig
+    let widthXx = 0; // xX und yY sind die werte um den die eigentlichen werte verändert werden
     let heightYy = 0;
-    let forBack = true;
+    let forBack = true; // vorwärts/ rückwärts variable
+    function deLetus() {
+        context2.clearRect(0, 0, maxWidth, maxHeight);
+    }
     function drawRectangles_repeat() {
-        deLetus();
-        if (widthXx >= (maxWidth / 20)) {
+        deLetus(); // canvas wird gecleared
+        if (widthXx >= (maxWidth / 20)) { // durch 20 hat hier am besten visuell funktioniert. 
+            // ich habe das zuerst auch mit position gemacht, mir gefiel das aber besser
             forBack = false;
             widthXx = 0;
             heightYy = 0;
@@ -209,15 +212,14 @@ var Aufgabe2_2;
             heightYy++;
         }
         for (let i = 0; i < rectangles.length; i++) {
-            let randomColor = getRandomNumber(0, colors.length - 1);
+            let randomColor = getRandomNumber(0, colors.length);
             rectangles[i].height = rectangles[i].height + widthXx;
             rectangles[i].width = rectangles[i].width + heightYy;
             rectangles[i].drawRectangle(colors[randomColor]);
         }
     }
-    setInterval(drawRectangles_repeat, 50);
-    function deLetus() {
-        context2.clearRect(0, 0, 500, 500);
-    }
+    setInterval(drawRectangles_repeat, 50); // Ich hätte setTimeout() in eine for schleife machen können
+    //dann wäre es nur halt nicht durchgänging 
+    //#endregion
 })(Aufgabe2_2 || (Aufgabe2_2 = {}));
 //# sourceMappingURL=script.js.map
