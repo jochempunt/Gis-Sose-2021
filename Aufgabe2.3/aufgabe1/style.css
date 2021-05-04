@@ -1,0 +1,12 @@
+body{
+    height: 100vh;
+}
+
+div{
+    display: block;
+    position:absolute;
+    z-index: -1;
+}
+#button1{
+    z-index: 500;
+}
