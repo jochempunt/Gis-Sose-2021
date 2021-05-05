@@ -2,9 +2,9 @@
 /// data.ts
 var aufgabe2_33;
 (function (aufgabe2_33) {
-    aufgabe2_33.daten = ["BROETCHEN,weißbrötchen,0.6,darstellungen/i.png,false",
-        "BROETCHEN,dinkelbrötchen,0.75,darstellungen/ii.png,false",
-        "BROETCHEN,vollkornbrötchen,0.8,darstellungen/iii.png,false",
+    aufgabe2_33.daten = ["BROETCHEN,weißbrötchen,0.60,darstellungen/burgerBodenHell.png,false",
+        "BROETCHEN,dinkelbrötchen,0.75,darstellungen/burgerBodenMittel.png,false",
+        "BROETCHEN,vollkornbrötchen,0.80,darstellungen/burgerBodenDunkel.png,false",
         "PATTY,rinderpatty,1.8,darstellungen/j.png,false",
         "PATTY,hünchenpatty,1.6,darstellungen/jj.png,false",
         "PATTY,veggipatty,1.7,darstellungen/jjj.png,true",

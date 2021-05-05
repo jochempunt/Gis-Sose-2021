@@ -83,11 +83,82 @@
 
      datenEinlese();
 
-    
+     
+     
+     let zutatenAuswahl: HTMLDivElement = <HTMLDivElement> document.querySelector(".Zutatenauswahl");
+     
+     let seitenSpezifischeZutaten: Zutat[] = []; 
+     
+     let checkboxListe: HTMLInputElement[] = [];
+
+     if (document.URL.includes("Index")) {
+       seitenSpezifischeZutaten = burgerBroetchenAuswahl;
+     }
+
+
+
+     erzeugeZutatenAnsicht(seitenSpezifischeZutaten);
+     
+     function erzeugeZutatenAnsicht(_zutatenliste: Zutat[]): void {
+        for (let index: number = 0; index < zutatenListe.length; index++) {
+            let checkbox: HTMLInputElement = <HTMLInputElement> document.createElement("input");
+            checkbox.setAttribute("id", "checkbox" + index);
+            checkbox.setAttribute("type", "checkbox");
+            checkbox.setAttribute("class", "hidden");
+            checkbox.addEventListener("change", handleAuswahl);
+            zutatenAuswahl.appendChild(checkbox);
+            checkboxListe[checkboxListe.length] = checkbox;
+            let label: HTMLLabelElement = <HTMLLabelElement> document.createElement("label");
+            label.setAttribute("id", "label_" + index);
+            label.setAttribute("for", "checkbox" + index);
+      
+            zutatenAuswahl.appendChild(label);
+            console.log(index);
+            let image: HTMLImageElement = <HTMLImageElement> document.createElement("img");
+            image.setAttribute("src", _zutatenliste[index].darstellung);
+            image.setAttribute("alt", _zutatenliste[index].name);
+            image.setAttribute("title", _zutatenliste[index].name);
+            label.appendChild(image);   
+        }
+             
+    }
          
      
 
-    
+     function handleAuswahl(_event: Event): void {
+        let title: HTMLHeadingElement = <HTMLHeadingElement>  document.getElementById("bezeichnung");
+        let preis: HTMLParagraphElement = <HTMLParagraphElement> document.getElementById("preis");
+        let currentCheckb: HTMLInputElement = <HTMLInputElement>   _event.target;
+        let isNewlyChecked: boolean = false;
+        let vorschaubild: HTMLImageElement = <HTMLImageElement> document.getElementById("vorschaubild");
+        if (currentCheckb.checked) {
+           isNewlyChecked = true;
+        }
+
+
+        
+        for (let i: number = 0; i < checkboxListe.length; i++) {
+          if (checkboxListe[i].isEqualNode(currentCheckb) && isNewlyChecked) {
+             title.innerText = seitenSpezifischeZutaten[i].name; 
+             preis.innerText = seitenSpezifischeZutaten[i].preis + "€";
+             vorschaubild.setAttribute("src", seitenSpezifischeZutaten[i].darstellung);
+             vorschaubild.setAttribute("alt", "vorschaubild von " + seitenSpezifischeZutaten[i].name);
+
+          } else {
+              checkboxListe[i].checked = false;
+          }
+           
+           
+        }
+        if (!isNewlyChecked) {
+            title.innerText = "nichts Ausgewählt";
+            preis.innerText = "0.0 €";
+            vorschaubild.setAttribute("src", "");
+            vorschaubild.setAttribute("alt", "nichts ausgewählt");
+        }
+        
+        
+    }
     
     
     
