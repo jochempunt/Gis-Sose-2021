@@ -62,13 +62,14 @@ nav li{
 .ZutatAnzeige img{
     width: 400px;
     height: 100px;
-    
+
     margin: 175px 25px;
 }
 
 .Zutatenauswahl{
-    display: flexbox;
-    padding:0.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    width: 480px;
 }
 
 .Zutatenauswahl img{
