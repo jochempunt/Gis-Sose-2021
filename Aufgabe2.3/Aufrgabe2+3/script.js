@@ -10,9 +10,9 @@ var aufgabe2_33;
         }
     }
     class Broetchen extends Zutat {
-        constructor(_name, _preis, _darstellung, _mitKoernern) {
+        constructor(_name, _preis, _darstellung, _darstellung2) {
             super(_name, _preis, _darstellung);
-            this.mitKoernern = _mitKoernern;
+            this.darstellung2 = _darstellung2;
         }
     }
     class Patty extends Zutat {
@@ -31,7 +31,7 @@ var aufgabe2_33;
             switch (stringArray[0]) {
                 case "BROETCHEN":
                     if (stringArray.length == 5) {
-                        let broetchen = new Broetchen(stringArray[1], Number(stringArray[2]), stringArray[3], Boolean(stringArray[4]));
+                        let broetchen = new Broetchen(stringArray[1], Number(stringArray[2]), stringArray[3], stringArray[4]);
                         burgerBroetchenAuswahl[burgerBroetchenAuswahl.length] = broetchen;
                     }
                     break;
@@ -55,6 +55,7 @@ var aufgabe2_33;
     let seitenSpezifischeZutaten = [];
     let checkboxListe = [];
     let aktuelleSeite = undefined;
+    let aktuelleAuswahl = undefined;
     let SEITE;
     (function (SEITE) {
         SEITE[SEITE["BURGER_BODEN"] = 0] = "BURGER_BODEN";
@@ -83,7 +84,13 @@ var aufgabe2_33;
             zutatenAuswahl.appendChild(label);
             console.log(index);
             let image = document.createElement("img");
-            image.setAttribute("src", _zutatenliste[index].darstellung);
+            if ((_zutatenliste[index] instanceof Broetchen) && (aktuelleSeite == SEITE.BURGER_DECKEL)) {
+                let burgerDeckel = _zutatenliste[index];
+                image.setAttribute("src", burgerDeckel.darstellung2);
+            }
+            else {
+                image.setAttribute("src", _zutatenliste[index].darstellung);
+            }
             image.setAttribute("alt", _zutatenliste[index].name);
             image.setAttribute("title", _zutatenliste[index].name);
             label.appendChild(image);
@@ -100,10 +107,17 @@ var aufgabe2_33;
         }
         for (let i = 0; i < checkboxListe.length; i++) {
             if (checkboxListe[i].isEqualNode(currentCheckb) && isNewlyChecked) {
-                title.innerText = seitenSpezifischeZutaten[i].name;
-                preis.innerText = seitenSpezifischeZutaten[i].preis + "€";
-                vorschaubild.setAttribute("src", seitenSpezifischeZutaten[i].darstellung);
-                vorschaubild.setAttribute("alt", "vorschaubild von " + seitenSpezifischeZutaten[i].name);
+                aktuelleAuswahl = seitenSpezifischeZutaten[i];
+                title.innerText = aktuelleAuswahl.name;
+                preis.innerText = aktuelleAuswahl.preis + "€";
+                if ((aktuelleAuswahl instanceof Broetchen) && (aktuelleSeite == SEITE.BURGER_DECKEL)) {
+                    let burgerDeckel = aktuelleAuswahl;
+                    vorschaubild.setAttribute("src", burgerDeckel.darstellung2);
+                }
+                else {
+                    vorschaubild.setAttribute("src", aktuelleAuswahl.darstellung);
+                }
+                vorschaubild.setAttribute("alt", "vorschaubild von " + aktuelleAuswahl.name);
             }
             else {
                 checkboxListe[i].checked = false;
@@ -114,35 +128,31 @@ var aufgabe2_33;
             preis.innerText = "0.0 €";
             vorschaubild.setAttribute("src", "");
             vorschaubild.setAttribute("alt", "nichts ausgewählt");
+            aktuelleAuswahl = undefined;
         }
     }
     function handleBestaetigung() {
-        let etwasAusgewählt = false;
-        for (let i = 0; i < checkboxListe.length; i++) {
-            if (checkboxListe[i].checked) {
-                console.log(seitenSpezifischeZutaten[i]);
-                switch (aktuelleSeite) {
-                    case SEITE.BURGER_BODEN:
-                        burgerKomplett.burgerBoden = seitenSpezifischeZutaten[i];
-                        break;
-                    case SEITE.ZUTAT_1:
-                        burgerKomplett.zutat1 = seitenSpezifischeZutaten[i];
-                        break;
-                    case SEITE.ZUTAT_2:
-                        burgerKomplett.zutat2 = seitenSpezifischeZutaten[i];
-                        break;
-                    case SEITE.BURGER_DECKEL:
-                        burgerKomplett.burgerDeckel = seitenSpezifischeZutaten[i];
-                        break;
-                }
-                console.log(burgerKomplett);
-                etwasAusgewählt = true;
+        console.log(aktuelleAuswahl);
+        switch (aktuelleSeite) {
+            case SEITE.BURGER_BODEN:
+                burgerKomplett.burgerBoden = aktuelleAuswahl;
                 break;
-            }
+            case SEITE.ZUTAT_1:
+                burgerKomplett.zutat1 = aktuelleAuswahl;
+                break;
+            case SEITE.ZUTAT_2:
+                burgerKomplett.zutat2 = aktuelleAuswahl;
+                break;
+            case SEITE.BURGER_DECKEL:
+                burgerKomplett.burgerDeckel = aktuelleAuswahl;
+                break;
         }
-        if (!etwasAusgewählt) {
+        if (!aktuelleAuswahl) {
             //console.log("es wurde nichts ausgewählt, wählen sie etwas aus");
             alert("es wurde nichts ausgewählt, wählen sie etwas aus");
+        }
+        else {
+            console.log(burgerKomplett);
         }
     }
 })(aufgabe2_33 || (aufgabe2_33 = {}));

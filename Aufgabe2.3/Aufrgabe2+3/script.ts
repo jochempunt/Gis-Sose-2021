@@ -15,10 +15,10 @@ namespace aufgabe2_33 {
     
     
     class Broetchen extends Zutat {
-        mitKoernern: boolean;
-        constructor(_name: string, _preis: number, _darstellung: string, _mitKoernern: boolean) {
+        darstellung2: string;
+        constructor(_name: string, _preis: number, _darstellung: string, _darstellung2: string) {
             super(_name, _preis, _darstellung);
-            this.mitKoernern = _mitKoernern;
+            this.darstellung2 = _darstellung2;
         }
         
         
@@ -44,7 +44,7 @@ namespace aufgabe2_33 {
     
     
     let burgerKomplett: BurgerZutatenSpeicher = {burgerBoden: undefined, zutat1: undefined, zutat2: undefined, burgerDeckel: undefined};
-
+    
     let burgerBroetchenAuswahl: Broetchen[] = [];
     let zutatenListe: Zutat[] = [];
     let pattyListe: Zutat[] = [];
@@ -56,7 +56,7 @@ namespace aufgabe2_33 {
             switch (stringArray[0]) {
                 case "BROETCHEN":
                 if (stringArray.length == 5) {
-                    let broetchen: Broetchen = new Broetchen(stringArray[1], Number(stringArray[2]) , stringArray[3], Boolean(stringArray[4]));
+                    let broetchen: Broetchen = new Broetchen(stringArray[1], Number(stringArray[2]) , stringArray[3], stringArray[4]);
                     burgerBroetchenAuswahl[burgerBroetchenAuswahl.length] = broetchen;
                 }    
                 break;
@@ -86,9 +86,11 @@ namespace aufgabe2_33 {
     let seitenSpezifischeZutaten: Zutat[] = []; 
     
     let checkboxListe: HTMLInputElement[] = [];
-
+    
     let aktuelleSeite: SEITE = undefined;
-
+    
+    let aktuelleAuswahl: Zutat = undefined;
+    
     enum SEITE {
         BURGER_BODEN, ZUTAT_1, ZUTAT_2, BURGER_DECKEL
     }
@@ -119,7 +121,14 @@ namespace aufgabe2_33 {
             zutatenAuswahl.appendChild(label);
             console.log(index);
             let image: HTMLImageElement = <HTMLImageElement> document.createElement("img");
-            image.setAttribute("src", _zutatenliste[index].darstellung);
+            if (( _zutatenliste[index] instanceof Broetchen) && (aktuelleSeite == SEITE.BURGER_DECKEL) ) {
+                    let burgerDeckel: Broetchen = <Broetchen> _zutatenliste[index];
+                    image.setAttribute("src",  burgerDeckel.darstellung2);
+            } else {
+                image.setAttribute("src", _zutatenliste[index].darstellung);
+            }
+           
+           
             image.setAttribute("alt", _zutatenliste[index].name);
             image.setAttribute("title", _zutatenliste[index].name);
             label.appendChild(image);   
@@ -143,10 +152,19 @@ namespace aufgabe2_33 {
         
         for (let i: number = 0; i < checkboxListe.length; i++) {
             if (checkboxListe[i].isEqualNode(currentCheckb) && isNewlyChecked) {
-                title.innerText = seitenSpezifischeZutaten[i].name; 
-                preis.innerText = seitenSpezifischeZutaten[i].preis + "€";
-                vorschaubild.setAttribute("src", seitenSpezifischeZutaten[i].darstellung);
-                vorschaubild.setAttribute("alt", "vorschaubild von " + seitenSpezifischeZutaten[i].name);
+                aktuelleAuswahl = seitenSpezifischeZutaten[i];
+                title.innerText = aktuelleAuswahl.name; 
+                preis.innerText = aktuelleAuswahl.preis + "€";
+                if (( aktuelleAuswahl instanceof Broetchen) && (aktuelleSeite == SEITE.BURGER_DECKEL)) {
+                    
+                        let burgerDeckel: Broetchen = <Broetchen> aktuelleAuswahl;
+                        vorschaubild.setAttribute("src", burgerDeckel.darstellung2);
+                    
+                } else {
+                    vorschaubild.setAttribute("src", aktuelleAuswahl.darstellung);
+                }
+                
+                vorschaubild.setAttribute("alt", "vorschaubild von " + aktuelleAuswahl.name);
                 
             } else {
                 checkboxListe[i].checked = false;
@@ -159,6 +177,7 @@ namespace aufgabe2_33 {
             preis.innerText = "0.0 €";
             vorschaubild.setAttribute("src", "");
             vorschaubild.setAttribute("alt", "nichts ausgewählt");
+            aktuelleAuswahl = undefined;
         }
         
         
@@ -166,44 +185,35 @@ namespace aufgabe2_33 {
     
     
     function handleBestaetigung(): void {
-        let etwasAusgewählt: boolean = false;
-        for (let i: number = 0; i < checkboxListe.length; i++) {
-            if (checkboxListe[i].checked) {
-                console.log(seitenSpezifischeZutaten[i]);
-                switch (aktuelleSeite) {
-                    case SEITE.BURGER_BODEN:
-                        burgerKomplett.burgerBoden = <Broetchen> seitenSpezifischeZutaten[i];
-                        break;
-                    case SEITE.ZUTAT_1:
-                        burgerKomplett.zutat1 = seitenSpezifischeZutaten[i];
-                        break;
-                    case SEITE.ZUTAT_2:
-                        burgerKomplett.zutat2 = seitenSpezifischeZutaten[i];
-                        break;
-                    case SEITE.BURGER_DECKEL:
-                        burgerKomplett.burgerDeckel = <Broetchen>seitenSpezifischeZutaten[i];
-                        break;        
-                }
-                console.log(burgerKomplett);
-                etwasAusgewählt = true;
-                break;
-            }
+        
+        
+        console.log(aktuelleAuswahl);
+        switch (aktuelleSeite) {
+            case SEITE.BURGER_BODEN:
+            burgerKomplett.burgerBoden = <Broetchen> aktuelleAuswahl;
+            break;
+            case SEITE.ZUTAT_1:
+            burgerKomplett.zutat1 = aktuelleAuswahl;
+            break;
+            case SEITE.ZUTAT_2:
+            burgerKomplett.zutat2 = aktuelleAuswahl;
+            break;
+            case SEITE.BURGER_DECKEL:
+            burgerKomplett.burgerDeckel = <Broetchen> aktuelleAuswahl;
+            break;        
         }
-
-        if (!etwasAusgewählt) {
+        
+        
+        
+        
+        
+        
+        if (!aktuelleAuswahl) {
             //console.log("es wurde nichts ausgewählt, wählen sie etwas aus");
             alert("es wurde nichts ausgewählt, wählen sie etwas aus");
+        } else {
+            console.log(burgerKomplett);
         }
+        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
