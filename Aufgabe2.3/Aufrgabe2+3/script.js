@@ -21,12 +21,7 @@ var aufgabe2_33;
             this.vegetarisch = _veggie;
         }
     }
-    /*  interface BurgerZutatenSpeicher {
-         burgerBoden: Broetchen;
-         zutat1: Zutat;
-         zutat2: Zutat;
-         burgerDeckel: Broetchen;
-     }*/
+    let burgerKomplett = { burgerBoden: undefined, zutat1: undefined, zutat2: undefined, burgerDeckel: undefined };
     let burgerBroetchenAuswahl = [];
     let zutatenListe = [];
     let pattyListe = [];
@@ -59,10 +54,20 @@ var aufgabe2_33;
     let zutatenAuswahl = document.querySelector(".Zutatenauswahl");
     let seitenSpezifischeZutaten = [];
     let checkboxListe = [];
+    let aktuelleSeite = undefined;
+    let SEITE;
+    (function (SEITE) {
+        SEITE[SEITE["BURGER_BODEN"] = 0] = "BURGER_BODEN";
+        SEITE[SEITE["ZUTAT_1"] = 1] = "ZUTAT_1";
+        SEITE[SEITE["ZUTAT_2"] = 2] = "ZUTAT_2";
+        SEITE[SEITE["BURGER_DECKEL"] = 3] = "BURGER_DECKEL";
+    })(SEITE || (SEITE = {}));
     if (document.URL.includes("Index")) {
         seitenSpezifischeZutaten = burgerBroetchenAuswahl;
+        aktuelleSeite = SEITE.BURGER_BODEN;
     }
     erzeugeZutatenAnsicht(seitenSpezifischeZutaten);
+    document.getElementById("bestaetigen").addEventListener("click", handleBestaetigung);
     function erzeugeZutatenAnsicht(_zutatenliste) {
         for (let index = 0; index < zutatenListe.length; index++) {
             let checkbox = document.createElement("input");
@@ -109,6 +114,35 @@ var aufgabe2_33;
             preis.innerText = "0.0 €";
             vorschaubild.setAttribute("src", "");
             vorschaubild.setAttribute("alt", "nichts ausgewählt");
+        }
+    }
+    function handleBestaetigung() {
+        let etwasAusgewählt = false;
+        for (let i = 0; i < checkboxListe.length; i++) {
+            if (checkboxListe[i].checked) {
+                console.log(seitenSpezifischeZutaten[i]);
+                switch (aktuelleSeite) {
+                    case SEITE.BURGER_BODEN:
+                        burgerKomplett.burgerBoden = seitenSpezifischeZutaten[i];
+                        break;
+                    case SEITE.ZUTAT_1:
+                        burgerKomplett.zutat1 = seitenSpezifischeZutaten[i];
+                        break;
+                    case SEITE.ZUTAT_2:
+                        burgerKomplett.zutat2 = seitenSpezifischeZutaten[i];
+                        break;
+                    case SEITE.BURGER_DECKEL:
+                        burgerKomplett.burgerDeckel = seitenSpezifischeZutaten[i];
+                        break;
+                }
+                console.log(burgerKomplett);
+                etwasAusgewählt = true;
+                break;
+            }
+        }
+        if (!etwasAusgewählt) {
+            //console.log("es wurde nichts ausgewählt, wählen sie etwas aus");
+            alert("es wurde nichts ausgewählt, wählen sie etwas aus");
         }
     }
 })(aufgabe2_33 || (aufgabe2_33 = {}));
