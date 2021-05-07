@@ -11,6 +11,5 @@ var aufgabe2_33;
         "ZUTAT,Salat,0.3,darstellungen/k.png",
         "ZUTAT,Tomate,0.7,darstellungen/kk.png",
         "ZUTAT,Gurken,0.5,darstellungen/kk.png"];
-    //let brötchenArten: Brötchen[] = [new Brötchen("weissbrötchen", 0.6, "src://---", false)];
 })(aufgabe2_33 || (aufgabe2_33 = {}));
 //# sourceMappingURL=data.js.map

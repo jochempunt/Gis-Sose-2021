@@ -1,6 +1,6 @@
 ///script.ts
 namespace aufgabe2_33 {
-    
+    // ------ Klassen für die Zutaten des Burgers -----//
     class Zutat {
         name: string;
         preis: number;
@@ -33,7 +33,7 @@ namespace aufgabe2_33 {
         }
     }
     
-    
+    // ------ Interface in dem Ausgewählte elemente Gespeichert Werden -----//
     interface BurgerZutatenSpeicher {
         burgerBoden: Broetchen;
         zutat1: Zutat;
@@ -42,12 +42,13 @@ namespace aufgabe2_33 {
     }
     
     
-    
     let burgerKomplett: BurgerZutatenSpeicher = {burgerBoden: undefined, zutat1: undefined, zutat2: undefined, burgerDeckel: undefined};
+    //-- > burgerKomplett wird nach nund nach aufgefüllt.
     
     let burgerBroetchenAuswahl: Broetchen[] = [];
     let zutatenListe: Zutat[] = [];
     let pattyListe: Zutat[] = [];
+    // --> hier werden alle auswahlMöglichkeiten Gespeichert 
     
     function datenEinlese(): void {
         for (let i: number = 0; i < daten.length; i++ ) {
@@ -81,29 +82,31 @@ namespace aufgabe2_33 {
     
     
     
-    let zutatenAuswahl: HTMLDivElement = <HTMLDivElement> document.querySelector(".Zutatenauswahl");
+    let zutatenAuswahl: HTMLDivElement = <HTMLDivElement> document.querySelector(".Zutatenauswahl"); //--> anzeigefeld wo alle zutaten angezeigt werden
     
     let seitenSpezifischeZutaten: Zutat[] = []; 
     
-    let checkboxListe: HTMLInputElement[] = [];
+    let checkboxListe: HTMLInputElement[] = []; //--> hier werden die checkboxen in selber reihenfolge wie die zutaten gespeichert
     
-    let aktuelleSeite: SEITE = undefined;
+    let aktuelleSeite: SEITE = undefined; //--> hiermit wird die speicherung und anzeige der zutaten gesteuert
     
-    let aktuelleAuswahl: Zutat = undefined;
+    let aktuelleAuswahl: Zutat = undefined; 
     
     enum SEITE {
         BURGER_BODEN, ZUTAT_1, ZUTAT_2, BURGER_DECKEL
     }
     
-    if (document.URL.includes("Index")) {
+    if (document.URL.includes("Index")) { // dafür da zu erkennen auf welcher seite wir sind (für später)
         seitenSpezifischeZutaten = burgerBroetchenAuswahl;
+        //aktuelleSeite = SEITE.BURGER_DECKEL; --> hier würde die 2te darstellung des burgerbrötchen dargestellt werden
         aktuelleSeite = SEITE.BURGER_BODEN;
     }
     
     
     
     erzeugeZutatenAnsicht(seitenSpezifischeZutaten);
-    document.getElementById("bestaetigen").addEventListener("click", handleBestaetigung);
+    // hier werden die darstellung und DIVs nach den daten erstellt und angezeigt.
+    
     
     function erzeugeZutatenAnsicht(_zutatenliste: Zutat[]): void {
         for (let index: number = 0; index < zutatenListe.length; index++) {
@@ -119,16 +122,15 @@ namespace aufgabe2_33 {
             label.setAttribute("for", "checkbox" + index);
             
             zutatenAuswahl.appendChild(label);
-            console.log(index);
             let image: HTMLImageElement = <HTMLImageElement> document.createElement("img");
             if (( _zutatenliste[index] instanceof Broetchen) && (aktuelleSeite == SEITE.BURGER_DECKEL) ) {
-                    let burgerDeckel: Broetchen = <Broetchen> _zutatenliste[index];
-                    image.setAttribute("src",  burgerDeckel.darstellung2);
+                let burgerDeckel: Broetchen = <Broetchen> _zutatenliste[index];
+                image.setAttribute("src",  burgerDeckel.darstellung2);
             } else {
                 image.setAttribute("src", _zutatenliste[index].darstellung);
             }
-           
-           
+            
+            
             image.setAttribute("alt", _zutatenliste[index].name);
             image.setAttribute("title", _zutatenliste[index].name);
             label.appendChild(image);   
@@ -136,7 +138,7 @@ namespace aufgabe2_33 {
         
     }
     
-    
+    document.getElementById("bestaetigen").addEventListener("click", handleBestaetigung);
     
     function handleAuswahl(_event: Event): void {
         let title: HTMLHeadingElement = <HTMLHeadingElement>  document.getElementById("bezeichnung");
@@ -153,12 +155,20 @@ namespace aufgabe2_33 {
         for (let i: number = 0; i < checkboxListe.length; i++) {
             if (checkboxListe[i].isEqualNode(currentCheckb) && isNewlyChecked) {
                 aktuelleAuswahl = seitenSpezifischeZutaten[i];
-                title.innerText = aktuelleAuswahl.name; 
-                preis.innerText = aktuelleAuswahl.preis + "€";
+                //--> Anzeige Des Titels und des preises und Darstellung des "ausgewählten" produktes
+                //--> hier bin ich innerText umgangen kp ob das besser ist
+                if (title.hasChildNodes) {
+                    title.removeChild(title.lastChild);
+                }
+                title.appendChild(document.createTextNode(aktuelleAuswahl.name));
+                if (preis.hasChildNodes) {
+                    preis.removeChild(preis.lastChild);
+                }
+                preis.appendChild(document.createTextNode(aktuelleAuswahl.preis + "€"));
                 if (( aktuelleAuswahl instanceof Broetchen) && (aktuelleSeite == SEITE.BURGER_DECKEL)) {
                     
-                        let burgerDeckel: Broetchen = <Broetchen> aktuelleAuswahl;
-                        vorschaubild.setAttribute("src", burgerDeckel.darstellung2);
+                    let burgerDeckel: Broetchen = <Broetchen> aktuelleAuswahl;
+                    vorschaubild.setAttribute("src", burgerDeckel.darstellung2);
                     
                 } else {
                     vorschaubild.setAttribute("src", aktuelleAuswahl.darstellung);
@@ -183,7 +193,7 @@ namespace aufgabe2_33 {
         
     }
     
-    
+    //--> hier wird die auswahl in einem der 4 Kategorien des Burgers Gespeichert 
     function handleBestaetigung(): void {
         
         
@@ -204,12 +214,7 @@ namespace aufgabe2_33 {
         }
         
         
-        
-        
-        
-        
         if (!aktuelleAuswahl) {
-            //console.log("es wurde nichts ausgewählt, wählen sie etwas aus");
             alert("es wurde nichts ausgewählt, wählen sie etwas aus");
         } else {
             console.log(burgerKomplett);

@@ -14,7 +14,7 @@ export let daten: string[] = [  "BROETCHEN,Weißbrötchen,0.60,darstellungen/bur
                                 "ZUTAT,Gurken,0.5,darstellungen/kk.png"];
 
 
-//let brötchenArten: Brötchen[] = [new Brötchen("weissbrötchen", 0.6, "src://---", false)];
+
 
 
 
