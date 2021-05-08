@@ -1,4 +1,4 @@
-///script.ts
+
 namespace aufgabe2_33 {
     // ------ Klassen für die Zutaten des Burgers -----//
     class Zutat {
@@ -103,13 +103,14 @@ namespace aufgabe2_33 {
     }
     
     
-    
-    erzeugeZutatenAnsicht(seitenSpezifischeZutaten);
+   
+    erzeugeZutatenAnsicht();
+  
     // hier werden die darstellung und DIVs nach den daten erstellt und angezeigt.
     
     
-    function erzeugeZutatenAnsicht(_zutatenliste: Zutat[]): void {
-        for (let index: number = 0; index < zutatenListe.length; index++) {
+    function erzeugeZutatenAnsicht(): void {
+        for (let index: number = 0; index < seitenSpezifischeZutaten.length; index++) {
             let checkbox: HTMLInputElement = <HTMLInputElement> document.createElement("input");
             checkbox.setAttribute("id", "checkbox" + index);
             checkbox.setAttribute("type", "checkbox");
@@ -123,16 +124,16 @@ namespace aufgabe2_33 {
             
             zutatenAuswahl.appendChild(label);
             let image: HTMLImageElement = <HTMLImageElement> document.createElement("img");
-            if (( _zutatenliste[index] instanceof Broetchen) && (aktuelleSeite == SEITE.BURGER_DECKEL) ) {
-                let burgerDeckel: Broetchen = <Broetchen> _zutatenliste[index];
+            if (( seitenSpezifischeZutaten[index] instanceof Broetchen) && (aktuelleSeite == SEITE.BURGER_DECKEL) ) {
+                let burgerDeckel: Broetchen = <Broetchen> seitenSpezifischeZutaten[index];
                 image.setAttribute("src",  burgerDeckel.darstellung2);
             } else {
-                image.setAttribute("src", _zutatenliste[index].darstellung);
+                image.setAttribute("src", seitenSpezifischeZutaten[index].darstellung);
             }
             
             
-            image.setAttribute("alt", _zutatenliste[index].name);
-            image.setAttribute("title", _zutatenliste[index].name);
+            image.setAttribute("alt", seitenSpezifischeZutaten[index].name);
+            image.setAttribute("title", seitenSpezifischeZutaten[index].name);
             label.appendChild(image);   
         }
         

@@ -1,9 +1,10 @@
-/// data.ts
+
 
 namespace aufgabe2_33 {
 
 
-export let daten: string[] = [  "BROETCHEN,Weißbrötchen,0.60,darstellungen/burgerBodenHell.png,darstellungen/burgerDach.png", 
+export let daten: string[] = [ 
+                                "BROETCHEN,Weißbrötchen,0.60,darstellungen/burgerBodenHell.png,darstellungen/burgerDach.png",      
                                 "BROETCHEN,Dinkelbrötchen,0.75,darstellungen/burgerBodenMittel.png,darstellungen/burgerDachMittel.png",
                                 "BROETCHEN,Vollkornbrötchen,0.80,darstellungen/burgerBodenDunkel.png,darstellungen/burgerDachDunkel.png",
                                 "PATTY,Rinderpatty,1.8,darstellungen/j.png,false",
