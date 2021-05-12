@@ -7,9 +7,9 @@ var aufgabe2_4;
         zutaten: [{ name: "tomaten", preis: 0.45, darstellung: "darstellungen/Tomaten.png" },
             { name: "salat", preis: 0.4, darstellung: "darstellungen/Salat.png" },
             { name: "käse", preis: 0.65, darstellung: "darstellungen/Käse.png" }],
-        pattys: [{ name: "RinderPatty", preis: 1.8, darstellung: "darstellungen/burgerPattyRind.png", vegetarisch: false },
-            { name: "HünchenPatty", preis: 1.5, darstellung: "darstellungen/burgerPattyChicken.png", vegetarisch: false },
-            { name: "VeggiePatty", preis: 1.7, darstellung: "darstellungen/burgerPattyVeggy.png", vegetarisch: true }] };
+        pattys: [{ name: "RinderPatty", preis: 1.8, darstellung: "darstellungen/BurgerPattyRind.png", vegetarisch: false },
+            { name: "HünchenPatty", preis: 1.5, darstellung: "darstellungen/BurgerPattyChicken.png", vegetarisch: false },
+            { name: "VeggiePatty", preis: 1.7, darstellung: "darstellungen/BurgerPattyVeggy.png", vegetarisch: true }] };
     aufgabe2_4.daten = JSON.stringify(data);
 })(aufgabe2_4 || (aufgabe2_4 = {}));
 //# sourceMappingURL=data.js.map
