@@ -156,3 +156,13 @@ h1{
     text-align: center;
     margin: 2rem auto;
 }
+
+.vegetarisch{
+    width: 75px;
+    height: auto;
+    position:absolute;
+    z-index: 1;
+    top: 562px;
+    left: 848px;
+
+}

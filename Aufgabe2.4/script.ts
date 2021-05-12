@@ -249,6 +249,15 @@ namespace aufgabe2_4 {
         bottomImg.setAttribute("src", burgerKomplett.burgerBoden.darstellung);
         bottomImg.setAttribute("alt", burgerKomplett.burgerBoden.name);
         burgerAnzeige.appendChild(bottomImg);
+
+
+        if (burgerKomplett.zutat1.vegetarisch) {
+            let vegetarischImage: HTMLImageElement = <HTMLImageElement> document.createElement("img");
+            vegetarischImage.setAttribute("src", "darstellungen/Vegetarisch.png");
+            vegetarischImage.setAttribute("alt", "vegetarisch kennzeichnung");
+            vegetarischImage.setAttribute("class", "vegetarisch");
+            document.body.appendChild(vegetarischImage);
+        }
         
         document.getElementById("bestellen").addEventListener("click", handleBestellung);
 

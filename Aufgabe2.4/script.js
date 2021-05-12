@@ -224,6 +224,13 @@ var aufgabe2_4;
         bottomImg.setAttribute("src", burgerKomplett.burgerBoden.darstellung);
         bottomImg.setAttribute("alt", burgerKomplett.burgerBoden.name);
         burgerAnzeige.appendChild(bottomImg);
+        if (burgerKomplett.zutat1.vegetarisch) {
+            let vegetarischImage = document.createElement("img");
+            vegetarischImage.setAttribute("src", "darstellungen/Vegetarisch.png");
+            vegetarischImage.setAttribute("alt", "vegetarisch kennzeichnung");
+            vegetarischImage.setAttribute("class", "vegetarisch");
+            document.body.appendChild(vegetarischImage);
+        }
         document.getElementById("bestellen").addEventListener("click", handleBestellung);
         function handleBestellung(_event) {
             console.log(JSON.stringify(burgerKomplett) + " Time: " + Date.now());
