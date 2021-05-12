@@ -11,13 +11,17 @@ namespace aufgabe2_4 {
     }
     
     let burgerKomplett: BurgerZutatenSpeicher = {burgerBoden: undefined, zutat1: undefined, zutat2: undefined, burgerDeckel: undefined};
+    if (sessionStorage.getItem("burgerKomplett")) {
+        burgerKomplett = JSON.parse(sessionStorage.getItem("burgerKomplett"));
+        console.log(burgerKomplett);
+        
+    }
     //-- > burgerKomplett wird nach nund nach aufgefüllt.
     
     let speicherOpt: Data = undefined;
 
     
     function datenEinlese(): void {
-        console.log(daten);
         speicherOpt = JSON.parse(daten); 
     }
     datenEinlese();
@@ -33,7 +37,7 @@ namespace aufgabe2_4 {
     let aktuelleZutatenLaenge: number = undefined;
     
     enum SEITE {
-        BURGER_BODEN, ZUTAT_1, ZUTAT_2, BURGER_DECKEL
+        BURGER_BODEN, ZUTAT_1, ZUTAT_2, BURGER_DECKEL, RESULTAT
     }
     
     if (document.URL.includes("Index")) { 
@@ -43,14 +47,17 @@ namespace aufgabe2_4 {
     } else if (document.URL.includes("zutat1")) {
         aktuelleSeite = SEITE.ZUTAT_1;
         aktuelleZutatenLaenge = speicherOpt.pattys.length;
-    } else if ( document.URL.includes("zutat2")){
+    } else if ( document.URL.includes("zutat2")) {
         aktuelleSeite = SEITE.ZUTAT_2;
         aktuelleZutatenLaenge = speicherOpt.zutaten.length;
-    } else if( document.URL.includes("Dach")){
+    } else if ( document.URL.includes("Dach")) {
         aktuelleSeite = SEITE.BURGER_DECKEL;
         aktuelleZutatenLaenge = speicherOpt.broetchen.length;
+    } else if (document.URL.includes("result")) {
+        aktuelleSeite = SEITE.RESULTAT;
+        aktuelleZutatenLaenge = null;
     }
-    
+    if (aktuelleSeite != SEITE.RESULTAT) {
     erzeugeZutatenAnsicht();
   
     // hier werden die darstellung und DIVs nach den daten erstellt und angezeigt.
@@ -166,43 +173,107 @@ namespace aufgabe2_4 {
     
     //--> hier wird die auswahl in einem der 4 Kategorien des Burgers Gespeichert 
     function handleBestaetigung(): void {
+        let href: string = "";
+        let etwasAusgewählt: boolean = false;
         switch (aktuelleSeite) {
             case SEITE.BURGER_BODEN:
             burgerKomplett.burgerBoden = aktuelleBroetchen;
-            if (!aktuelleBroetchen) {
-                alert("es wurde nichts ausgewählt, wählen sie etwas aus");
-            } else {
-                console.log(burgerKomplett);
-                window.location.href = "zutat1.html";
+            if (aktuelleBroetchen) {
+             etwasAusgewählt = true;  
+             href = "zutat1.html";
             }
             break;
             case SEITE.ZUTAT_1:
             burgerKomplett.zutat1 = aktuellePatty;
-            if (!aktuellePatty) {
-                alert("es wurde nichts ausgewählt, wählen sie etwas aus");
-            } else {
-                console.log(burgerKomplett);
-                window.location.href = "zutat2.html";
-            }
+            if (aktuellePatty) {
+                etwasAusgewählt = true;  
+                href = "zutat2.html";
+               }
             break;
             case SEITE.ZUTAT_2:
                 burgerKomplett.zutat2 = aktuelleZutat; 
-                if (!aktuelleZutat) {
-                    alert("es wurde nichts ausgewählt, wählen sie etwas aus");
-                } else {
-                    console.log(burgerKomplett);
-                    window.location.href = "burgerDach.html";
-                }    
+                if (aktuelleZutat) {
+                    etwasAusgewählt = true;
+                    href = "burgerDach.html";  
+                   }   
            
                 break;
             case SEITE.BURGER_DECKEL:
             burgerKomplett.burgerDeckel = aktuelleBroetchen;
-            if (!aktuelleBroetchen) {
-                alert("es wurde nichts ausgewählt, wählen sie etwas aus");
-            } else {
-                console.log(burgerKomplett);
+            if (aktuelleBroetchen) {
+                etwasAusgewählt = true; 
+                href = "result.html"; 
             }
             break;        
         }
+        if (etwasAusgewählt) {
+            sessionStorage.setItem("burgerKomplett", JSON.stringify(burgerKomplett));
+            window.location.href = href;
+        } else {
+            alert("es wurde nichts ausgewählt, wählen sie etwas aus");
+        }
+       
     } 
+    } else {
+        let preis: number = 0;
+        document.getElementById("bTop").innerText = burgerKomplett.burgerDeckel.name + " = " + burgerKomplett.burgerDeckel.preis + "€" ;
+        preis += burgerKomplett.burgerDeckel.preis;
+        document.getElementById("bZutat2").innerText = burgerKomplett.zutat2.name + " = " + burgerKomplett.zutat2.preis + "€";
+        preis += burgerKomplett.zutat2.preis;
+        document.getElementById("bZutat1").innerText = burgerKomplett.zutat1.name + " = " + burgerKomplett.zutat1.preis + "€";
+        preis += burgerKomplett.zutat1.preis;
+        document.getElementById("bBoden").innerText = burgerKomplett.burgerBoden.name + " = " + burgerKomplett.burgerBoden.preis + "€";
+        preis += burgerKomplett.burgerBoden.preis;
+        preis =  (Math.round(preis * 100) / 100);
+        document.getElementById("endPreis").innerText = "Preis: " + preis.toString() + "€";
+
+
+
+        let burgerAnzeige: HTMLDivElement = <HTMLDivElement> document.querySelector(".resultatAnzeige");
+        let topImg: HTMLImageElement = <HTMLImageElement> document.createElement("img");
+        topImg.setAttribute("src", burgerKomplett.burgerDeckel.darstellung2);
+        topImg.setAttribute("alt", burgerKomplett.burgerDeckel.name);
+        burgerAnzeige.appendChild(topImg);
+
+        let zutat2Img: HTMLImageElement = <HTMLImageElement> document.createElement("img");
+        zutat2Img.setAttribute("src", burgerKomplett.zutat2.darstellung);
+        zutat2Img.setAttribute("alt", burgerKomplett.zutat2.name);
+        burgerAnzeige.appendChild(zutat2Img);
+
+        let zutat1Img: HTMLImageElement = <HTMLImageElement> document.createElement("img");
+        zutat1Img.setAttribute("src", burgerKomplett.zutat1.darstellung);
+        zutat1Img.setAttribute("alt", burgerKomplett.zutat1.name);
+        burgerAnzeige.appendChild(zutat1Img);
+
+        let bottomImg: HTMLImageElement = <HTMLImageElement> document.createElement("img");
+        bottomImg.setAttribute("src", burgerKomplett.burgerBoden.darstellung);
+        bottomImg.setAttribute("alt", burgerKomplett.burgerBoden.name);
+        burgerAnzeige.appendChild(bottomImg);
+        
+        document.getElementById("bestellen").addEventListener("click", handleBestellung);
+
+
+        function handleBestellung(_event: Event): void {
+            console.log(JSON.stringify(burgerKomplett) + " Time: "  + Date.now());
+            console.log("hello");
+            
+
+            let closeTimer: HTMLHeadingElement = <HTMLHeadingElement> document.createElement("h2");
+            closeTimer.setAttribute("id", "closeTimer");
+            document.body.appendChild(closeTimer);
+
+            closeTimer.innerText = "closing in 5 seconds";
+            setTimeout(function(): void {
+                sessionStorage.clear();
+                window.location.href = "Index.html";
+             } ,       5000 );
+            
+
+            
+            
+        }
+       
+
+
+    }
 }

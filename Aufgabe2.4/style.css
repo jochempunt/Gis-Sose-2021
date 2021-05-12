@@ -66,6 +66,22 @@ nav li{
     margin: 175px 25px;
 }
 
+
+.resultatAnzeige img{
+    width: 400px;
+    height: 100px;
+    margin: 0 0 ;
+}
+
+.resultatAnzeige{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .Zutatenauswahl{
     display: flex;
     flex-wrap: wrap;
@@ -110,4 +126,33 @@ label:hover{
 
 .hidden{
     display: none;
+}
+
+#bestellen{
+    background-color:rgba(2, 172, 135, 0.753) ;
+    height: 50px;
+    width: 150px;
+}
+
+#bestellen:hover{
+    background-color:rgba(7, 231, 183, 0.753) ;
+}
+
+.Bestellung p{
+    font-size: 1.85rem;
+}
+
+#endPreis{
+    font-weight: bold;
+}
+
+h1{
+    font-size: 2.5rem;
+}
+#closeTimer{
+    color: red;
+    font-size: 2.2rem;
+    width: 500px;
+    text-align: center;
+    margin: 2rem auto;
 }
