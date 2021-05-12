@@ -7,9 +7,12 @@ var test1;
             this.name = _name;
         }
     }
+    let interfacesm = [{ name: "bernd", age: 12 }, { name: "höcke", age: 88 }, { name: "anne", age: 69 }];
     let bool = (localStorage.getItem("bool") == "true");
     let personJson = "";
     console.log(bool);
+    console.log(JSON.stringify(interfacesm));
+    console.log("hewy");
     //console.log(personBack);
     if (document.URL.includes("Test1")) {
         let button1 = document.getElementById("Button1");

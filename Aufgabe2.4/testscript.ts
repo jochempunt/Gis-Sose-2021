@@ -20,12 +20,23 @@ namespace test1 {
 
    }
 
+
+   let interfacesm: PersonInterface[] = [{name: "bernd", age: 12}, {name: "höcke", age: 88}, {name: "anne", age: 69} ];
+
+   
+   
+
+
+
+
    let bool: boolean = (localStorage.getItem("bool" ) == "true");
    
   
    let personJson: string = "";
    console.log(bool);
-
+   console.log(JSON.stringify(interfacesm));
+   console.log("hewy");
+   
 
   
    //console.log(personBack);
