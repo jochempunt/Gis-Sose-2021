@@ -160,9 +160,9 @@ h1{
 .vegetarisch{
     width: 75px;
     height: auto;
-    position:absolute;
+    position:relative;
     z-index: 1;
-    top: 562px;
-    left: 848px;
+    top: -82px;
+    left: -108px;
 
 }
