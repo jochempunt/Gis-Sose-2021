@@ -48,24 +48,54 @@ var aufgabe2_4;
         aktuelleSeite = SEITE.RESULTAT;
         aktuelleZutatenLaenge = null;
     }
+    function linkFreigabe() {
+        let navlistli = undefined;
+        function setLink(_id, _page) {
+            navlistli = document.getElementById(_id);
+            let innerText = navlistli.innerText;
+            navlistli.innerText = "";
+            let linknll = document.createElement("a");
+            linknll.href = _page;
+            linknll.innerText = innerText;
+            navlistli.appendChild(linknll);
+        }
+        if (burgerKomplett.burgerBoden) {
+            setLink("nav1", "Index.html");
+        }
+        if (burgerKomplett.zutat1) {
+            setLink("nav2", "zutat1.html");
+        }
+        if (burgerKomplett.zutat2) {
+            setLink("nav3", "zutat2.html");
+        }
+        if (burgerKomplett.burgerDeckel) {
+            setLink("nav4", "burgerDach.html");
+        }
+        if (burgerKomplett.burgerDeckel && burgerKomplett.zutat1 && burgerKomplett.zutat2 && burgerKomplett.burgerDeckel) {
+            setLink("nav5", "result.html");
+        }
+    }
+    linkFreigabe();
     if (aktuelleSeite != SEITE.RESULTAT) {
         erzeugeZutatenAnsicht();
         // hier werden die darstellung und DIVs nach den daten erstellt und angezeigt.
         function erzeugeZutatenAnsicht() {
             for (let index = 0; index < aktuelleZutatenLaenge; index++) {
-                let checkbox = document.createElement("input");
-                checkbox.setAttribute("id", "checkbox" + index);
-                checkbox.setAttribute("type", "checkbox");
-                checkbox.setAttribute("class", "hidden");
-                checkbox.addEventListener("change", handleAuswahl);
-                zutatenAuswahl.appendChild(checkbox);
-                checkboxListe[checkboxListe.length] = checkbox;
-                let label = document.createElement("label");
-                label.setAttribute("id", "label_" + index);
-                label.setAttribute("for", "checkbox" + index);
-                zutatenAuswahl.appendChild(label);
-                let image = document.createElement("img");
+                let label = undefined;
+                let image = undefined;
                 function setImg(_name, _darstellung) {
+                    let checkbox = document.createElement("input");
+                    checkbox.setAttribute("id", "checkbox" + _name);
+                    checkbox.setAttribute("type", "checkbox");
+                    checkbox.setAttribute("class", "hidden");
+                    checkbox.addEventListener("change", handleAuswahl);
+                    zutatenAuswahl.appendChild(checkbox);
+                    checkboxListe[checkboxListe.length] = checkbox;
+                    label = document.createElement("label");
+                    label.setAttribute("id", "label_" + _name);
+                    label.setAttribute("for", "checkbox" + _name);
+                    zutatenAuswahl.appendChild(label);
+                    image = document.createElement("img");
                     image.setAttribute("src", _darstellung);
                     image.setAttribute("alt", _name);
                     image.setAttribute("title", _name);
@@ -74,23 +104,55 @@ var aufgabe2_4;
                     case SEITE.BURGER_BODEN:
                         let burgerBoden = speicherOpt.broetchen[index];
                         setImg(burgerBoden.name, burgerBoden.darstellung);
+                        label.appendChild(image);
                         break;
                     case SEITE.BURGER_DECKEL:
                         let burgerDeckel = speicherOpt.broetchen[index];
                         setImg(burgerDeckel.name, burgerDeckel.darstellung2);
+                        label.appendChild(image);
                         break;
                     case SEITE.ZUTAT_1:
                         let zutat1 = speicherOpt.pattys[index];
                         setImg(zutat1.name, zutat1.darstellung);
+                        label.appendChild(image);
                         break;
                     case SEITE.ZUTAT_2:
                         let zutat2 = speicherOpt.zutaten[index];
                         setImg(zutat2.name, zutat2.darstellung);
+                        label.appendChild(image);
                 }
-                label.appendChild(image);
             }
         }
         document.getElementById("bestaetigen").addEventListener("click", handleBestaetigung);
+        ladeAusgewählt();
+        function ladeAusgewählt() {
+            switch (aktuelleSeite) {
+                case SEITE.BURGER_BODEN:
+                    if (burgerKomplett.burgerBoden) {
+                        let checkbox = document.getElementById("checkbox" + burgerKomplett.burgerBoden.name);
+                        checkbox.click();
+                    }
+                    break;
+                case SEITE.ZUTAT_1:
+                    if (burgerKomplett.zutat1) {
+                        let checkbox = document.getElementById("checkbox" + burgerKomplett.zutat1.name);
+                        checkbox.click();
+                    }
+                    break;
+                case SEITE.ZUTAT_2:
+                    if (burgerKomplett.zutat2) {
+                        let checkbox = document.getElementById("checkbox" + burgerKomplett.zutat2.name);
+                        checkbox.click();
+                    }
+                    break;
+                case SEITE.BURGER_DECKEL:
+                    if (burgerKomplett.burgerDeckel) {
+                        let checkbox = document.getElementById("checkbox" + burgerKomplett.burgerDeckel.name);
+                        checkbox.click();
+                    }
+                    break;
+            }
+        }
         function handleAuswahl(_event) {
             let title = document.getElementById("bezeichnung");
             let preis = document.getElementById("preis");

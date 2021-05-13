@@ -35,9 +35,30 @@ nav li{
     color: rgb(155, 155, 155);
 }
 
-#hier{
+
+
+a{
+    text-decoration: none;
+    color: rgb(0, 151, 197);
+}
+
+a:visited{
+    color: rgb(0, 151, 197);
+}
+
+a:hover{
+    color: rgb(177, 204, 255);
+    text-shadow: 0 2px 1px rgb(255, 86, 86);
+}
+
+.hier{
     text-decoration: underline;
     color: black;
+}
+
+
+.hier a{
+    color: black;  
 }
 
 .ZutatAnzeige{
@@ -166,3 +187,5 @@ h1{
     left: -108px;
 
 }
+
+

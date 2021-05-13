@@ -57,54 +57,155 @@ namespace aufgabe2_4 {
         aktuelleSeite = SEITE.RESULTAT;
         aktuelleZutatenLaenge = null;
     }
+
+
+
+
+    function linkFreigabe(): void {
+        let navlistli: HTMLLIElement = undefined;
+        function setLink(_id: string, _page: string): void {
+            navlistli = <HTMLLIElement> document.getElementById(_id);
+            let innerText: string = navlistli.innerText;
+            navlistli.innerText = "";
+            let linknll: HTMLAnchorElement = <HTMLAnchorElement> document.createElement("a");
+            linknll.href = _page;
+            linknll.innerText = innerText;
+            navlistli.appendChild(linknll);
+        }
+        
+        if (burgerKomplett.burgerBoden) {
+            setLink("nav1", "Index.html");
+        }
+
+        if (burgerKomplett.zutat1) {
+            setLink("nav2", "zutat1.html");
+        }
+
+        if (burgerKomplett.zutat2) {
+            setLink("nav3", "zutat2.html");
+        }
+
+        if (burgerKomplett.burgerDeckel) {
+            setLink("nav4", "burgerDach.html");
+            
+        }
+
+        if (burgerKomplett.burgerDeckel && burgerKomplett.zutat1 && burgerKomplett.zutat2 && burgerKomplett.burgerDeckel) {
+            setLink("nav5", "result.html");
+        }
+        
+        
+    }
+
+    linkFreigabe();
+
+
+
+
     if (aktuelleSeite != SEITE.RESULTAT) {
+    
+    
+    
+    
+   
+    
+    
     erzeugeZutatenAnsicht();
   
     // hier werden die darstellung und DIVs nach den daten erstellt und angezeigt.
     
     function erzeugeZutatenAnsicht(): void {
         for (let index: number = 0; index < aktuelleZutatenLaenge; index++) {
-            let checkbox: HTMLInputElement = <HTMLInputElement> document.createElement("input");
-            checkbox.setAttribute("id", "checkbox" + index);
-            checkbox.setAttribute("type", "checkbox");
-            checkbox.setAttribute("class", "hidden");
-            checkbox.addEventListener("change", handleAuswahl);
-            zutatenAuswahl.appendChild(checkbox);
-            checkboxListe[checkboxListe.length] = checkbox;
-            let label: HTMLLabelElement = <HTMLLabelElement> document.createElement("label");
-            label.setAttribute("id", "label_" + index);
-            label.setAttribute("for", "checkbox" + index);
-            
-            zutatenAuswahl.appendChild(label);
-            let image: HTMLImageElement = <HTMLImageElement> document.createElement("img");
+            let label: HTMLLabelElement = undefined;
+            let image: HTMLImageElement = undefined;
+
+
             function setImg(_name: string, _darstellung: string): void {
+                let checkbox: HTMLInputElement = <HTMLInputElement> document.createElement("input");
+                checkbox.setAttribute("id", "checkbox" + _name);
+                checkbox.setAttribute("type", "checkbox");
+                checkbox.setAttribute("class", "hidden");
+                checkbox.addEventListener("change", handleAuswahl);
+                zutatenAuswahl.appendChild(checkbox);
+                checkboxListe[checkboxListe.length] = checkbox;
+                label = <HTMLLabelElement> document.createElement("label");
+                label.setAttribute("id", "label_" + _name);
+                label.setAttribute("for", "checkbox" + _name);
+            
+                zutatenAuswahl.appendChild(label);
+                
+                
+                image = <HTMLImageElement> document.createElement("img");
                 image.setAttribute("src", _darstellung);
                 image.setAttribute("alt", _name);
                 image.setAttribute("title", _name);
+               
         
             }
             switch (aktuelleSeite) {
                 case SEITE.BURGER_BODEN:
                     let burgerBoden: Broetche = speicherOpt.broetchen[index];
                     setImg(burgerBoden.name, burgerBoden.darstellung);
+                    label.appendChild(image); 
                     break;
                 case SEITE.BURGER_DECKEL:
                     let burgerDeckel: Broetche =  speicherOpt.broetchen[index];
                     setImg(burgerDeckel.name, burgerDeckel.darstellung2);
+                    label.appendChild(image); 
                     break;
                 case SEITE.ZUTAT_1:
                     let zutat1: Patt = speicherOpt.pattys[index];
                     setImg(zutat1.name, zutat1.darstellung);
+                    label.appendChild(image); 
                     break;
                 case SEITE.ZUTAT_2:
                     let zutat2: Zuta = speicherOpt.zutaten[index];
-                    setImg(zutat2.name, zutat2.darstellung);    
+                    setImg(zutat2.name, zutat2.darstellung);   
+                    label.appendChild(image);  
             }
-            label.appendChild(image);   
+              
         }
         
     }
     document.getElementById("bestaetigen").addEventListener("click", handleBestaetigung);
+
+    ladeAusgewählt();
+
+
+
+    function ladeAusgewählt(): void {
+        switch (aktuelleSeite) {
+            case SEITE.BURGER_BODEN:
+                if (burgerKomplett.burgerBoden) {
+                    let checkbox: HTMLInputElement = <HTMLInputElement> document.getElementById("checkbox" + burgerKomplett.burgerBoden.name);
+                    checkbox.click();
+                }
+                break;
+            case SEITE.ZUTAT_1:
+                if (burgerKomplett.zutat1) {
+                    let checkbox: HTMLInputElement = <HTMLInputElement> document.getElementById("checkbox" + burgerKomplett.zutat1.name);
+                    checkbox.click();
+                }
+                break;
+            case SEITE.ZUTAT_2:
+                if (burgerKomplett.zutat2) {
+                    let checkbox: HTMLInputElement = <HTMLInputElement> document.getElementById("checkbox" + burgerKomplett.zutat2.name);
+                    checkbox.click();
+                }
+                break;
+            case SEITE.BURGER_DECKEL:
+                if (burgerKomplett.burgerDeckel) {
+                    let checkbox: HTMLInputElement = <HTMLInputElement> document.getElementById("checkbox" + burgerKomplett.burgerDeckel.name);
+                    checkbox.click();
+                }
+                break;
+        }
+    }
+
+
+
+
+
     
     function handleAuswahl(_event: Event): void {
         let title: HTMLHeadingElement = <HTMLHeadingElement>  document.getElementById("bezeichnung");
