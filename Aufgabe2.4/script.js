@@ -5,6 +5,7 @@ var aufgabe2_4;
     if (sessionStorage.getItem("burgerKomplett")) {
         burgerKomplett = JSON.parse(sessionStorage.getItem("burgerKomplett"));
         console.log(burgerKomplett);
+        console.log(aufgabe2_4.daten);
     }
     //-- > burgerKomplett wird nach nund nach aufgefüllt.
     let speicherOpt = undefined;

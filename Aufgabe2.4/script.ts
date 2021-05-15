@@ -14,6 +14,7 @@ namespace aufgabe2_4 {
     if (sessionStorage.getItem("burgerKomplett")) {
         burgerKomplett = JSON.parse(sessionStorage.getItem("burgerKomplett"));
         console.log(burgerKomplett);
+        console.log(daten);
         
     }
     //-- > burgerKomplett wird nach nund nach aufgefüllt.
