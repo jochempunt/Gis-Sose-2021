@@ -40,14 +40,15 @@ namespace aufgabe2_5 {
     let speicherOpt: Data = undefined;
     console.log("start");
  
-    async function communicate(_url: string): Promise<void> {
+    async function datenEinlesenUndLaden(_url: string): Promise<void> {
         let response: Response = await fetch(_url);
         speicherOpt = await response.json();
+        hauptProgramm();
         
     }
 
-    communicate("https://jochempunt.github.io/Gis-Sose-2021/Aufgabe2.5/data.json").then(hauptProgramm);
-
+ 
+    datenEinlesenUndLaden("https://jochempunt.github.io/Gis-Sose-2021/Aufgabe2.5/data.json");
   
 
 
@@ -129,6 +130,11 @@ namespace aufgabe2_5 {
     let aktuelleZutat: Zuta = undefined;
     let aktuelleZutatenLaenge: number = undefined;
     
+
+
+  
+
+
     enum SEITE {
         BURGER_BODEN, ZUTAT_1, ZUTAT_2, BURGER_DECKEL, RESULTAT
     }
