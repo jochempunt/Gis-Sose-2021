@@ -34,23 +34,14 @@ namespace aufgabe2_5 {
         zutat2: Zuta;
         burgerDeckel: Broetche;
     }
-    
-
     let light: boolean = (localStorage.getItem("bool" ) == "true");
-
-    if (light) {
-        document.documentElement.setAttribute("data-theme", "light");
-    } else {
-        document.documentElement.setAttribute("data-theme", "dark");
-    }
-
-    document.getElementById("light_dark").addEventListener("click",setDarkLight);
+    document.getElementById("light_dark").addEventListener("click", setDarkLight);
 
     function setDarkLight(): void {
         if (light) {
             light = false;
             document.documentElement.setAttribute("data-theme", "dark");
-        } else{
+        } else {
             light = true;
             document.documentElement.setAttribute("data-theme", "light");
         }
@@ -58,13 +49,14 @@ namespace aufgabe2_5 {
     }
 
 
-
+/// -- darkmode ende
    
     let speicherOpt: Data = undefined;
     console.log("start");
  
     async function datenEinlesenUndLaden(_url: string): Promise<void> {
         let response: Response = await fetch(_url);
+        console.log("jetz response da");
         speicherOpt = await response.json();
         hauptProgramm();
         

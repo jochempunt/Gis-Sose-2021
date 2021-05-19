@@ -2,12 +2,6 @@
 var aufgabe2_5;
 (function (aufgabe2_5) {
     let light = (localStorage.getItem("bool") == "true");
-    if (light) {
-        document.documentElement.setAttribute("data-theme", "light");
-    }
-    else {
-        document.documentElement.setAttribute("data-theme", "dark");
-    }
     document.getElementById("light_dark").addEventListener("click", setDarkLight);
     function setDarkLight() {
         if (light) {
@@ -20,10 +14,12 @@ var aufgabe2_5;
         }
         localStorage.setItem("bool", light + "");
     }
+    /// -- darkmode ende
     let speicherOpt = undefined;
     console.log("start");
     async function datenEinlesenUndLaden(_url) {
         let response = await fetch(_url);
+        console.log("jetz response da");
         speicherOpt = await response.json();
         hauptProgramm();
     }
