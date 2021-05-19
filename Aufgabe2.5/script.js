@@ -1,13 +1,33 @@
 "use strict";
 var aufgabe2_5;
 (function (aufgabe2_5) {
+    let light = (localStorage.getItem("bool") == "true");
+    if (light) {
+        document.documentElement.setAttribute("data-theme", "light");
+    }
+    else {
+        document.documentElement.setAttribute("data-theme", "dark");
+    }
+    document.getElementById("light_dark").addEventListener("click", setDarkLight);
+    function setDarkLight() {
+        if (light) {
+            light = false;
+            document.documentElement.setAttribute("data-theme", "dark");
+        }
+        else {
+            light = true;
+            document.documentElement.setAttribute("data-theme", "light");
+        }
+        localStorage.setItem("bool", light + "");
+    }
     let speicherOpt = undefined;
     console.log("start");
-    async function communicate(_url) {
+    async function datenEinlesenUndLaden(_url) {
         let response = await fetch(_url);
         speicherOpt = await response.json();
+        hauptProgramm();
     }
-    communicate("https://jochempunt.github.io/Gis-Sose-2021/Aufgabe2.5/data.json").then(hauptProgramm);
+    datenEinlesenUndLaden("https://jochempunt.github.io/Gis-Sose-2021/Aufgabe2.5/data.json");
     let burgerKomplett = { burgerBoden: undefined, zutat1: undefined, zutat2: undefined, burgerDeckel: undefined };
     if (sessionStorage.getItem("burgerKomplett")) {
         burgerKomplett = JSON.parse(sessionStorage.getItem("burgerKomplett"));
@@ -104,6 +124,10 @@ var aufgabe2_5;
                         image.setAttribute("src", _darstellung);
                         image.setAttribute("alt", _name);
                         image.setAttribute("title", _name);
+                        if (index == 0) {
+                            label.click();
+                            console.log("hey");
+                        }
                     }
                     switch (aktuelleSeite) {
                         case SEITE.BURGER_BODEN:
@@ -164,7 +188,7 @@ var aufgabe2_5;
                 let currentCheckb = _event.target;
                 let isNewlyChecked = false;
                 let vorschaubild = document.getElementById("vorschaubild");
-                if (currentCheckb.checked) {
+                if (currentCheckb.checked == true) {
                     isNewlyChecked = true;
                 }
                 for (let i = 0; i < checkboxListe.length; i++) {
@@ -299,12 +323,30 @@ var aufgabe2_5;
                 document.body.appendChild(vegetarischImage);
             }
             document.getElementById("bestellen").addEventListener("click", handleBestellung);
-            function handleBestellung(_event) {
+            document.getElementById("retry").addEventListener("click", reset5seconds);
+            async function handleBestellung(_event) {
                 console.log(JSON.stringify(burgerKomplett) + " Time: " + Date.now());
                 console.log("hello");
-                let closeTimer = document.createElement("h2");
-                closeTimer.setAttribute("id", "closeTimer");
-                document.body.appendChild(closeTimer);
+                let rr = [["burgerBoden:", JSON.stringify(burgerKomplett.burgerBoden)], ["zutat1:", JSON.stringify(burgerKomplett.zutat1)], ["zutat2", JSON.stringify(burgerKomplett.zutat2)], ["burgerDeckel:", JSON.stringify(burgerKomplett.burgerDeckel)]];
+                let url = "https://gis-communication.herokuapp.com";
+                let query1 = new URLSearchParams(rr);
+                url = url + "?" + query1.toString();
+                let response = await fetch(url);
+                let ssio = await response.json();
+                let p = document.getElementById("responseText");
+                if (ssio.message) {
+                    p.innerText = ssio.message;
+                    p.className = "Message";
+                    console.log("f");
+                }
+                else if (ssio.error) {
+                    p.innerText = ssio.error;
+                    p.className = "ErrorMessage";
+                    console.log("d");
+                }
+            }
+            function reset5seconds() {
+                let closeTimer = document.getElementById("closeMessage");
                 closeTimer.innerText = "closing in 5 seconds";
                 setTimeout(function () {
                     sessionStorage.clear();

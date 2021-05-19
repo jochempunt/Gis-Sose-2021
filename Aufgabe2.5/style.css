@@ -1,3 +1,22 @@
+
+:root[data-theme="dark"]{
+  --background-color: #000000;
+  --text-color: rgb(204, 204, 204);
+  --text-color2: white;
+}
+
+
+:root[data-theme="light"]{
+    --background-color: #ffffff;
+    --text-color: rgb(90, 90, 90);
+    --text-color2: rgb(0, 0, 0);
+
+
+}
+
+
+
+
 header{
     margin: 1rem;
 }
@@ -9,7 +28,34 @@ header img{
 
 body{
 font-family: Arial, Helvetica, sans-serif;
+background-color:var(--background-color);
+
+transition: background-color .2s linear;
 }
+
+
+#light_dark{
+    float:inline-end;
+    margin-right: 3em;
+    background-color: var(--text-color);
+    color: var(--background-color);
+}
+
+#light_dark:hover{
+   
+    color:var(--text-color2);
+}
+
+#light_dark:active{
+    color:yellow;
+}
+aside,
+.Bestellung,
+h1{
+    color: var(--text-color2);
+}
+
+
 
 main{
     width: 1000px;
@@ -32,7 +78,7 @@ nav ul{
 
 nav li{
     margin-left: 1rem;
-    color: rgb(155, 155, 155);
+    color: var(--text-color);
 }
 
 
@@ -54,12 +100,12 @@ a:hover{
 
 .hier{
     text-decoration: underline;
-    color: black;
+    color: var(--text-color2);
 }
 
 
 .hier a{
-    color: black;  
+    color: var(--text-color2);  
 }
 
 .ZutatAnzeige{
@@ -70,7 +116,7 @@ a:hover{
     margin-right: 30px;
     border-radius: 3px;
     border-style: solid;
-    border-color:black;
+    border-color:var(--text-color);
 }
 
 #bezeichnung{
@@ -149,14 +195,13 @@ label:hover{
 .hidden{
     display: none;
 }
-
-#bestellen{
+.bluebutton{
     background-color:rgba(2, 172, 135, 0.753) ;
     height: 50px;
     width: 150px;
 }
 
-#bestellen:hover{
+.bluebutton:hover{
     background-color:rgba(7, 231, 183, 0.753) ;
 }
 
@@ -190,3 +235,17 @@ h1{
 }
 
 
+.ErrorMessage{
+    color: rgba(250, 49, 49, 0.884);
+}
+
+
+.Message{
+    color: rgb(53, 146, 53);
+}
+
+
+#closeMessage{
+    color: purple;
+    font-size: 2.5em;
+}

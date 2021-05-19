@@ -36,6 +36,29 @@ namespace aufgabe2_5 {
     }
     
 
+    let light: boolean = (localStorage.getItem("bool" ) == "true");
+
+    if (light) {
+        document.documentElement.setAttribute("data-theme", "light");
+    } else {
+        document.documentElement.setAttribute("data-theme", "dark");
+    }
+
+    document.getElementById("light_dark").addEventListener("click",setDarkLight);
+
+    function setDarkLight(): void {
+        if (light) {
+            light = false;
+            document.documentElement.setAttribute("data-theme", "dark");
+        } else{
+            light = true;
+            document.documentElement.setAttribute("data-theme", "light");
+        }
+        localStorage.setItem("bool", light + "");
+    }
+
+
+
    
     let speicherOpt: Data = undefined;
     console.log("start");
@@ -191,6 +214,10 @@ namespace aufgabe2_5 {
                 checkbox.setAttribute("type", "checkbox");
                 checkbox.setAttribute("class", "hidden");
                 checkbox.addEventListener("change", handleAuswahl);
+
+
+               
+
                 zutatenAuswahl.appendChild(checkbox);
                 checkboxListe[checkboxListe.length] = checkbox;
                 label = <HTMLLabelElement> document.createElement("label");
@@ -205,6 +232,10 @@ namespace aufgabe2_5 {
                 image.setAttribute("alt", _name);
                 image.setAttribute("title", _name);
                
+                if ( index == 0) {
+                    label.click();
+                    console.log("hey");
+                }
         
             }
             switch (aktuelleSeite) {
@@ -278,9 +309,9 @@ namespace aufgabe2_5 {
         let currentCheckb: HTMLInputElement = <HTMLInputElement>   _event.target;
         let isNewlyChecked: boolean = false;
         let vorschaubild: HTMLImageElement = <HTMLImageElement> document.getElementById("vorschaubild");
-        if (currentCheckb.checked) {
+        if (currentCheckb.checked == true) {
             isNewlyChecked = true;
-        }
+        } 
         
         for (let i: number = 0; i < checkboxListe.length; i++) {
             if (checkboxListe[i].isEqualNode(currentCheckb) && isNewlyChecked) {
@@ -334,6 +365,7 @@ namespace aufgabe2_5 {
             aktuelleBroetchen = undefined;
             aktuellePatty = undefined;
             aktuelleZutat = undefined;
+            
         }     
     }
     
@@ -426,27 +458,67 @@ namespace aufgabe2_5 {
         }
         
         document.getElementById("bestellen").addEventListener("click", handleBestellung);
+        document.getElementById("retry").addEventListener("click", reset5seconds);
 
 
-        function handleBestellung(_event: Event): void {
+
+
+        interface Respo {
+            message: string;
+            error: string;
+        }
+        
+
+
+
+        async function handleBestellung(_event: Event): Promise<void> {
             console.log(JSON.stringify(burgerKomplett) + " Time: "  + Date.now());
             console.log("hello");
             
 
-            let closeTimer: HTMLHeadingElement = <HTMLHeadingElement> document.createElement("h2");
-            closeTimer.setAttribute("id", "closeTimer");
-            document.body.appendChild(closeTimer);
+            let rr: string [][] = [["burgerBoden:", JSON.stringify(burgerKomplett.burgerBoden)   ], ["zutat1:", JSON.stringify(burgerKomplett.zutat1)], ["zutat2", JSON.stringify(burgerKomplett.zutat2)], ["burgerDeckel:", JSON.stringify(burgerKomplett.burgerDeckel)]];
+
+
+            let url: string = "https://gis-communication.herokuapp.com";
+            let query1: URLSearchParams = new URLSearchParams(rr);
+            
+            url = url + "?" + query1.toString();
+           
+            
+            let response: Response = await fetch(url);
+            let ssio: Respo = await response.json();
+            let p: HTMLHeadingElement = <HTMLHeadingElement> document.getElementById("responseText");
+            
+            if (ssio.message) {
+                p.innerText = ssio.message;
+                p.className = "Message";
+                console.log("f");
+            } else if (ssio.error) {
+                p.innerText = ssio.error;
+                p.className = "ErrorMessage";
+                console.log("d");
+            }
+
+           
+
+        }
+        function reset5seconds(): void {
+            let closeTimer: HTMLHeadingElement = <HTMLHeadingElement> document.getElementById("closeMessage");
+            
 
             closeTimer.innerText = "closing in 5 seconds";
             setTimeout(function(): void {
                 sessionStorage.clear();
                 window.location.href = "Index.html";
-             } ,       5000 );
-            
-
-            
-            
+             } ,       5000 );   
         }
+
+
+           
+            
+            
+            
+        
        
 
 
