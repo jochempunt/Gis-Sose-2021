@@ -6,6 +6,10 @@
 }
 
 
+:root{
+    --neon:rgb(204, 0, 255);
+}
+
 :root[data-theme="light"]{
     --background-color: #ffffff;
     --text-color: rgb(90, 90, 90);
@@ -14,6 +18,9 @@
 
 }
 
+#retry{
+    margin-left:0.5em;
+}
 
 
 
@@ -39,6 +46,7 @@ transition: background-color .2s linear;
     margin-right: 3em;
     background-color: var(--text-color);
     color: var(--background-color);
+    padding: 0.5rem 1rem;
 }
 
 #light_dark:hover{
@@ -56,6 +64,138 @@ h1{
 }
 
 
+:root[data-theme="dark"] .bulb{
+    filter: none;
+}
+
+:root[data-theme="dark"] .bulb:hover{
+    filter: drop-shadow(0 5px 5px rgb(255, 255, 0));
+}
+
+:root[data-theme="light"] .bulb{
+    filter: invert();
+}
+
+
+:root[data-theme="light"] .bulb:hover{
+    filter: invert() drop-shadow( 0 5px 5px rgb(177, 177, 0));
+}
+
+.bulb{
+    width:3.5rem;
+    height: auto;
+}
+
+
+.neon-button {
+    margin-top: 0.8em;
+    color: var(--neon);
+    font-size: 2em;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    font-style: unset;
+    border: var(--neon) 0.2em solid;
+    border-radius: 0.25em;
+    padding: 0.25em 1em;
+    text-shadow:
+    0 0 0.255em currentColor ;
+
+    box-shadow: 0 0 0.5em var(--neon),
+    inset 0 0 0.5em var(--neon);
+
+    position: relative;
+
+
+    transition: background-color 100ms linear;
+
+    
+}
+
+
+.hidden{
+    opacity:0;
+    transition: opacity 100ms linear;
+}
+
+
+
+.neon-Rand{
+    box-shadow: 0 0 1em var(--neon),
+    inset 0 0 1em var(--neon);
+   
+    border-color:rgb(255, 255, 255);
+
+
+}
+
+
+.bla{
+    box-shadow: 0 0 0.8em rgba(13, 235, 187, 0.753);
+    
+
+}
+
+.bla:hover{
+    box-shadow: 0 0 1em rgba(13, 235, 187, 0.959);
+    
+}
+
+.neon-button::before{
+    pointer-events: none;
+    content: "";
+    position: absolute;
+    background:var(--neon);
+
+    top:100%;
+    left:0;
+    width:100%;
+    height:100%;
+
+    transform:perspective(1em) 
+    rotateX(40deg) translateZ(-1em) scale(1.8,0.55);
+
+    filter: blur(1.5em);
+
+    opacity:0.7;
+    
+
+
+}
+
+
+
+.neon-button:hover::before{
+    opacity: 1;
+}
+
+.neon-button::after{
+    content: "";
+    position: absolute;
+
+    top:0;
+    left:0;
+    bottom:0;
+    right: 0;
+    background: var(--neon);
+  
+
+    box-shadow: 0 0 1em .3em var(--neon);
+    opacity: 0;
+    transition:opacity 100ms linear;
+    z-index: -1;
+}
+
+.neon-button:hover::after{
+    opacity: 1;
+}
+
+.neon-button:hover{
+    
+    color: var(--background-color);
+    text-shadow: none;
+    
+}
 
 main{
     width: 1000px;
@@ -164,22 +304,34 @@ a:hover{
 }
 
 
-button{
+
+
+
+
+
+
+
+.bestaetigen{
+    font-size: 2em;
+    display: inline-block;
     border-style: none;
     background-color: rgb(2, 121, 12);
     color:white;
-    font-size: 1.5em;
+    font-size: 2em;
     border-radius: 12px;
-    padding: 5px;
-    margin-top: 0.5em;
+    padding: 0.25em 1em;
+    margin-top: 1em;
     transition: background-color .2s linear;
 }
 
-button:hover{
+
+.bestaetigen:hover{
     background-color:rgb(2, 172, 16) ;
+    text-shadow: none;
 }
 
-button:active{
+
+.bestaetigen:active{
     color:rgb(255, 230, 0);
 }
 
@@ -196,13 +348,16 @@ label:hover{
     display: none;
 }
 .bluebutton{
-    background-color:rgba(2, 172, 135, 0.753) ;
+    background-color:rgba(13, 235, 187, 0.753) ;
     height: 50px;
     width: 150px;
+    border:none;
+    font-size: 2em;
+    border-radius: 0.25em;
 }
 
 .bluebutton:hover{
-    background-color:rgba(7, 231, 183, 0.753) ;
+    background-color:rgba(86, 255, 218, 0.753) ;
 }
 
 .Bestellung p{
@@ -216,6 +371,12 @@ label:hover{
 h1{
     font-size: 2.5rem;
 }
+
+
+h3{
+    font-size:2em ;
+}
+
 #closeTimer{
     color: red;
     font-size: 2.2rem;

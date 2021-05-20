@@ -2,15 +2,84 @@
 var aufgabe2_5;
 (function (aufgabe2_5) {
     let light = (localStorage.getItem("bool") == "true");
+    let SEITE;
+    (function (SEITE) {
+        SEITE[SEITE["BURGER_BODEN"] = 0] = "BURGER_BODEN";
+        SEITE[SEITE["ZUTAT_1"] = 1] = "ZUTAT_1";
+        SEITE[SEITE["ZUTAT_2"] = 2] = "ZUTAT_2";
+        SEITE[SEITE["BURGER_DECKEL"] = 3] = "BURGER_DECKEL";
+        SEITE[SEITE["RESULTAT"] = 4] = "RESULTAT";
+    })(SEITE || (SEITE = {}));
+    let aktuelleSeite = undefined;
+    if (document.URL.includes("Index")) {
+        //aktuelleSeite = SEITE.BURGER_DECKEL; --> hier würde die 2te darstellung des burgerbrötchen dargestellt werden
+        aktuelleSeite = SEITE.BURGER_BODEN;
+    }
+    else if (document.URL.includes("zutat1")) {
+        aktuelleSeite = SEITE.ZUTAT_1;
+    }
+    else if (document.URL.includes("zutat2")) {
+        aktuelleSeite = SEITE.ZUTAT_2;
+    }
+    else if (document.URL.includes("Dach")) {
+        aktuelleSeite = SEITE.BURGER_DECKEL;
+    }
+    else if (document.URL.includes("result")) {
+        aktuelleSeite = SEITE.RESULTAT;
+    }
     document.getElementById("light_dark").addEventListener("click", setDarkLight);
+    if (aktuelleSeite != SEITE.RESULTAT) {
+        if (light) {
+            document.getElementById("bestaetigen").setAttribute("class", "bestaetigen");
+            document.getElementById("bestaetigen2").setAttribute("class", "neon-button hidden");
+            document.getElementById("zutatAnzeige").setAttribute("class", "ZutatAnzeige");
+        }
+        else {
+            document.getElementById("bestaetigen").setAttribute("class", "bestaetigen hidden");
+            document.getElementById("bestaetigen2").setAttribute("class", "neon-button");
+            document.getElementById("zutatAnzeige").setAttribute("class", "ZutatAnzeige neon-Rand");
+        }
+    }
+    else {
+        if (!light) {
+            document.querySelector(".resultatAnzeige").setAttribute("style", "box-shadow: 0 0 1em blueviolet,inset 0 0 1em blueviolet;border-color:rgb(255, 255, 255);");
+            document.querySelector("#bestellen").setAttribute("class", document.querySelector(".bluebutton").classList.toString() + " bla");
+            document.querySelector("#retry").setAttribute("class", document.querySelector(".bluebutton").classList.toString() + " bla");
+        }
+        else {
+            document.querySelector(".resultatAnzeige").setAttribute("style", "");
+            document.querySelector("#bestellen").setAttribute("class", "bluebutton");
+            document.querySelector("#retry").setAttribute("class", "bluebutton");
+        }
+    }
     function setDarkLight() {
         if (light) {
             light = false;
             document.documentElement.setAttribute("data-theme", "dark");
+            if (aktuelleSeite != SEITE.RESULTAT) {
+                document.getElementById("bestaetigen").setAttribute("class", "bestaetigen hidden");
+                document.getElementById("bestaetigen2").setAttribute("class", "neon-button");
+                document.getElementById("zutatAnzeige").setAttribute("class", "ZutatAnzeige neon-Rand");
+            }
+            else {
+                document.querySelector(".resultatAnzeige").setAttribute("style", "box-shadow: 0 0 1em blueviolet,inset 0 0 1em blueviolet;border-color:rgb(255, 255, 255);");
+                document.querySelector("#bestellen").setAttribute("class", document.querySelector(".bluebutton").classList.toString() + " bla");
+                document.querySelector("#retry").setAttribute("class", document.querySelector(".bluebutton").classList.toString() + " bla");
+            }
         }
         else {
             light = true;
             document.documentElement.setAttribute("data-theme", "light");
+            if (aktuelleSeite != SEITE.RESULTAT) {
+                document.getElementById("bestaetigen").setAttribute("class", "bestaetigen");
+                document.getElementById("bestaetigen2").setAttribute("class", "neon-button hidden");
+                document.getElementById("zutatAnzeige").setAttribute("class", "ZutatAnzeige");
+            }
+            else {
+                document.querySelector(".resultatAnzeige").setAttribute("style", "");
+                document.querySelector("#bestellen").setAttribute("class", "bluebutton");
+                document.querySelector("#retry").setAttribute("class", "bluebutton");
+            }
         }
         localStorage.setItem("bool", light + "");
     }
@@ -61,41 +130,28 @@ var aufgabe2_5;
     //-- > burgerKomplett wird nach nund nach aufgefüllt.
     let zutatenAuswahl = document.querySelector(".Zutatenauswahl"); //--> anzeigefeld wo alle zutaten angezeigt werden
     let checkboxListe = []; //--> hier werden die checkboxen in selber reihenfolge wie die zutaten gespeichert
-    let aktuelleSeite = undefined; //--> hiermit wird die speicherung und anzeige der zutaten gesteuert
+    //--> hiermit wird die speicherung und anzeige der zutaten gesteuert
     let aktuellePatty = undefined;
     let aktuelleBroetchen = undefined;
     let aktuelleZutat = undefined;
     let aktuelleZutatenLaenge = undefined;
-    let SEITE;
-    (function (SEITE) {
-        SEITE[SEITE["BURGER_BODEN"] = 0] = "BURGER_BODEN";
-        SEITE[SEITE["ZUTAT_1"] = 1] = "ZUTAT_1";
-        SEITE[SEITE["ZUTAT_2"] = 2] = "ZUTAT_2";
-        SEITE[SEITE["BURGER_DECKEL"] = 3] = "BURGER_DECKEL";
-        SEITE[SEITE["RESULTAT"] = 4] = "RESULTAT";
-    })(SEITE || (SEITE = {}));
     function hauptProgramm() {
         document.body.style.cursor = "wait";
-        if (document.URL.includes("Index")) {
-            //aktuelleSeite = SEITE.BURGER_DECKEL; --> hier würde die 2te darstellung des burgerbrötchen dargestellt werden
-            aktuelleSeite = SEITE.BURGER_BODEN;
-            aktuelleZutatenLaenge = speicherOpt.broetchen.length;
-        }
-        else if (document.URL.includes("zutat1")) {
-            aktuelleSeite = SEITE.ZUTAT_1;
-            aktuelleZutatenLaenge = speicherOpt.pattys.length;
-        }
-        else if (document.URL.includes("zutat2")) {
-            aktuelleSeite = SEITE.ZUTAT_2;
-            aktuelleZutatenLaenge = speicherOpt.zutaten.length;
-        }
-        else if (document.URL.includes("Dach")) {
-            aktuelleSeite = SEITE.BURGER_DECKEL;
-            aktuelleZutatenLaenge = speicherOpt.broetchen.length;
-        }
-        else if (document.URL.includes("result")) {
-            aktuelleSeite = SEITE.RESULTAT;
-            aktuelleZutatenLaenge = null;
+        switch (aktuelleSeite) {
+            case SEITE.BURGER_BODEN:
+                aktuelleZutatenLaenge = speicherOpt.broetchen.length;
+                break;
+            case SEITE.ZUTAT_1:
+                aktuelleZutatenLaenge = speicherOpt.pattys.length;
+                break;
+            case SEITE.ZUTAT_2:
+                aktuelleZutatenLaenge = speicherOpt.zutaten.length;
+                break;
+            case SEITE.ZUTAT_2:
+                break;
+            case SEITE.BURGER_DECKEL:
+                aktuelleZutatenLaenge = speicherOpt.broetchen.length;
+                break;
         }
         if (aktuelleSeite != SEITE.RESULTAT) {
             erzeugeZutatenAnsicht();
@@ -149,6 +205,7 @@ var aufgabe2_5;
                 }
             }
             document.getElementById("bestaetigen").addEventListener("click", handleBestaetigung);
+            document.getElementById("bestaetigen2").addEventListener("click", handleBestaetigung);
             ladeAusgewählt();
             function ladeAusgewählt() {
                 switch (aktuelleSeite) {
@@ -323,9 +380,8 @@ var aufgabe2_5;
             async function handleBestellung(_event) {
                 console.log(JSON.stringify(burgerKomplett) + " Time: " + Date.now());
                 console.log("hello");
-                let rr = [["burgerBoden:", JSON.stringify(burgerKomplett.burgerBoden)], ["zutat1:", JSON.stringify(burgerKomplett.zutat1)], ["zutat2", JSON.stringify(burgerKomplett.zutat2)], ["burgerDeckel:", JSON.stringify(burgerKomplett.burgerDeckel)]];
                 let url = "https://gis-communication.herokuapp.com";
-                let query1 = new URLSearchParams(rr);
+                let query1 = new URLSearchParams(burgerKomplett);
                 url = url + "?" + query1.toString();
                 let response = await fetch(url);
                 let ssio = await response.json();
