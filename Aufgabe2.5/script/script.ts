@@ -513,7 +513,7 @@ namespace aufgabe2_5 {
             
             if (burgerKomplett.zutat1.vegetarisch) {
                 let vegetarischImage: HTMLImageElement = <HTMLImageElement> document.createElement("img");
-                vegetarischImage.setAttribute("src", "darstellungen/Vegetarisch.png");
+                vegetarischImage.setAttribute("src", "../darstellungen/Vegetarisch.png");
                 vegetarischImage.setAttribute("alt", "vegetarisch kennzeichnung");
                 vegetarischImage.setAttribute("class", "vegetarisch");
                 document.body.appendChild(vegetarischImage);
