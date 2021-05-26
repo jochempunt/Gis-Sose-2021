@@ -32,28 +32,25 @@ namespace aufgabe3_1 {
     
     async function getData(): Promise<void> {
         
-        formData.getAll("gschlecht");
-
-
-
+        
         let kData: KreditDaten = {  vorname: formData.get("Vname").toString(), 
                                     nachname: formData.get("Nachname").toString(), 
-                                    geschlecht: formData.getAll("gschlecht").toString(), 
+                                    geschlecht: formData.get("gschlecht").toString(), 
                                     gburtsDatum: new Date(formData.get("gburtsdatum").toString()), 
                                     kreditkartenNummer: Number( formData.get("creditN")),
                                     pin: formData.get("creditN").toString()
         };
     
     
-        let url: string = "https://jochems-gis-server.herokuapp.com";
+        let url: string = "https://jochems-gis-server.herokuapp.com/";
         let query: URLSearchParams = new URLSearchParams(<any>kData);
         url = url + "?" + query.toString();
         console.log(url);
     
     
         let resp: Response = await fetch(url);
-        //let kdd: string = JSON.parse(await resp.json());
-        console.log(resp);
+        let kdd: string = JSON.parse(await resp.json());
+        console.log(kdd);
     
 }
 
