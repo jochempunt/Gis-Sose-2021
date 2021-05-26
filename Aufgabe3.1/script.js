@@ -16,10 +16,8 @@ var aufgabe3_1;
         url = url + "?" + query.toString();
         //console.log(url);
         let resp = await fetch(url);
-        let respText = await resp.text();
-        respText = respText.slice(2, respText.length - 1);
-        let kdd = JSON.parse(respText);
-        console.log(kdd);
+        let antwort = await resp.json();
+        console.log(antwort);
     }
 })(aufgabe3_1 || (aufgabe3_1 = {}));
 //# sourceMappingURL=script.js.map

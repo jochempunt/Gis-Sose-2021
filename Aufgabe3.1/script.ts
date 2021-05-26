@@ -42,7 +42,7 @@ namespace aufgabe3_1 {
         };
 
 
-        interface antwort{
+        interface Antwort {
             nachricht: string;
             error: string;
 
@@ -58,11 +58,11 @@ namespace aufgabe3_1 {
        
     
         let resp: Response = await fetch(url);
-        let respText: string = await resp.text();
-        respText = respText.slice(2, respText.length - 1);
+        
+        
 
-        let kdd: KreditDaten = JSON.parse(respText);
-        console.log(kdd);
+        let antwort: Antwort = await resp.json();
+        console.log(antwort);
     
 }
 
