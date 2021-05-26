@@ -3,8 +3,8 @@ import * as Http from "http";
 export namespace P_3_1Server {
     console.log("Starting server");
     let port: number = Number(process.env.PORT);
-    if (!port)
-        port = 8100;
+    //if (!port)
+      //  port = 8100;
 
     let server: Http.Server = Http.createServer();
     server.addListener("request", handleRequest);
