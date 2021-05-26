@@ -544,10 +544,10 @@ namespace aufgabe2_5 {
                 
                 
                 let response: Response = await fetch(url);
-
+               
                 let ssio: Respo = await response.json();
                 let p: HTMLHeadingElement = <HTMLHeadingElement> document.getElementById("responseText");
-                
+                 
                 if (ssio.message) {
                     p.innerText = ssio.message;
                     p.className = "Message";
@@ -556,7 +556,7 @@ namespace aufgabe2_5 {
                     p.innerText = ssio.error;
                     p.className = "ErrorMessage";
                     console.log("d");
-                }
+                } 
                 
                 
                 

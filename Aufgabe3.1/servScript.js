@@ -16,10 +16,11 @@ var P_3_1Server;
         console.log("Listening");
     }
     function handleRequest(_request, _response) {
+        let ant = { nachricht: "alles geklappt, ihnen wurden 3.500€ abgebucht", error: undefined };
         console.log(_request.url);
         _response.setHeader("content-type", "text/html; charset=utf-8"); // header (meta informationen) wird gesetzt mit werten wie das die zeichen aus "utf-8"  verwendet wird
         _response.setHeader("Access-Control-Allow-Origin", "*"); // dafür da wer alles zugriff/access hat
-        _response.write(_request.url); // gibt die request in der response aus 
+        _response.write(JSON.stringify(ant)); // gibt die request in der response aus 
         _response.end(); // stelle response fertig / "beende" die response
     }
 })(P_3_1Server = exports.P_3_1Server || (exports.P_3_1Server = {}));

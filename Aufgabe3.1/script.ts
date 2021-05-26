@@ -40,16 +40,28 @@ namespace aufgabe3_1 {
                                     kreditkartenNummer: Number( formData.get("creditN")),
                                     pin: formData.get("creditN").toString()
         };
+
+
+        interface antwort{
+            nachricht: string;
+            error: string;
+
+        }
     
     
-        let url: string = "https://jochems-gis-server.herokuapp.com/";
+        let url: string = "https://jochems-gis-server.herokuapp.com";
         let query: URLSearchParams = new URLSearchParams(<any>kData);
         url = url + "?" + query.toString();
-        console.log(url);
+        //console.log(url);
     
+
+       
     
         let resp: Response = await fetch(url);
-        let kdd: string = JSON.parse(await resp.json());
+        let respText: string = await resp.text();
+        respText = respText.slice(2, respText.length - 1);
+
+        let kdd: KreditDaten = JSON.parse(respText);
         console.log(kdd);
     
 }
