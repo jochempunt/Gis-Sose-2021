@@ -20,7 +20,7 @@ export namespace P_3_1Server {
         console.log(_request.url);
         _response.setHeader("content-type", "text/html; charset=utf-8"); // header (meta informationen) wird gesetzt mit werten wie das die zeichen aus "utf-8"  verwendet wird
         _response.setHeader("Access-Control-Allow-Origin", "*"); // dafür da wer alles zugriff/access hat
-        _response.write(_request.url); // gibt die request in der response aus 
+        _response.write(_request.url.split("/")); // gibt die request in der response aus 
         _response.end(); // stelle response fertig / "beende" die response
     }
 }

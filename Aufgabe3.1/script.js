@@ -11,16 +11,13 @@ var aufgabe3_1;
             kreditkartenNummer: Number(formData.get("creditN")),
             pin: formData.get("creditN").toString()
         };
-        let url = "https://jochems-gis-server.herokuapp.com/";
+        let url = "https://jochems-gis-server.herokuapp.com";
         let query = new URLSearchParams(kData);
         url = url + "?" + query.toString();
         console.log(url);
-        // await fetch(url);
-        for (let entry of formData) {
-            console.log(entry);
-            console.log("name: " + entry[0]);
-            console.log("value: " + entry[1]);
-        }
+        let resp = await fetch(url);
+        //let kdd: string = JSON.parse(await resp.json());
+        console.log(resp);
     }
 })(aufgabe3_1 || (aufgabe3_1 = {}));
 //# sourceMappingURL=script.js.map

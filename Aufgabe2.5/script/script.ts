@@ -539,9 +539,12 @@ namespace aufgabe2_5 {
                 
                 let query1: URLSearchParams = new URLSearchParams(<any> burgerKomplett);
                 url = url + "?" + query1.toString();
+       
+                
                 
                 
                 let response: Response = await fetch(url);
+
                 let ssio: Respo = await response.json();
                 let p: HTMLHeadingElement = <HTMLHeadingElement> document.getElementById("responseText");
                 
