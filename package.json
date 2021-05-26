@@ -9,7 +9,7 @@
   "devDependencies": {},
   "scripts": {
     "start": "node ./Aufgabe3.1/servScript.js"
-    //"test": "node ./Aufgabe3.1/servScript.js"
+    "test": "node ./Aufgabe3.1/servScript.js"
   },
   "repository": {
     "type": "git",
