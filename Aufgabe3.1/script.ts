@@ -32,10 +32,13 @@ namespace aufgabe3_1 {
     
     async function getData(): Promise<void> {
         
-        
+        formData.getAll("gschlecht");
+
+
+
         let kData: KreditDaten = {  vorname: formData.get("Vname").toString(), 
                                     nachname: formData.get("Nachname").toString(), 
-                                    geschlecht: formData.get("gschlecht").toString(), 
+                                    geschlecht: formData.getAll("gschlecht").toString(), 
                                     gburtsDatum: new Date(formData.get("gburtsdatum").toString()), 
                                     kreditkartenNummer: Number( formData.get("creditN")),
                                     pin: formData.get("creditN").toString()
