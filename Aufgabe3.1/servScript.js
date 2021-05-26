@@ -6,8 +6,8 @@ var P_3_1Server;
 (function (P_3_1Server) {
     console.log("Starting server");
     let port = Number(process.env.PORT);
-    //if (!port)
-    //  port = 8100;
+    if (!port)
+        port = 8100;
     let server = Http.createServer();
     server.addListener("request", handleRequest);
     server.addListener("listening", handleListen);
