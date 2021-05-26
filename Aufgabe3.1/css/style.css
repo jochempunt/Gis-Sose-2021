@@ -1,0 +1,32 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    overflow:hidden;
+    
+
+    
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem;
+    
+    
+    line-height: 2rem;
+}
+
+
+form div{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+#button{
+    font-size: 1.5rem;
+}
