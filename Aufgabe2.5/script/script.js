@@ -1,6 +1,21 @@
 "use strict";
 var aufgabe2_5;
 (function (aufgabe2_5) {
+    /* ------------- Hinweise: ---------------
+
+    Für das einfachere finden vom Aufgabenrelevanten Code
+    hier die wichtigen Stellen:
+
+    AUFGABE B):  ab zeile 150
+
+    AUFGABE C):  ab zeile 526
+
+    der Code ist außerdem noch etwas gewachsen, da ich einen darkmode eingeführt habe
+    ( was doch komplexer war als gedacht)
+
+
+
+    */
     let light = (localStorage.getItem("bool") == "true");
     let SEITE;
     (function (SEITE) {
@@ -12,7 +27,6 @@ var aufgabe2_5;
     })(SEITE || (SEITE = {}));
     let aktuelleSeite = undefined;
     if (document.URL.includes("Index")) {
-        //aktuelleSeite = SEITE.BURGER_DECKEL; --> hier würde die 2te darstellung des burgerbrötchen dargestellt werden
         aktuelleSeite = SEITE.BURGER_BODEN;
     }
     else if (document.URL.includes("zutat1")) {
@@ -27,6 +41,7 @@ var aufgabe2_5;
     else if (document.URL.includes("result")) {
         aktuelleSeite = SEITE.RESULTAT;
     }
+    // ------------------------- darkmode Code ------------------------- //
     document.getElementById("light_dark").addEventListener("click", setDarkLight);
     if (aktuelleSeite != SEITE.RESULTAT) {
         if (light) {
@@ -83,7 +98,8 @@ var aufgabe2_5;
         }
         localStorage.setItem("bool", light + "");
     }
-    /// -- darkmode ende
+    // ------------------ darkmode Code Ende ------------- //
+    // -----------------  Daten von Online Einlesen ------- ///
     let speicherOpt = undefined;
     console.log("start");
     async function datenEinlesenUndLaden(_url) {
@@ -93,6 +109,7 @@ var aufgabe2_5;
         hauptProgramm();
     }
     datenEinlesenUndLaden("https://jochempunt.github.io/Gis-Sose-2021/Aufgabe2.5/data.json");
+    //--------- Daten Online Einlesen Ende -----------//
     let burgerKomplett = { burgerBoden: undefined, zutat1: undefined, zutat2: undefined, burgerDeckel: undefined };
     if (sessionStorage.getItem("burgerKomplett")) {
         burgerKomplett = JSON.parse(sessionStorage.getItem("burgerKomplett"));
@@ -135,6 +152,7 @@ var aufgabe2_5;
     let aktuelleBroetchen = undefined;
     let aktuelleZutat = undefined;
     let aktuelleZutatenLaenge = undefined;
+    // ------------ HauptProgramm ---------------- //
     function hauptProgramm() {
         document.body.style.cursor = "wait";
         switch (aktuelleSeite) {
@@ -370,7 +388,7 @@ var aufgabe2_5;
             burgerAnzeige.appendChild(bottomImg);
             if (burgerKomplett.zutat1.vegetarisch) {
                 let vegetarischImage = document.createElement("img");
-                vegetarischImage.setAttribute("src", "darstellungen/Vegetarisch.png");
+                vegetarischImage.setAttribute("src", "../darstellungen/Vegetarisch.png");
                 vegetarischImage.setAttribute("alt", "vegetarisch kennzeichnung");
                 vegetarischImage.setAttribute("class", "vegetarisch");
                 document.body.appendChild(vegetarischImage);
@@ -397,6 +415,7 @@ var aufgabe2_5;
                     console.log("d");
                 }
             }
+            // ------ Reset Button ----- //
             function reset5seconds() {
                 let closeTimer = document.getElementById("closeMessage");
                 closeTimer.innerText = "closing in 5 seconds";

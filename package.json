@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "@types/node": "^15.6.0"
+  },
+  "name": "gis-sose-2021",
+  "description": "zu den aufgaben gehts hier lang: https://jochempunt.github.io/Gis-Sose-2021/",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "../Aufgabe3.1/servScript.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jochempunt/Gis-Sose-2021.git"
+  },
+  "author": "jochem punt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jochempunt/Gis-Sose-2021/issues"
+  },
+  "homepage": "https://github.com/jochempunt/Gis-Sose-2021#readme"
+}
