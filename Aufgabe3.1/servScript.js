@@ -5,13 +5,13 @@ const Http = require("http");
 var P_3_1Server;
 (function (P_3_1Server) {
     console.log("Starting server");
-    let port = Number(process.env.PORT);
+    let port = Number(process.env.PORT); //heruko setzt den port --> speichern den port in eine variable
     if (!port) // falls ein port gesetzt ist (heruko) solle er nicht den port auf 8100 setzen
         port = 8100;
     let server = Http.createServer(); // erstellt ein httpserverobjekt
-    server.addListener("request", handleRequest); // dem listener hinzugefügt werden
+    server.addListener("request", handleRequest); // welchem (event)listener hinzugefügt werden
     server.addListener("listening", handleListen); // welche für requests und das "listening" bzw "warten auf etwas" zuständig sind
-    server.listen(port);
+    server.listen(port); // den port setzen auf dem  er hören soll
     function handleListen() {
         console.log("Listening");
     }

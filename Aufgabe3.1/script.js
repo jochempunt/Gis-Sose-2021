@@ -1,9 +1,9 @@
 "use strict";
 var aufgabe3_1;
 (function (aufgabe3_1) {
-    let formData = new FormData(document.forms[0]);
     document.getElementById("button").addEventListener("click", getData);
     async function getData() {
+        let formData = new FormData(document.forms[0]);
         let kData = { vorname: formData.get("Vname").toString(),
             nachname: formData.get("Nachname").toString(),
             geschlecht: formData.get("gschlecht").toString(),

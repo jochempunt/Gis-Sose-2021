@@ -2,16 +2,16 @@ import * as Http from "http";
 
 export namespace P_3_1Server {
     console.log("Starting server");
-    let port: number = Number(process.env.PORT);
+    let port: number = Number(process.env.PORT); //heruko setzt den port --> speichern den port in eine variable
     if (!port) // falls ein port gesetzt ist (heruko) solle er nicht den port auf 8100 setzen
        port = 8100;
 
     let server: Http.Server = Http.createServer(); // erstellt ein httpserverobjekt
-    server.addListener("request", handleRequest); // dem listener hinzugefügt werden
+    server.addListener("request", handleRequest); // welchem (event)listener hinzugefügt werden
     server.addListener("listening", handleListen); // welche für requests und das "listening" bzw "warten auf etwas" zuständig sind
-    server.listen(port);
+    server.listen(port); // den port setzen auf dem  er hören soll
 
-    function handleListen(): void { // wenn am hören soll er am anfang auf der serverkonsole "listening" ausgeben
+    function handleListen(): void { // wenn er anfängz zu listenen soll er  auf der serverkonsole "listening" ausgeben
         console.log("Listening");
     }
 
@@ -22,7 +22,7 @@ export namespace P_3_1Server {
 
     }
 
-    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void { //funktion für das handlen vpn requests
+    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void { //funktion für das handlen von requests -- > bekommt antwort und anfrage als parameter
         let ant: Antwort = {nachricht: "alles geklappt, ihnen wurden 3.500€ abgebucht", error: undefined};
         console.log(_request.url);
         console.log(JSON.stringify(ant));

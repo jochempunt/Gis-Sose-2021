@@ -2,7 +2,9 @@
 
 namespace aufgabe3_1 {
     
-    let formData: FormData = new FormData(document.forms[0]);
+    
+    
+
     
     
     
@@ -30,8 +32,9 @@ namespace aufgabe3_1 {
     
     
     
-    async function getData(): Promise<void> {
         
+    async function getData(): Promise<void> {
+        let formData: FormData = new FormData(document.forms[0]);
         
         let kData: KreditDaten = {  vorname: formData.get("Vname").toString(), 
                                     nachname: formData.get("Nachname").toString(), 
@@ -45,7 +48,6 @@ namespace aufgabe3_1 {
         interface Antwort {
             nachricht: string;
             error: string;
-
         }
     
     
