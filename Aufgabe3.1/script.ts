@@ -4,7 +4,7 @@ namespace aufgabe3_1 {
     
     
     
-
+    
     
     
     
@@ -32,39 +32,47 @@ namespace aufgabe3_1 {
     
     
     
-        
+    
     async function getData(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
         
-        let kData: KreditDaten = {  vorname: formData.get("Vname").toString(), 
-                                    nachname: formData.get("Nachname").toString(), 
-                                    geschlecht: formData.get("gschlecht").toString(), 
-                                    gburtsDatum: new Date(formData.get("gburtsdatum").toString()), 
-                                    kreditkartenNummer: Number( formData.get("creditN")),
-                                    pin: formData.get("creditN").toString()
+        if ( formData.get("gschlecht") != null) {
+            let kData: KreditDaten = {  vorname: formData.get("Vname").toString(), 
+            nachname: formData.get("Nachname").toString(), 
+            geschlecht: formData.get("gschlecht").toString(), 
+            gburtsDatum: new Date(formData.get("gburtsdatum").toString()), 
+            kreditkartenNummer: Number( formData.get("creditN")),
+            pin: formData.get("creditN").toString()
         };
-
-
-        interface Antwort {
+        
+        
+            interface Antwort {
             nachricht: string;
             error: string;
+            url: string;
         }
-    
-    
-        let url: string = "https://jochems-gis-server.herokuapp.com";
-        let query: URLSearchParams = new URLSearchParams(<any>kData);
-        url = url + "?" + query.toString();
+        
+        
+            let url: string = "https://jochems-gis-server.herokuapp.com";
+            let query: URLSearchParams = new URLSearchParams(<any>kData);
+            url = url + "?" + query.toString();
         //console.log(url);
-    
-
-       
-    
-        let resp: Response = await fetch(url);
         
         
-
-        let antwort: Antwort = await resp.json();
-        console.log(antwort);
+        
+        
+            let resp: Response = await fetch(url);
+        
+        
+        
+            let antwort: Antwort = await resp.json();
+            console.log(antwort);
+        
+    } else{
+        alert("Sie haben kein Geschlecht ausgewählt");
+    }
+    
+    
     
 }
 
