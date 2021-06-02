@@ -69,7 +69,7 @@ namespace aufgabe3_2 {
            
             let query: URLSearchParams = new URLSearchParams(<any>kData);
             url = url + "?" + query.toString();
-        //console.log(url);
+            //console.log(url);
         
         
         
