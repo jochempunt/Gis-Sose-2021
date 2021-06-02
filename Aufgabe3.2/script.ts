@@ -57,7 +57,7 @@ namespace aufgabe3_2 {
             pin: formData.get("ccpin").toString()
         };
         
-            let url: string = "http://localhost:8100";
+            let url: string = "https://jochems-gis-server.herokuapp.com";
             
             if ( button.id == "button") { 
                 url += "/JSON";

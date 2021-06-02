@@ -20,7 +20,7 @@ var aufgabe3_2;
                 kreditkartenNummer: formData.get("creditN").toString(),
                 pin: formData.get("ccpin").toString()
             };
-            let url = "http://localhost:8100";
+            let url = "https://jochems-gis-server.herokuapp.com";
             if (button.id == "button") {
                 url += "/JSON";
             }

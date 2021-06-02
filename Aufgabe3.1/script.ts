@@ -20,9 +20,9 @@ namespace aufgabe3_1 {
         
         geschlecht: string;
         
-        gburtsDatum: Date;
+        gburtsDatum: string;
         
-        kreditkartenNummer: number;
+        kreditkartenNummer: string;
         
         pin: string;
         
@@ -34,6 +34,8 @@ namespace aufgabe3_1 {
     
     
     async function getData(): Promise<void> {
+        console.log("hi");
+        
         let formData: FormData = new FormData(document.forms[0]);
        
        
@@ -45,22 +47,25 @@ namespace aufgabe3_1 {
         }
         
         if ( formData.get("gschlecht") != null) {
+            
+            
+            console.log("hello there");
             let kData: KreditDaten = {  vorname: formData.get("Vname").toString(), 
             nachname: formData.get("Nachname").toString(), 
             geschlecht: formData.get("gschlecht").toString(), 
-            gburtsDatum: new Date(formData.get("gburtsdatum").toString()), 
-            kreditkartenNummer: Number( formData.get("creditN")),
+            gburtsDatum: formData.get("gburtsdatum").toString(), 
+            kreditkartenNummer: formData.get("creditN").toString(),
             pin: formData.get("creditN").toString()
         };
         
         
-            interface Antwort {
+          /*  interface Antwort {
             nachricht: string;
             error: string;
             url: string;
-        }
+        }*/
         
-        
+            console.log("hello there");
             let url: string = "https://jochems-gis-server.herokuapp.com";
             let query: URLSearchParams = new URLSearchParams(<any>kData);
             url = url + "?" + query.toString();
@@ -73,8 +78,8 @@ namespace aufgabe3_1 {
         
         
         
-            let antwort: Antwort = await resp.json();
-            console.log(antwort);
+            //let antwort: Antwort = await resp.json();
+            console.log(resp);
         
     } else {
         alert("Sie haben kein Geschlecht ausgewählt");
