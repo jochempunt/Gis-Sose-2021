@@ -76,7 +76,7 @@ namespace aufgabe3_1 {
             let antwort: Antwort = await resp.json();
             console.log(antwort);
         
-    } else{
+    } else {
         alert("Sie haben kein Geschlecht ausgewählt");
     }
     
