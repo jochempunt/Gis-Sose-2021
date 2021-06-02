@@ -26,7 +26,6 @@ var aufgabe3_2;
             }
             else if (button.id == "button2") {
                 url += "/html";
-                console.log("hallo");
             }
             let query = new URLSearchParams(kData);
             url = url + "?" + query.toString();

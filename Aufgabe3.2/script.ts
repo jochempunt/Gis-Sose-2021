@@ -63,7 +63,6 @@ namespace aufgabe3_2 {
                 url += "/JSON";
             } else if (button.id == "button2") {
                 url += "/html";
-                console.log("hallo");
             }
         
            
