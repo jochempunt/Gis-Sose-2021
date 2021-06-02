@@ -35,6 +35,14 @@ namespace aufgabe3_1 {
     
     async function getData(): Promise<void> {
         let formData: FormData = new FormData(document.forms[0]);
+       
+       
+        for (let entry of formData) {
+            if (entry[1] == "") {
+                alert(entry[0] + " ist leer, bitte füllen sie das feld aus...");
+                return;
+            }
+        }
         
         if ( formData.get("gschlecht") != null) {
             let kData: KreditDaten = {  vorname: formData.get("Vname").toString(), 

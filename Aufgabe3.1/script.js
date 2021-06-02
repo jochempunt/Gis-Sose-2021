@@ -4,6 +4,12 @@ var aufgabe3_1;
     document.getElementById("button").addEventListener("click", getData);
     async function getData() {
         let formData = new FormData(document.forms[0]);
+        for (let entry of formData) {
+            if (entry[1] == "") {
+                alert(entry[0] + " ist leer, bitte füllen sie das feld aus...");
+                return;
+            }
+        }
         if (formData.get("gschlecht") != null) {
             let kData = { vorname: formData.get("Vname").toString(),
                 nachname: formData.get("Nachname").toString(),
