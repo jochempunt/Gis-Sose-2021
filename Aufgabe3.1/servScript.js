@@ -16,7 +16,7 @@ var P_3_1Server;
         console.log("Listening");
     }
     function handleRequest(_request, _response) {
-        let ant = { nachricht: "alles geklappt, ihnen wurden 3.500€ abgebucht", error: undefined, url: _request.url };
+        let ant = { nachricht: "alles geklappt", error: undefined, url: _request.url };
         console.log(_request.url);
         console.log(JSON.stringify(ant));
         _response.setHeader("content-type", "application/json; charset=utf-8"); // header (meta informationen) wird gesetzt mit werten wie das die zeichen aus "utf-8"  verwendet wird

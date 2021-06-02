@@ -65,11 +65,11 @@ namespace aufgabe3_1 {
             url: string;
             }
         
-            console.log("hello there");
-            let url: string = "https://jochems-gis-server.herokuapp.com/3_1";
+            
+            let url: string = "http://localhost:8100/";
             let query: URLSearchParams = new URLSearchParams(<any>kData);
             url = url + "?" + query.toString();
-            //console.log(url);
+            console.log(url);
         
         
         
@@ -77,7 +77,7 @@ namespace aufgabe3_1 {
             let resp: Response = await fetch(url);
         
         
-            console.log(resp.text());
+            
             let antwort: Antwort = await resp.json();
             console.log(antwort);
         

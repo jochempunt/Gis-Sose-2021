@@ -24,7 +24,7 @@ export namespace P_3_1Server {
     }
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void { //funktion für das handlen von requests -- > bekommt antwort und anfrage als parameter
-        let ant: Antwort = {nachricht: "alles geklappt, ihnen wurden 3.500€ abgebucht", error: undefined, url: _request.url};
+        let ant: Antwort = {nachricht: "alles geklappt", error: undefined, url: _request.url};
         console.log(_request.url);
         console.log(JSON.stringify(ant));
         
