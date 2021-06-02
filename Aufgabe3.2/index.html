@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+    
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <form method="GET" action="https://jochems-gis-server.herokuapp.com/">
+        <label for="text" id="VnameL">Vorname</label>
+        <input type="text" id="text" name="Vname">
+        <label for="text2" id="NnameL">Nachname</label>
+        <input type="text" id="text2" name="Nachname">
+        <div>
+            
+            <input type="radio" id="text3" name="gschlecht" value="maennlich">
+            <label for="text3" id="ml">Maennlich</label>
+            
+            <input type="radio" id="text4" name="gschlecht" value="weiblich">
+            <label for="text4" id="wl">Weiblich</label>
+            
+            <input type="radio" id="text5" name="gschlecht" value="divers">
+            <label for="text5" id="wl">Divers</label>
+            
+            
+            
+            
+        </div>
+        
+        
+        <label for="geburtsdatum" id="bgl">geburtsdatum</label>
+        <input type="date" id="geburtsdatum" name="gburtsdatum">
+        
+        
+        <label for="creditNummer" id="cdl">kreditkarten nummer</label>
+        <input type="number" id="creditNummer" name="creditN">
+        
+        <label for="pin" id="ccpinl">kreditkarten pin</label>
+        <input type="password" id="pin" name="ccpin">
+        
+        <input type="button" id="button" value="BestellenJSON">
+        <input type="button" id="button2" value="BestellenHTML">
+        
+        
+    </form>
+    <div id="anzeige">
+        
+    </div>
+    
+</body>
+</html>
