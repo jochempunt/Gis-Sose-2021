@@ -59,17 +59,17 @@ namespace aufgabe3_1 {
         };
         
         
-          /*  interface Antwort {
+            interface Antwort {
             nachricht: string;
             error: string;
             url: string;
-        }*/
+            }
         
             console.log("hello there");
-            let url: string = "https://jochems-gis-server.herokuapp.com";
+            let url: string = "https://jochems-gis-server.herokuapp.com/3_1";
             let query: URLSearchParams = new URLSearchParams(<any>kData);
             url = url + "?" + query.toString();
-        //console.log(url);
+            //console.log(url);
         
         
         
@@ -77,9 +77,9 @@ namespace aufgabe3_1 {
             let resp: Response = await fetch(url);
         
         
-        
-            //let antwort: Antwort = await resp.json();
-            console.log(resp);
+            console.log(resp.text());
+            let antwort: Antwort = await resp.json();
+            console.log(antwort);
         
     } else {
         alert("Sie haben kein Geschlecht ausgewählt");

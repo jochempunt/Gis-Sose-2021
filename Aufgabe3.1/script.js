@@ -20,19 +20,15 @@ var aufgabe3_1;
                 kreditkartenNummer: formData.get("creditN").toString(),
                 pin: formData.get("creditN").toString()
             };
-            /*  interface Antwort {
-              nachricht: string;
-              error: string;
-              url: string;
-          }*/
             console.log("hello there");
-            let url = "https://jochems-gis-server.herokuapp.com";
+            let url = "https://jochems-gis-server.herokuapp.com/3_1";
             let query = new URLSearchParams(kData);
             url = url + "?" + query.toString();
             //console.log(url);
             let resp = await fetch(url);
-            //let antwort: Antwort = await resp.json();
-            console.log(resp);
+            console.log(resp.text());
+            let antwort = await resp.json();
+            console.log(antwort);
         }
         else {
             alert("Sie haben kein Geschlecht ausgewählt");

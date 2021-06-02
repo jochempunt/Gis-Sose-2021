@@ -38,7 +38,7 @@ var P_3_2Server;
             case "/3_1": // damit die verbesserung von aufgabe 3.1 auch noch aufm server läuft
                 _response.setHeader("content-type", "application/json; charset=utf-8");
                 let antwort = { nachricht: "alles geklappt zahlung hat funkrioniert", error: undefined, url: _request.url };
-                _response.write(antwort);
+                _response.write(JSON.stringify(antwort));
             default: //simpler url bounce/echo
                 _response.setHeader("content-type", "text/html; charset=utf-8");
                 console.log(_request.url);
