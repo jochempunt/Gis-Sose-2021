@@ -34,7 +34,7 @@ namespace aufgabe3_1 {
     
     
     async function getData(): Promise<void> {
-        console.log("hi");
+       
         
         let formData: FormData = new FormData(document.forms[0]);
        
@@ -49,7 +49,7 @@ namespace aufgabe3_1 {
         if ( formData.get("gschlecht") != null) {
             
             
-            console.log("hello there");
+          
             let kData: KreditDaten = {  vorname: formData.get("Vname").toString(), 
             nachname: formData.get("Nachname").toString(), 
             geschlecht: formData.get("gschlecht").toString(), 

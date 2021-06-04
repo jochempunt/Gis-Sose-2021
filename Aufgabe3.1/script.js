@@ -4,7 +4,6 @@ var aufgabe3_1;
 (function (aufgabe3_1) {
     document.getElementById("button").addEventListener("click", getData);
     async function getData() {
-        console.log("hi");
         let formData = new FormData(document.forms[0]);
         for (let entry of formData) {
             if (entry[1] == "") {
@@ -13,7 +12,6 @@ var aufgabe3_1;
             }
         }
         if (formData.get("gschlecht") != null) {
-            console.log("hello there");
             let kData = { vorname: formData.get("Vname").toString(),
                 nachname: formData.get("Nachname").toString(),
                 geschlecht: formData.get("gschlecht").toString(),

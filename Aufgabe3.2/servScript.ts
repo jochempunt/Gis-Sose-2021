@@ -47,7 +47,7 @@ export namespace P_3_2Server {
                 _response.setHeader("content-type", "text/html; charset=utf-8");
                 let respHTML: string = "";
                 for ( let key in data) {
-                    respHTML += "<div>" + key + " = " + data[key];
+                    respHTML += "<div>" + key + " = " + data[key] + "</div>";
                 }
                 _response.write(respHTML);
 
