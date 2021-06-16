@@ -15,14 +15,14 @@ var aufgabe3_4;
             }
         }
         let studentSt = { name: formData.get("Vname").toString(), firstname: formData.get("Nachname").toString(), registration: Number(formData.get("MatrikelNummer").toString()), _id: undefined };
-        let url = "http://localhost:8100/insert";
+        let url = "https://jochems-gis-server.herokuapp.com/insert";
         let query = new URLSearchParams(studentSt);
         url = url + "?" + query.toString();
         console.log(url);
         await fetch(url);
     }
     async function deleteData(_event) {
-        let url = "http://localhost:8100/delete";
+        let url = "https://jochems-gis-server.herokuapp.com/delete";
         let clickedB = _event.target;
         let id = clickedB.dataset.id;
         let deleteData = "_id=" + id;
@@ -33,7 +33,7 @@ var aufgabe3_4;
         updateList();
     }
     async function updateList() {
-        let url = "http://localhost:8100/refresh";
+        let url = "https://jochems-gis-server.herokuapp.com/refresh";
         let resp = await fetch(url);
         let studListe = document.getElementById("studentenListe");
         let antwort = await resp.json();

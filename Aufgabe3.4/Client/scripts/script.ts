@@ -31,7 +31,7 @@ namespace aufgabe3_4 {
         
         let studentSt: Student = {name: formData.get("Vname").toString(), firstname: formData.get("Nachname").toString(), registration: Number (formData.get("MatrikelNummer").toString()), _id: undefined };
         
-        let url: string = "http://localhost:8100/insert";
+        let url: string = "https://jochems-gis-server.herokuapp.com/insert";
         
         let query: URLSearchParams = new URLSearchParams(<any>studentSt);
         url = url + "?" + query.toString();
@@ -42,7 +42,8 @@ namespace aufgabe3_4 {
     }
     
     async function deleteData(_event: Event): Promise<void> {
-        let url: string = "http://localhost:8100/delete";
+        
+        let url: string = "https://jochems-gis-server.herokuapp.com/delete";
         let clickedB: HTMLButtonElement = <HTMLButtonElement> _event.target;
         let id: string = clickedB.dataset.id;
         let deleteData: string = "_id=" + id ;
@@ -58,7 +59,7 @@ namespace aufgabe3_4 {
 
     
     async function updateList(): Promise<void> {
-        let url: string = "http://localhost:8100/refresh";
+        let url: string = "https://jochems-gis-server.herokuapp.com/refresh";
         let resp: Response = await fetch(url);
         let studListe: HTMLDivElement = <HTMLDivElement> document.getElementById("studentenListe");
         let antwort: Student[] = await resp.json();
