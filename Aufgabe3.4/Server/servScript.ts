@@ -77,9 +77,9 @@ export namespace server3_4 {
         students.insertOne(_student);
     }
     
-    function deleteStudent(_sId: string): void {
+    /*function deleteStudent(_sId: string): void {
         students.deleteOne({_id: _sId});
-    }
+    }*/
     async function getEntryDb(searchRegistration?: string): Promise<Student[]> {
         let cursor: Mongo.Cursor = null;
         if (searchRegistration) {

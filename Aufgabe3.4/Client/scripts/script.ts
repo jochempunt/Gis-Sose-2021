@@ -38,6 +38,10 @@ namespace aufgabe3_4 {
         console.log(url);
         
         await fetch(url);
+
+        let form1: HTMLFormElement = <HTMLFormElement> document.getElementById("form1");
+        form1.reset();
+       
         
     }
     

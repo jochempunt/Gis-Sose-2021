@@ -20,6 +20,8 @@ var aufgabe3_4;
         url = url + "?" + query.toString();
         console.log(url);
         await fetch(url);
+        let form1 = document.getElementById("form1");
+        form1.reset();
     }
     async function deleteData(_event) {
         let url = "https://jochems-gis-server.herokuapp.com/delete";

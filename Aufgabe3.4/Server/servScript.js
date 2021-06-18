@@ -49,9 +49,9 @@ var server3_4;
     function insertStudent(_student) {
         students.insertOne(_student);
     }
-    function deleteStudent(_sId) {
-        students.deleteOne({ _id: _sId });
-    }
+    /*function deleteStudent(_sId: string): void {
+        students.deleteOne({_id: _sId});
+    }*/
     async function getEntryDb(searchRegistration) {
         let cursor = null;
         if (searchRegistration) {
