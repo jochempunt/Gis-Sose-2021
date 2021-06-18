@@ -35,7 +35,7 @@ export namespace server3_4 {
         
         let urlI: Url.UrlWithParsedQuery = Url.parse(_request.url, true);
         _response.setHeader("Access-Control-Allow-Origin", "*");
-        _response.setHeader("content-type", "text/html; charset=utf-8");
+        _response.setHeader("content-type", "application/json; charset=utf-8");
         
         switch (urlI.pathname) {
             case "/refresh":
